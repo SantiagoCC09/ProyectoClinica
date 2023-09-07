@@ -1,4 +1,8 @@
 plugins {
+<<<<<<< HEAD
+=======
+
+>>>>>>> af536f1ae9a2bfb5ab7e5d281e449e42eb620d5a
     id 'org.springframework.boot' version '3.1.2'
     id 'io.spring.dependency-management' version '1.1.2'
     id 'java'
@@ -23,6 +27,21 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     runtimeOnly 'com.mysql:mysql-connector-j'
 }
+<<<<<<< HEAD
+=======
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+}
+
+>>>>>>> af536f1ae9a2bfb5ab7e5d281e449e42eb620d5a
 test {
     useJUnitPlatform()
 }
