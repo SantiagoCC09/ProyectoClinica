@@ -15,11 +15,12 @@ import java.util.List;
 public class AlergiaPaciente implements Serializable {
 
     @Id
-    private int idAlergia;
-
-
-    private String nombre;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int codigo;
+    @ManyToOne
+    private Alergia idAlergia;
+    @ManyToOne
+    private Paciente cedulaPaciente;
 
 
 
