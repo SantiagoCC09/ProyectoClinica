@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-rootProject.name = 'clinicaUQ'
-=======
-rootProject.name = 'ProyectoClinica'
->>>>>>> b9c335b0125dc3bcbc85fff384f78bc2b9e529ef
 
+rootProject.name = 'clinicaUQ'
+
+rootProject.name = 'ProyectoClinica'
