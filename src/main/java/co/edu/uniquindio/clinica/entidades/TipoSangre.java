@@ -1,4 +1,4 @@
-package co.edu.uniquindio.clinica.modelo.entidades;
+package co.edu.uniquindio.clinica.entidades;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

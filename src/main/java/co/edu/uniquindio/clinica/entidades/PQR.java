@@ -1,4 +1,4 @@
-package co.edu.uniquindio.clinica.modelo.entidades;
+package co.edu.uniquindio.clinica.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,6 +16,7 @@ public class PQR implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPqr;
 
     private int estado;

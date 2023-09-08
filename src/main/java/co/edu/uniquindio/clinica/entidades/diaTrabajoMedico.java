@@ -1,10 +1,9 @@
-package co.edu.uniquindio.clinica.modelo.entidades;
+package co.edu.uniquindio.clinica.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,11 +14,13 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class diaTrabajoMedico implements Serializable {
 
+    @Column(nullable = false)
     private LocalDateTime fecha;
 
     @Id
     private int idDiaTrabajo;
 
+    @Column(nullable = false)
     private boolean eslibre;
 
     @ManyToOne
