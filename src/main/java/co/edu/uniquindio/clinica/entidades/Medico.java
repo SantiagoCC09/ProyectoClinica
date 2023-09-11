@@ -12,24 +12,17 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Medico implements Serializable {
 
-    @Id
-    @EqualsAndHashCode.Include
-    private int cedulaMedico;
-    @Column(nullable = false, length = 50)
-    private String email;
-    @Column(nullable = false, length = 20)
-    private String contrasenia;
+public class Medico extends Usuario implements Serializable {
 
-    @Column(nullable = false, length = 100)
-    private String nombreCompleto;
-    @Column(length = 15)
-    private String telefono;
+
+
+
     @Column(nullable = false, length = 40)
     private String ciudadResidencia;
     @OneToMany(mappedBy = "medico")
     private List<Cita> citas;
+
+    private Especialidad especialidad;
 
 }

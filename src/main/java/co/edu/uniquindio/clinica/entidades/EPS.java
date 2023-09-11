@@ -9,22 +9,16 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class EPS implements Serializable {
-   @Id
-   @EqualsAndHashCode.Include
-    private int idEPS;
 
-    @Column(nullable = false, length = 100)
-   private String nombre;
 
-    @OneToMany(mappedBy = "eps")
-    @Column(nullable = false)
-    private List<Paciente> pacientes;
+public enum EPS  {
+
+    ALIANSALUD, ANASWAYUU, COMPENSAR, SANITAS, FAMISANAR, SURA, SALUDMIA, SALUDTOTAL, EMSSANAR;
+
+
+
+
+
+
 
 }

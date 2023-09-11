@@ -9,21 +9,9 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class TipoSangre implements Serializable {
-    @Id
-    @EqualsAndHashCode.Include
-    private int idTipoSangre;
 
-    @Column(nullable = false, length = 15)
-     private String tipo;
-    @Column(nullable = false, length = 2)
-     private String rh;
-     @OneToMany(mappedBy = "rh")
-     private List<Paciente> pacientes;
+public enum TipoSangre  {
+
+    APOSTIVIO,ANEGATIVO, ABPOSITIVO, ABNEGATIVO, OPOSITIVO, ONEGATIVO;
+
 }
