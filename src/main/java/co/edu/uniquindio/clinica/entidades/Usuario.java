@@ -1,25 +1,19 @@
 package co.edu.uniquindio.clinica.entidades;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
 
 @Entity
 @Getter
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Setter
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@AllArgsConstructor
+@ToString(callSuper = true)
+
 public class Usuario extends Cuenta implements Serializable {
-
-
-
-@Id
-@EqualsAndHashCode.Include
-private String cedula;
 
 @Column(nullable = false, length = 100)
 private String nombre;

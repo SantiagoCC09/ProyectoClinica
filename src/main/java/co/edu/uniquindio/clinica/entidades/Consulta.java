@@ -28,10 +28,10 @@ public class Consulta implements Serializable {
     private String motivoConsulta;
 
     @ManyToOne
-    private Paciente cedulaPaciente;
+    private Paciente paciente;
 
     @ManyToOne
-    private Medico cedulaMedico;
+    private Medico medico;
 
     @Column(nullable = false, length = 100)
     private String detalleConsulta;

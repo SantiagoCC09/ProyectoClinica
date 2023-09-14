@@ -16,9 +16,6 @@ import java.util.List;
 
 public class Paciente extends Usuario implements Serializable {
 
-    @Id
-    @EqualsAndHashCode.Include
-    private int cedulaPaciente;
 
     private EPS eps;
 
@@ -31,6 +28,12 @@ public class Paciente extends Usuario implements Serializable {
 
     @OneToMany(mappedBy = "paciente")
     private List<Cita> citas;
+
+    @OneToMany(mappedBy = "paciente")
+    private List<Consulta> consultas;
+
+    @OneToMany(mappedBy = "paciente")
+    private List<PQR> listaPqrs;
 
     @OneToMany
     private List <AlergiaPaciente> alergiasPaciente;

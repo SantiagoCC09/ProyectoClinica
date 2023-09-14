@@ -18,11 +18,11 @@ public class Cita implements Serializable {
     private int idCita;
 
     @ManyToOne
-    @JoinColumn(name = "pacienteCedula") // Nombre de la columna que contendrá la llave foránea
+  //  @JoinColumn(name = "pacienteCedula") // Nombre de la columna que contendrá la llave foránea
     private Paciente paciente;
 
     @ManyToOne
-    @JoinColumn(name = "medicoCedula") // Nombre de la columna que contendrá la llave foránea
+   // @JoinColumn(name = "medicoCedula") // Nombre de la columna que contendrá la llave foránea
     private Medico medico;
 }
 

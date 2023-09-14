@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -13,17 +14,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Administrador {
 
-    @Id
-    @EqualsAndHashCode.Include
-    private String cedula;
-
-    @Column(nullable = false, length = 100)
-    private String email;
-    @Column(nullable = false, length = 20)
-    private String contrasenia;
+public class Administrador extends Cuenta implements Serializable {
     @OneToMany (mappedBy = "administrador")
     private List<PQR> pqrs;
 

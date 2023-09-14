@@ -31,7 +31,7 @@ public class PQR implements Serializable {
     private Date fecha;
 
     @ManyToOne
-    private Paciente cedulaPaciente;
+    private Paciente paciente;
 
     @ManyToOne
     private Administrador administrador;
