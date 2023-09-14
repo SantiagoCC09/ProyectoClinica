@@ -1,10 +1,9 @@
-package co.edu.uniquindio.clinica.modelo.entidades;
+package co.edu.uniquindio.clinica.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Getter
@@ -15,11 +14,12 @@ import java.util.List;
 public class AlergiaPaciente implements Serializable {
 
     @Id
-    private int idAlergia;
-
-
-    private String nombre;
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int codigo;
+    @ManyToOne
+    private Alergia idAlergia;
+    @ManyToOne
+    private Paciente cedulaPaciente;
 
 
 
