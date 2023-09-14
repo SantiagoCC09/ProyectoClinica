@@ -2,6 +2,7 @@ package co.edu.uniquindio.clinica.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.mapping.Join;
 
 import java.io.Serializable;
 import java.util.List;
