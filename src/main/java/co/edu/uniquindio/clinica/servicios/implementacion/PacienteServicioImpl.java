@@ -62,14 +62,54 @@ public class PacienteServicioImpl implements PacienteServicio {
 
     }
 
+    @Override
+    public void actualizarDatosPersonales() {
+
+    }
+
+    @Override
+    public void agregarCita() {
+
+    }
+
+    @Override
+    public void confirmarCita() {
+
+    }
+
+    @Override
+    public void cancelarCita() {
+
+    }
+
+    @Override
+    public void actualizarCita() {
+
+    }
+
+    @Override
+    public void enviarPqr() {
+
+    }
+
+    @Override
+    public void filtrarHistorialPorFecha() {
+
+    }
+
+    @Override
+    public void filtrarHistorilaPorId() {
+
+    }
+
     private Paciente convertir(PacienteDTO pacienteDTO) {
         Paciente paciente = new Paciente();
         paciente.setCedulaPaciente(pacienteDTO.getCedulaPaciente());
-        paciente.setNombreCompleto(pacienteDTO.getNombreCompleto());
+        paciente.setNombre(pacienteDTO.getNombreCompleto());
         paciente.setEmail(pacienteDTO.getEmail());
         paciente.setCiudadResidencia(pacienteDTO.getCiudadResidencia());
         paciente.setTelefono(pacienteDTO.getTelefono());
-        paciente.setContrasenia(pacienteDTO.getContrasenia());
+        paciente.setPassword(pacienteDTO.getContrasenia());
         paciente.setEps(pacienteDTO.getEps());
         paciente.setRh(pacienteDTO.getRh());
         paciente.setFechaNacimiento(pacienteDTO.getFechaNacimiento());

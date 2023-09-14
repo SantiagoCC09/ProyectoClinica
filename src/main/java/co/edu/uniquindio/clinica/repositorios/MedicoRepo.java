@@ -1,4 +1,4 @@
 package co.edu.uniquindio.clinica.repositorios;
 
-public interface PacienteRepo {
+public interface MedicoRepo {
 }

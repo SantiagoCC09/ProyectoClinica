@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class diaTrabajoMedico implements Serializable {
+public class DiaTrabajoMedico implements Serializable {
 
     @Column(nullable = false)
     private LocalDateTime fecha;
