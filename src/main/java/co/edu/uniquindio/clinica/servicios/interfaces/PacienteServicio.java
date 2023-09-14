@@ -28,4 +28,31 @@ public interface PacienteServicio {
 
     void verDetalleCita();
 
+<<<<<<< HEAD
+=======
+     PacienteGetDTO obtenerPaciente(int cedulaPaciente) throws Exception;
+     void validarExiste(int cedulaPaciente) throws Exception;
+    public void actualizarDatosPersonales();
+
+    public void agregarCita();
+
+    public void confirmarCita();
+
+    public void cancelarCita();
+
+    public void actualizarCita();
+
+
+    public void enviarPqr();
+
+
+    public void filtrarHistorialPorFecha();
+
+    public void filtrarHistorilaPorId ();
+
+
+
+
+
+>>>>>>> 78a94fc0915872cb17a36fd45902461b806e39bf
 }
