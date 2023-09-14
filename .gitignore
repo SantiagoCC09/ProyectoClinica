@@ -1,11 +1,11 @@
-<<<<<<< HEAD
+
 /.idea/
 *.class
 /.gradle/
 /*/bin/
 /*/build/
 /build/
-=======
+
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
