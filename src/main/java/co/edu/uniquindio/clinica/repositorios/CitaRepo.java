@@ -1,10 +1,10 @@
 package co.edu.uniquindio.clinica.repositorios;
 
 
-import co.edu.uniquindio.clinica.entidades.Medico;
+import co.edu.uniquindio.clinica.entidades.Cita;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MedicoRepo extends JpaRepository<Medico,Integer> {
+public interface CitaRepo extends JpaRepository <Cita, Integer> {
 }

@@ -1,14 +1,18 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
+import co.edu.uniquindio.clinica.dto.CitaGetDTO;
+import co.edu.uniquindio.clinica.dto.PQRGetDTO;
 import co.edu.uniquindio.clinica.dto.PacienteDTO;
+
+import java.util.List;
 
 public interface PacienteServicio {
 
-    String registrarse(PacienteDTO pacienteDTO);
+    int registrarse(PacienteDTO pacienteDTO) throws Exception;
 
-    String editarPerfil(PacienteDTO pacienteDTO);
+    int editarPerfil(PacienteDTO pacienteDTO, int codigoPaciente) throws Exception;
 
-    void eliminarCuenta();
+    int eliminarCuenta(int codigoPaciente) throws Exception;
 
     void enviarLinkRecuperacion();
 
@@ -18,11 +22,11 @@ public interface PacienteServicio {
 
     void crearPQRS();
 
-    void listarPQRSPaciente();
+    List<PQRGetDTO> listarPQRSPaciente(int codigoPaciente) throws Exception;
 
     void responderPQRS();
 
-    void listarCitasPaciente();
+    List <CitaGetDTO> listarCitasPaciente(String cedulaPaciente) throws Exception;
 
     void filtrarCitasPorFecha();
 
@@ -30,22 +34,7 @@ public interface PacienteServicio {
 
     void verDetalleCita();
 
-<<<<<<< HEAD
-}
-=======
      void validarExiste(int cedulaPaciente) throws Exception;
-    public void actualizarDatosPersonales();
-
-    public void agregarCita();
-
-    public void confirmarCita();
-
-    public void cancelarCita();
-
-    public void actualizarCita();
-
-
-    public void enviarPqr();
 
 
     public void filtrarHistorialPorFecha();
@@ -55,4 +44,4 @@ public interface PacienteServicio {
 
 
 }
->>>>>>> bea0c871c4f5738913eafd90a5c668af193d95cc
+

@@ -28,8 +28,8 @@ public class PacienteDTO {
 
     @NotBlank
     @NotNull
-    @Length(max = 150, message = "password maximo 100 caracteres")
-    private String contrasenia;
+    @Length(max = 20, message = "password maximo 100 caracteres")
+    private String password;
 
     @NotBlank
     @NotNull
@@ -42,11 +42,15 @@ public class PacienteDTO {
 
     @NotBlank
     @NotNull
-    @Length(max=150, message = "numero de telefono maximo 12 caracteres")
+    @Length(max=20, message = "numero de telefono maximo 12 caracteres")
     private String telefono;
     @NotBlank
     @NotNull
-    @Length(max=150, message = "ciudad de residencia maximo 150 caracteres")
+    @Length(max=40, message = "ciudad de residencia maximo 150 caracteres")
     private String ciudadResidencia;
+
+    @NotBlank
+    @NotNull
+    private TipoSangre rh;
 
 }

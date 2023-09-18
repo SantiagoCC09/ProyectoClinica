@@ -16,10 +16,12 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Paciente extends Usuario implements Serializable {
 
-
+    @Column(nullable = false)
     private EPS eps;
 
+    @Column(nullable = false)
     private TipoSangre rh;
+
     @Column(nullable = false)
     private Date fechaNacimiento;
 

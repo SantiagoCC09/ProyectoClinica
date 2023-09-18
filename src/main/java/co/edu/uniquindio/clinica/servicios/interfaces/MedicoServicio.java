@@ -1,34 +1,27 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
+
 public interface MedicoServicio {
 
+    public void verPerfil();
 
-    public void crearMedico();
+    public void filtrarCitasPendientesPorFecha();
 
-    public void actualizarMedico();
-    public void eliminarMedico();
+    public void filtrarCitasPendientesNombreCliente();
 
-    public void obtenerMedico();
+    public void filtrarCitasPendientesIdCLiente();
 
-public void verPerfil();
+    public void atenderCitaSeleccionada();
 
-public void filtrarCitasPendientesPorFecha ();
+    public void filtrarDisponibilidadPorFecha();
 
-public void filtrarCitasPendientesNombreCliente();
+    public void reservarDiaLibre();
 
-public void filtrarCitasPendientesIdCLiente();
+    public void deshacerDiaLibre();
 
-public void atenderCitaSeleccionada();
+    public void filtrarHistorialMedicoPorFecha();
 
-public void filtrarDisponibilidadPorFecha ();
-
-public void reservarDiaLibre ();
-
-public void deshacerDiaLibre();
-
-public void filtrarHistorialMedicoPorFecha ();
-
-public void filtrarHistorialMedicoPorId();
+    public void filtrarHistorialMedicoPorId();
 
 
 }

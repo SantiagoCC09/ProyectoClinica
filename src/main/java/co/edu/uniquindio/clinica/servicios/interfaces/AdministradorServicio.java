@@ -1,12 +1,14 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
+import co.edu.uniquindio.clinica.dto.MedicoDTO;
+
 public interface AdministradorServicio {
 
-    void crearMedico();
+    int crearMedico(MedicoDTO medicoDTO) throws Exception;
 
-    void actualizarMedico();
+    int actualizarMedico(int codigoMedico, MedicoDTO medicoDTO) throws Exception;
 
-    void eliminarMedico();
+    int eliminarMedico(int codigoMedico) throws Exception;
 
     void listarMedicos();
 
