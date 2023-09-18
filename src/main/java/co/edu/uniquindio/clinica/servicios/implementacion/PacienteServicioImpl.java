@@ -1,120 +1,70 @@
 package co.edu.uniquindio.clinica.servicios.implementacion;
 
-import co.edu.uniquindio.clinica.dto.EmailDTO;
-import co.edu.uniquindio.clinica.dto.PacienteDTO;
-import co.edu.uniquindio.clinica.dto.PacienteGetDTO;
-import co.edu.uniquindio.clinica.entidades.Paciente;
-import co.edu.uniquindio.clinica.repositorios.PacienteRepo;
-import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.PacienteServicio;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
 
-@Service
-@AllArgsConstructor
 public class PacienteServicioImpl implements PacienteServicio {
-
-    private final PacienteRepo pacienteRepo;
-    private final EmailServicio emailServicio;
-
     @Override
-    public int crearPaciente(PacienteDTO pacienteDTO) throws Exception {
-
-        Paciente buscado = pacienteRepo.buscarPaciente(pacienteDTO.getEmail());
-        if (buscado != null) {
-            throw new Exception("El correo " + pacienteDTO.getEmail() + " ya está en uso");
-        }
-        String email= "<h1>Creacion de cuenta exitosa</h1><h2><p>Bienvenido a la clinica Uniquindio</p>";
-
-        emailServicio.enviarEmail(new EmailDTO(
-                "TestMail-Html",
-                email,
-                pacienteDTO.getEmail()));
-
-        Paciente paciente = convertir(pacienteDTO);
-        return pacienteRepo.save(paciente).getCedulaPaciente();
-
+    public void registrarse() {
 
     }
 
     @Override
-    public int actualizarPaciente(int cedulaPaciente, PacienteDTO pacienteDTO) throws Exception {
-        return 0;
-    }
-
-    @Override
-    public int eliminiarPaciente(int cedulaPaciente) throws Exception {
-        return 0;
-    }
-
-    @Override
-    public Paciente obtenerPacienteU(int cedulaPaciente) throws Exception {
-        return null;
-    }
-
-    @Override
-    public PacienteGetDTO obtenerPaciente(int cedulaPaciente) throws Exception {
-        return null;
-    }
-
-    @Override
-    public void validarExiste(int cedulaPaciente) throws Exception {
+    public void editarPerfil() {
 
     }
 
     @Override
-    public void actualizarDatosPersonales() {
+    public void eliminarCuenta() {
 
     }
 
     @Override
-    public void agregarCita() {
+    public void enviarLinkRecuperacion() {
 
     }
 
     @Override
-    public void confirmarCita() {
+    public void cambiarPassword() {
 
     }
 
     @Override
-    public void cancelarCita() {
+    public void agendarCita() {
 
     }
 
     @Override
-    public void actualizarCita() {
+    public void crearPQRS() {
 
     }
 
     @Override
-    public void enviarPqr() {
+    public void listarPQRSPaciente() {
 
     }
 
     @Override
-    public void filtrarHistorialPorFecha() {
+    public void responderPQRS() {
 
     }
 
     @Override
-    public void filtrarHistorilaPorId() {
+    public void listarCitasPaciente() {
 
     }
 
-    private Paciente convertir(PacienteDTO pacienteDTO) {
-        Paciente paciente = new Paciente();
-        paciente.setCedulaPaciente(pacienteDTO.getCedulaPaciente());
-        paciente.setNombre(pacienteDTO.getNombreCompleto());
-        paciente.setEmail(pacienteDTO.getEmail());
-        paciente.setCiudadResidencia(pacienteDTO.getCiudadResidencia());
-        paciente.setTelefono(pacienteDTO.getTelefono());
-        paciente.setPassword(pacienteDTO.getContrasenia());
-        paciente.setEps(pacienteDTO.getEps());
-        paciente.setRh(pacienteDTO.getRh());
-        paciente.setFechaNacimiento(pacienteDTO.getFechaNacimiento());
+    @Override
+    public void filtrarCitasPorFecha() {
 
-        return paciente;
     }
 
+    @Override
+    public void filtrarCitasPorMedico() {
+
+    }
+
+    @Override
+    public void verDetalleCita() {
+
+    }
 }
