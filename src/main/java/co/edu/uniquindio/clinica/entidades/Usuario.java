@@ -10,9 +10,16 @@ import java.io.Serializable;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Setter
 @NoArgsConstructor
+<<<<<<< HEAD
 @AllArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+=======
+
+@AllArgsConstructor
+@ToString(callSuper = true)
+
+>>>>>>> bea0c871c4f5738913eafd90a5c668af193d95cc
 
 
 
@@ -26,6 +33,6 @@ private String telefono;
 private String urlFoto;
 @Column
 private Ciudad ciudad;
-
-
+@Column
+private String cedula;
 }

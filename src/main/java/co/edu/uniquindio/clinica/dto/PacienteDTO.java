@@ -20,22 +20,16 @@ public class PacienteDTO {
 
     @NotBlank
     @NotNull
-    private int cedulaPaciente;
+    private String cedulaPaciente;
     @NotBlank
     @NotNull
-    @Length(max=150, message = "error en la estructura del correo")
+    @Length(max = 150, message = "error en la estructura del correo")
     private String email;
 
     @NotBlank
     @NotNull
-    @Length(max=150, message = "password maximo 100 caracteres")
+    @Length(max = 150, message = "password maximo 100 caracteres")
     private String contrasenia;
-    @NotBlank
-    @NotNull
-    private EPS eps;
-    @NotBlank
-    @NotNull
-    private TipoSangre rh;
 
     @NotBlank
     @NotNull

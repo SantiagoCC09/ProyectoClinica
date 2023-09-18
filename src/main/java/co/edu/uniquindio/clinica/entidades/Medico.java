@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
-
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Medico extends Usuario implements Serializable {
 
     @Column(nullable = false, length = 40)
