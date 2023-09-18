@@ -10,15 +10,12 @@ import java.io.Serializable;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Setter
 @NoArgsConstructor
-<<<<<<< HEAD
+
 @AllArgsConstructor
 @ToString(callSuper = true)
-=======
-@ToString
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@MappedSuperclass
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
->>>>>>> 78a94fc0915872cb17a36fd45902461b806e39bf
+
+
+
 
 public class Usuario extends Cuenta implements Serializable {
 
@@ -30,6 +27,6 @@ private String telefono;
 private String urlFoto;
 @Column
 private Ciudad ciudad;
-
-
+@Column
+private String cedula;
 }

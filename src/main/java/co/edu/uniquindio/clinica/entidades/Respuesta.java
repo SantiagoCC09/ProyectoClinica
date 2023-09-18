@@ -18,6 +18,7 @@ import java.sql.Date;
 public class Respuesta implements Serializable {
 
     @Id
+    @EqualsAndHashCode.Include
     private int idRespuesta;
 
     @Column(nullable = false)
@@ -25,7 +26,7 @@ public class Respuesta implements Serializable {
 
     @Column(nullable = false)
     private Date fecha;
-    @OneToOne
+    @OneToOne(mappedBy = "idRespuesta")
     private PQR pqr;
 
 }

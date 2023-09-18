@@ -2,10 +2,11 @@ package co.edu.uniquindio.clinica.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.io.Serializable;
 
-@Inheritance(strategy = InheritanceType.JOINED)
+
 @Entity
 @Getter
 @Setter
@@ -13,6 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Cuenta implements Serializable {
 
     @Id
