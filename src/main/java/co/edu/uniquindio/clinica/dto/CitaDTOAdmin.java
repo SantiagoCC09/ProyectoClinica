@@ -7,7 +7,7 @@ public record CitaDTOAdmin(
     int codigoCita,
     String nombrePaciente,
     String nombreMedico,
-    LocalDateTime fecha,
+    LocalDateTime fechaCreacion, LocalDateTime fechaCita,
     String motivo,
 
     int cedulaPaciente,

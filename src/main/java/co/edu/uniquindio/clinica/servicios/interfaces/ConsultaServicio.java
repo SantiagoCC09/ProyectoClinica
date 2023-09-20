@@ -1,13 +1,18 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
+import co.edu.uniquindio.clinica.dto.ConsultaDTO;
+import co.edu.uniquindio.clinica.entidades.Consulta;
+
 public interface ConsultaServicio {
 
-    public void crearConsulta();
+    public int crearConsulta(ConsultaDTO consultaDto) throws Exception;
 
-    public void actualizarConsulta();
+    public int actualizarConsulta(ConsultaDTO consultaDtoint, int codigoConsulta) throws Exception;
 
-    public void eliminarConsulta();
+    public int eliminarConsulta(int codigoConsulta) throws Exception;
 
-    public void obtenerConsulta();
+    public Consulta obtenerConsulta(int codigoConsulta) throws Exception;
+
+
 
 }

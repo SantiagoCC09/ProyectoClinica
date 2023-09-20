@@ -29,5 +29,5 @@ public class JornadaMedico implements Serializable {
     private int idJornadaMedico;
 
     @ManyToOne
-    private DiaTrabajoMedico idDiaTrabajo;
+    private DiaTrabajoMedico diaTrabajo;
 }
