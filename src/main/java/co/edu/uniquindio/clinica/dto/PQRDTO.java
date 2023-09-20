@@ -10,8 +10,6 @@ public record PQRDTO (
 
         Estado estado,
 
-        Respuesta respuesta,
-
         int idRespuesta,
 
         String descripcion,

@@ -25,7 +25,7 @@ public class DiaTrabajoMedico implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "cedulaMedico") // Nombre de la columna que contendrá la llave foránea
-    private Medico cedulaMedico;
+    private Medico medico;
 
 
 
