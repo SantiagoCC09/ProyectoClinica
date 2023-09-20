@@ -1,4 +1,10 @@
 package co.edu.uniquindio.clinica.dto;
 
-public record ConsultaDTO() {
+public record ConsultaDTO(
+
+
+
+
+
+) {
 }

@@ -21,7 +21,7 @@ public class Respuesta implements Serializable {
     @EqualsAndHashCode.Include
     private int idRespuesta;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String descripcion;
 
     @Column(nullable = false)
