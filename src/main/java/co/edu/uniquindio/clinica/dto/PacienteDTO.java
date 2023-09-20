@@ -13,11 +13,8 @@ import org.hibernate.validator.constraints.Length;
 import java.sql.Date;
 
 
-@AllArgsConstructor
-@Getter
-@Setter
-public class PacienteDTO {
 
+<<<<<<< HEAD
 
     private String cedulaPaciente;
 
@@ -39,5 +36,21 @@ public class PacienteDTO {
 
 
     private TipoSangre rh;
+=======
+public record PacienteDTO( String cedulaPaciente,
+
+        String email,
+
+        String password,
+
+        String nombreCompleto,
+
+        String telefono,
+
+        String ciudadResidencia, Date fechaNacimiento, TipoSangre rh   ) {
+
+
+
+>>>>>>> 6f326407af7f81f27c80af285f9c6553188f46f8
 
 }

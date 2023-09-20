@@ -26,16 +26,16 @@ public class PacienteServicioImpl implements PacienteServicio {
     @Override
     public int registrarse(PacienteDTO pacienteDTO) throws Exception {
 
-        Paciente buscado = pacienteRepo.buscarPacienteEmail(pacienteDTO.getEmail());
+        Paciente buscado = pacienteRepo.buscarPacienteEmail(pacienteDTO.email());
         if (buscado != null) {
-            throw new Exception("El correo " + pacienteDTO.getEmail() + " ya está en uso");
+            throw new Exception("El correo " + pacienteDTO.email() + " ya está en uso");
         }
         String email = "<h1>Creacion de cuenta exitosa</h1><h2><p>Bienvenido a Clinica Uniquindio</p></h2>";
 
         emailServicio.enviarEmail(new EmailDTO(
                 "TestMail-Html",
                 email,
-                pacienteDTO.getEmail()));
+                pacienteDTO.email()));
 
         Paciente paciente = convertir(pacienteDTO);
 
@@ -171,6 +171,7 @@ public class PacienteServicioImpl implements PacienteServicio {
     private Paciente convertir(PacienteDTO pacienteDTO) {
 
         Paciente paciente = new Paciente();
+<<<<<<< HEAD
         paciente.setNombre(pacienteDTO.getNombreCompleto());
         paciente.setEmail(pacienteDTO.getEmail());
         paciente.setFechaNacimiento(pacienteDTO.getFechaNacimiento());
@@ -179,6 +180,15 @@ public class PacienteServicioImpl implements PacienteServicio {
         paciente.setCedula(pacienteDTO.getCedulaPaciente());
         paciente.setTelefono(pacienteDTO.getTelefono());
         paciente.setCiudadResidencia(pacienteDTO.getCiudadResidencia());
+=======
+        paciente.setNombre(pacienteDTO.nombreCompleto());
+        paciente.setEmail(pacienteDTO.email());
+        paciente.setFechaNacimiento(pacienteDTO.fechaNacimiento());
+        paciente.setPassword(pacienteDTO.password());
+        paciente.setRh(pacienteDTO.rh());
+        paciente.setCedula(pacienteDTO.cedulaPaciente());
+        paciente.setTelefono(pacienteDTO.telefono());
+>>>>>>> 6f326407af7f81f27c80af285f9c6553188f46f8
 
         return paciente;
     }
