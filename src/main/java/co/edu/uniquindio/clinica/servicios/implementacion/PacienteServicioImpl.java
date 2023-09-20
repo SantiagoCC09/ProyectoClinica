@@ -171,16 +171,7 @@ public class PacienteServicioImpl implements PacienteServicio {
     private Paciente convertir(PacienteDTO pacienteDTO) {
 
         Paciente paciente = new Paciente();
-<<<<<<< HEAD
-        paciente.setNombre(pacienteDTO.getNombreCompleto());
-        paciente.setEmail(pacienteDTO.getEmail());
-        paciente.setFechaNacimiento(pacienteDTO.getFechaNacimiento());
-        paciente.setPassword(pacienteDTO.getPassword());
-        paciente.setRh(pacienteDTO.getRh());
-        paciente.setCedula(pacienteDTO.getCedulaPaciente());
-        paciente.setTelefono(pacienteDTO.getTelefono());
-        paciente.setCiudadResidencia(pacienteDTO.getCiudadResidencia());
-=======
+
         paciente.setNombre(pacienteDTO.nombreCompleto());
         paciente.setEmail(pacienteDTO.email());
         paciente.setFechaNacimiento(pacienteDTO.fechaNacimiento());
@@ -188,7 +179,6 @@ public class PacienteServicioImpl implements PacienteServicio {
         paciente.setRh(pacienteDTO.rh());
         paciente.setCedula(pacienteDTO.cedulaPaciente());
         paciente.setTelefono(pacienteDTO.telefono());
->>>>>>> 6f326407af7f81f27c80af285f9c6553188f46f8
 
         return paciente;
     }
