@@ -1,9 +1,6 @@
 package co.edu.uniquindio.clinica.servicios.implementacion;
 
-import co.edu.uniquindio.clinica.dto.CitaGetDTO;
-import co.edu.uniquindio.clinica.dto.EmailDTO;
-import co.edu.uniquindio.clinica.dto.PQRGetDTO;
-import co.edu.uniquindio.clinica.dto.PacienteDTO;
+import co.edu.uniquindio.clinica.dto.*;
 import co.edu.uniquindio.clinica.entidades.Cita;
 import co.edu.uniquindio.clinica.entidades.Paciente;
 import co.edu.uniquindio.clinica.repositorios.PacienteRepo;
@@ -14,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -69,6 +67,19 @@ public class PacienteServicioImpl implements PacienteServicio {
     }
 
     @Override
+    public Paciente obtenerPaciente(int codigoPaciente) throws Exception {
+
+        Optional<Paciente> paciente = pacienteRepo.findById(codigoPaciente);
+
+        if (paciente.isEmpty()) {
+            throw new Exception("El código " + codigoPaciente + " no está asociado a ningún usuario");
+        }
+
+        return paciente.get();
+
+    }
+
+    @Override
     public void enviarLinkRecuperacion() {
 
     }
@@ -89,7 +100,7 @@ public class PacienteServicioImpl implements PacienteServicio {
     }
 
     @Override
-    public List<PQRGetDTO> listarPQRSPaciente(int codigoPaciente) throws Exception {
+    public List<InfoPQRSDTO> listarPQRSPaciente(int codigoPaciente) throws Exception {
         return null;
     }
 
@@ -100,18 +111,18 @@ public class PacienteServicioImpl implements PacienteServicio {
     }
 
     @Override
-    public List<CitaGetDTO> listarCitasPaciente(String cedulaPaciente) throws Exception {
+    public List<InfoCitaDTO> listarCitasPaciente(String cedulaPaciente) throws Exception {
 
         List<Cita> lista = pacienteRepo.listarCitasPaciente(cedulaPaciente);
-        List<CitaGetDTO> respuesta = new ArrayList<>();
+        List<InfoCitaDTO> respuesta = new ArrayList<>();
         for (Cita p : lista){
             respuesta.add(convertir(p));
         }
         return respuesta;
     }
 
-    private CitaGetDTO convertir(Cita cita){
-        CitaGetDTO citaGetDTO = new CitaGetDTO(
+    private InfoCitaDTO convertir(Cita cita){
+        InfoCitaDTO citaGetDTO = new InfoCitaDTO(
                 cita.getIdCita(),
                 cita.getPaciente().getNombre(),
                 cita.getMedico().getNombre()
@@ -167,6 +178,7 @@ public class PacienteServicioImpl implements PacienteServicio {
         paciente.setRh(pacienteDTO.getRh());
         paciente.setCedula(pacienteDTO.getCedulaPaciente());
         paciente.setTelefono(pacienteDTO.getTelefono());
+        paciente.setCiudadResidencia(pacienteDTO.getCiudadResidencia());
 
         return paciente;
     }

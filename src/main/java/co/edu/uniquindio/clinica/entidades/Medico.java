@@ -21,9 +21,6 @@ public class Medico extends Usuario implements Serializable {
     @OneToMany(mappedBy = "medico")
     private List<Cita> citas;
 
-    @OneToMany(mappedBy = "medico")
-    private List<Consulta> consultas;
-
     @Column(nullable = false)
     private Especialidad especialidad;
 

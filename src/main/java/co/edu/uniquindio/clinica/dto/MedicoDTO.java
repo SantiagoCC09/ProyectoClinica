@@ -10,6 +10,7 @@ public record MedicoDTO(
     String telefono,
     String correo,
     String password,
-    List< JornadaMedicoDTO > horarios
+    List< DiaTrabajoMedicoDTO > horarios
+
 ){
 }

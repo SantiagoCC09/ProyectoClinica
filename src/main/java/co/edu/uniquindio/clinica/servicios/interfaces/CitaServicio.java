@@ -1,14 +1,17 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
+import co.edu.uniquindio.clinica.dto.CitaDTOAdmin;
+import co.edu.uniquindio.clinica.dto.InfoCitaDTO;
+
 public interface CitaServicio {
 
-    public void crearCita();
+     int crearCita(CitaDTOAdmin citaDTOAdmin) throws Exception;
 
-    public void actualizarCita();
+    int actualizarCita() throws Exception;
 
-    public void eliminarCita();
+    int eliminarCita() throws Exception;
 
-    public void obtenerCita();
+    InfoCitaDTO obtenerCita() throws Exception;
 
 
 

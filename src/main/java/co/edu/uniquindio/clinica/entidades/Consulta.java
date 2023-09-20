@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -21,28 +18,17 @@ public class Consulta implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idConsulta;
 
-    @Column(nullable = false)
-    private LocalDateTime fechaCreacion;
+    @Column(nullable = true, length = 255)
+    private String tratamiento;
 
-    @Column(nullable = false, length = 200)
-    private String motivoConsulta;
-
-    @ManyToOne
-    private Paciente paciente;
-
-    @ManyToOne
-    private Medico medico;
+    @Column(nullable = false, length = 500)
+    private String notasMedicas;
 
     @Column(nullable = false, length = 100)
     private String detalleConsulta;
-    @Column(nullable = false)
-    private Estado estado;
-    @Column(nullable = false)
-    private Date fechaAsistencia;
 
-    @Column(nullable = false)
-    private Time horaCita;
-
+    @OneToOne
+    private Cita cita;
 
 
 }

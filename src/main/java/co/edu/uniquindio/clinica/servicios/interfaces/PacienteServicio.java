@@ -1,8 +1,9 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
-import co.edu.uniquindio.clinica.dto.CitaGetDTO;
-import co.edu.uniquindio.clinica.dto.PQRGetDTO;
+import co.edu.uniquindio.clinica.dto.InfoCitaDTO;
+import co.edu.uniquindio.clinica.dto.InfoPQRSDTO;
 import co.edu.uniquindio.clinica.dto.PacienteDTO;
+import co.edu.uniquindio.clinica.entidades.Paciente;
 
 import java.util.List;
 
@@ -14,6 +15,8 @@ public interface PacienteServicio {
 
     int eliminarCuenta(int codigoPaciente) throws Exception;
 
+    Paciente obtenerPaciente(int codigoPaciente) throws Exception;
+
     void enviarLinkRecuperacion();
 
     void cambiarPassword();
@@ -22,11 +25,11 @@ public interface PacienteServicio {
 
     void crearPQRS();
 
-    List<PQRGetDTO> listarPQRSPaciente(int codigoPaciente) throws Exception;
+    List<InfoPQRSDTO> listarPQRSPaciente(int codigoPaciente) throws Exception;
 
     void responderPQRS();
 
-    List <CitaGetDTO> listarCitasPaciente(String cedulaPaciente) throws Exception;
+    List <InfoCitaDTO> listarCitasPaciente(String cedulaPaciente) throws Exception;
 
     void filtrarCitasPorFecha();
 

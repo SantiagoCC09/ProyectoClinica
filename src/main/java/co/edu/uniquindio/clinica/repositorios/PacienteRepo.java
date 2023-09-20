@@ -23,6 +23,8 @@ public interface PacienteRepo extends JpaRepository<Paciente,Integer> {
     @Query("select p from Paciente p where p.cedula = :cedulaPaciente")
     List<Cita> listarCitasPaciente(String cedulaPaciente);
 
+
+
     /**
      * Envia Correo al paciente
      * @param email
