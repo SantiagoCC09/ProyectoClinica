@@ -2,6 +2,7 @@ package co.edu.uniquindio.clinica.servicios.implementacion;
 
 import co.edu.uniquindio.clinica.dto.*;
 import co.edu.uniquindio.clinica.entidades.Cita;
+import co.edu.uniquindio.clinica.entidades.PQR;
 import co.edu.uniquindio.clinica.entidades.Paciente;
 import co.edu.uniquindio.clinica.repositorios.PacienteRepo;
 import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
@@ -84,20 +85,29 @@ public class PacienteServicioImpl implements PacienteServicio {
 
     }
 
+
+
+
     @Override
-    public void cambiarPassword() {
+    public int crearPqr(PQRDTO pqrDto) throws Exception {
+        return 0;
+    }
+
+    @Override
+    public void actualizarPqr(PQRDTO pqrDto, int idPqr) throws Exception {
 
     }
 
     @Override
-    public void agendarCita() {
+    public void eliminarPqr(int idPqr) throws Exception {
 
     }
 
     @Override
-    public void crearPQRS() {
-
+    public PQR obtenerPqr(int idPqr) throws Exception {
+        return null;
     }
+
 
     @Override
     public List<InfoPQRSDTO> listarPQRSPaciente(int codigoPaciente) throws Exception {
@@ -181,6 +191,35 @@ public class PacienteServicioImpl implements PacienteServicio {
         paciente.setTelefono(pacienteDTO.telefono());
 
         return paciente;
+    }
+
+    @Override
+    public int crearCita(CitaDTOAdmin citaDTOAdmin) throws Exception {
+
+        Cita cita = new Cita();
+
+        cita.setPaciente(this.obtenerPaciente(citaDTOAdmin.cedulaPaciente()));
+        cita.setFechaCita(citaDTOAdmin.fechaCita());
+        return 0;
+    }
+
+    @Override
+    public int actualizarCita(CitaDTOAdmin citaDTOAdmin, int codigoCita) throws Exception {
+        return 0;
+    }
+
+    @Override
+    public int eliminarCita(int codigoCita) throws Exception {
+        return 0;
+    }
+
+    @Override
+    public Cita obtenerCita(int codigoCita) throws Exception {
+
+
+
+
+        return null;
     }
 
 
