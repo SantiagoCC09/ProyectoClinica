@@ -1,7 +1,4 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
-public interface RespuestaServicio {
-
-
-
+public interface autenticacionServicio {
 }

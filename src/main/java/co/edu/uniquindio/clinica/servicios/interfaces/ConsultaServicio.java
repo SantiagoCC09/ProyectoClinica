@@ -1,13 +1,12 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
+import co.edu.uniquindio.clinica.dto.ConsultaDTO;
+import co.edu.uniquindio.clinica.entidades.Consulta;
+
 public interface ConsultaServicio {
 
-    public void crearConsulta();
 
-    public void actualizarConsulta();
 
-    public void eliminarConsulta();
 
-    public void obtenerConsulta();
 
 }

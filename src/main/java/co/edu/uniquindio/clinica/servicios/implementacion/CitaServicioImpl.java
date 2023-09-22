@@ -21,29 +21,7 @@ public class CitaServicioImpl implements CitaServicio {
 
 
 
-    @Override
-    public int crearCita(CitaDTOAdmin citaDTOAdmin) throws Exception {
 
-        Cita cita = new Cita();
 
-        cita.setPaciente(pacienteServicio.obtenerPaciente(citaDTOAdmin.cedulaPaciente()));
-        cita.setFechaCita(citaDTOAdmin.fecha());
 
-        return 0;
-    }
-
-    @Override
-    public int actualizarCita() throws Exception {
-        return 0;
-    }
-
-    @Override
-    public int eliminarCita() throws Exception {
-        return 0;
-    }
-
-    @Override
-    public InfoCitaDTO obtenerCita() throws Exception {
-        return null;
-    }
 }
