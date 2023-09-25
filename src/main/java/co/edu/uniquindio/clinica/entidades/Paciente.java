@@ -13,13 +13,15 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
-
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Paciente extends Usuario implements Serializable {
 
-
+    @Column(nullable = false)
     private EPS eps;
 
+    @Column(nullable = false)
     private TipoSangre rh;
+
     @Column(nullable = false)
     private Date fechaNacimiento;
 
@@ -28,9 +30,6 @@ public class Paciente extends Usuario implements Serializable {
 
     @OneToMany(mappedBy = "paciente")
     private List<Cita> citas;
-
-    @OneToMany(mappedBy = "paciente")
-    private List<Consulta> consultas;
 
     @OneToMany(mappedBy = "paciente")
     private List<PQR> listaPqrs;

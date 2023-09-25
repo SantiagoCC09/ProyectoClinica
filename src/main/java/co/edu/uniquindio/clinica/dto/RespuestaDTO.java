@@ -1,4 +1,4 @@
 package co.edu.uniquindio.clinica.dto;
 
-public class CitaGetDTO {
+public record RespuestaDTO() {
 }

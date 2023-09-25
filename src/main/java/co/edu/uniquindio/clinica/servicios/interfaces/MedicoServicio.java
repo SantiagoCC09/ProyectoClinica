@@ -1,34 +1,40 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
+
+import co.edu.uniquindio.clinica.dto.ConsultaDTO;
+import co.edu.uniquindio.clinica.entidades.Consulta;
+
 public interface MedicoServicio {
 
 
-    public void crearMedico();
 
-    public void actualizarMedico();
-    public void eliminarMedico();
+    public void verPerfil();
 
-    public void obtenerMedico();
+    public void filtrarCitasPendientesPorFecha();
 
-public void verPerfil();
+    public void filtrarCitasPendientesNombreCliente();
 
-public void filtrarCitasPendientesPorFecha ();
+    public void filtrarCitasPendientesIdCLiente();
 
-public void filtrarCitasPendientesNombreCliente();
+    public void atenderCitaSeleccionada();
 
-public void filtrarCitasPendientesIdCLiente();
+    public void filtrarDisponibilidadPorFecha();
 
-public void atenderCitaSeleccionada();
+    public void reservarDiaLibre();
 
-public void filtrarDisponibilidadPorFecha ();
+    public void deshacerDiaLibre();
 
-public void reservarDiaLibre ();
+    public void filtrarHistorialMedicoPorFecha();
 
-public void deshacerDiaLibre();
+    public void filtrarHistorialMedicoPorId();
 
-public void filtrarHistorialMedicoPorFecha ();
+    //El médico crea y gestiona las consultas
+    public int crearConsulta(ConsultaDTO consultaDto) throws Exception;
 
-public void filtrarHistorialMedicoPorId();
+    public int actualizarConsulta(ConsultaDTO consultaDtoint, int codigoConsulta) throws Exception;
 
+    public int eliminarConsulta(int codigoConsulta) throws Exception;
+
+    public Consulta obtenerConsulta(int codigoConsulta) throws Exception;
 
 }

@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,8 +22,8 @@ public class PQR implements Serializable {
 
     private int estado;
 
-    @OneToOne
-    private Respuesta idRespuesta;
+    @OneToMany ( mappedBy = "pqr")
+    private List<Respuesta> respuestas;
 
     @Column(nullable = false, length = 15)
     private String descripcion;

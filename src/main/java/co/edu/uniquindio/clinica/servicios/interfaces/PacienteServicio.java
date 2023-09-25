@@ -1,27 +1,52 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
+import co.edu.uniquindio.clinica.dto.*;
+import co.edu.uniquindio.clinica.entidades.Cita;
+import co.edu.uniquindio.clinica.entidades.PQR;
+import co.edu.uniquindio.clinica.entidades.Paciente;
+
+import java.util.List;
+
 public interface PacienteServicio {
 
-    void registrarse();
+    int registrarse(PacienteDTO pacienteDTO) throws Exception;
 
-    void editarPerfil();
+    int editarPerfil(PacienteDTO pacienteDTO, int codigoPaciente) throws Exception;
 
-    void eliminarCuenta();
+    int eliminarCuenta(int codigoPaciente) throws Exception;
+
+    Paciente obtenerPaciente(int codigoPaciente) throws Exception;
 
     void enviarLinkRecuperacion();
 
-    void cambiarPassword();
 
-    void agendarCita();
 
-    void crearPQRS();
+//El paciente podrá crear PQR
+    public int crearPqr(PQRDTO pqrDto) throws Exception;
+    public void actualizarPqr(PQRDTO pqrDto, int idPqr) throws Exception;
+    public void eliminarPqr(int idPqr) throws Exception;
+    public PQR obtenerPqr(int idPqr) throws Exception;
 
-    void listarPQRSPaciente();
+    List<InfoPQRSDTO> listarPQRSPaciente(int codigoPaciente) throws Exception;
 
     void responderPQRS();
 
-    void listarCitasPaciente();
 
+
+//EL paciente podrá crear las citas y demás
+
+    int crearCita(CitaDTOAdmin citaDTOAdmin) throws Exception;
+
+    int actualizarCita(CitaDTOAdmin citaDTOAdmin , int codigoCita) throws Exception;
+
+    int eliminarCita(int codigoCita) throws Exception;
+
+    Cita obtenerCita(int codigoCita) throws Exception;
+
+
+    List <InfoCitaDTO> listarCitasPaciente(String cedulaPaciente) throws Exception;
+
+    //El paciente podrá filtrar las citas por fecha
     void filtrarCitasPorFecha();
 
     void filtrarCitasPorMedico();
@@ -29,18 +54,6 @@ public interface PacienteServicio {
     void verDetalleCita();
 
      void validarExiste(int cedulaPaciente) throws Exception;
-    public void actualizarDatosPersonales();
-
-    public void agregarCita();
-
-    public void confirmarCita();
-
-    public void cancelarCita();
-
-    public void actualizarCita();
-
-
-    public void enviarPqr();
 
 
     public void filtrarHistorialPorFecha();
@@ -50,3 +63,4 @@ public interface PacienteServicio {
 
 
 }
+

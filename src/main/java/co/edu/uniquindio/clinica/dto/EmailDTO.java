@@ -6,20 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
-@AllArgsConstructor
-public class EmailDTO {
 
-    @NotBlank
-    @NotNull
-    private String asunto;
-    @NotBlank
-    @NotNull
-    private String cuerpo;
-    @NotBlank
-    @NotNull
-    private String destinatario;
-
+public record EmailDTO (String para, String asunto, String mensaje){
 
 }
+
+
+

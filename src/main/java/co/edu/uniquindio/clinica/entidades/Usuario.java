@@ -12,17 +12,26 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
+<<<<<<< HEAD
+=======
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+>>>>>>> 39cd575613b41066f6e51dd93de0b1ffee0d3fcc
 
 public class Usuario extends Cuenta implements Serializable {
 
-@Column(nullable = false, length = 100)
-private String nombre;
-@Column(length = 15)
-private String telefono;
-@Column
-private String urlFoto;
-@Column
-private Ciudad ciudad;
 
+    @Column(nullable = false, length = 100)
+    private String nombre;
 
+    @Column(length = 15)
+    private String telefono;
+
+    @Column(nullable = false)
+    private String urlFoto;
+
+    @Column(nullable = false, length = 50)
+    private Ciudad ciudad;
+
+    @Column(nullable = false, length = 20)
+    private String cedula;
 }

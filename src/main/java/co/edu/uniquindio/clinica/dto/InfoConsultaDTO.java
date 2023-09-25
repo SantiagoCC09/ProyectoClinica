@@ -1,4 +1,8 @@
 package co.edu.uniquindio.clinica.dto;
 
-public class AlergiaDTO {
+public record InfoConsultaDTO(
+
+
+
+) {
 }
