@@ -1,8 +1,11 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
 
+import co.edu.uniquindio.clinica.dto.CitaDTOAdmin;
 import co.edu.uniquindio.clinica.dto.ConsultaDTO;
 import co.edu.uniquindio.clinica.entidades.Consulta;
+
+import java.util.Date;
 
 public interface MedicoServicio {
 
@@ -10,23 +13,23 @@ public interface MedicoServicio {
 
     public void verPerfil();
 
-    public void filtrarCitasPendientesPorFecha();
+    public void filtrarCitasPendientesPorFecha(Date date);
 
-    public void filtrarCitasPendientesNombreCliente();
+    public void filtrarCitasPendientesNombrePaciente(String nombre);
 
-    public void filtrarCitasPendientesIdCLiente();
+    public void filtrarCitasPendientesIdPaciente(int idPaciente);
 
-    public void atenderCitaSeleccionada();
+    public String atenderCitaSeleccionada(CitaDTOAdmin citaDTOAdmin);
 
-    public void filtrarDisponibilidadPorFecha();
+    public void filtrarDisponibilidadPorFecha(Date date);
 
-    public void reservarDiaLibre();
+    public String reservarDiaLibre(Date date);
 
-    public void deshacerDiaLibre();
+    public String deshacerDiaLibre(Date date);
 
-    public void filtrarHistorialMedicoPorFecha();
+    public void filtrarHistorialMedicoPorFecha(Date date);
 
-    public void filtrarHistorialMedicoPorId();
+    public void filtrarHistorialMedicoPorId(int idPaciente);
 
     //El médico crea y gestiona las consultas
     public int crearConsulta(ConsultaDTO consultaDto) throws Exception;

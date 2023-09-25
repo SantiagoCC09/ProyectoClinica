@@ -1,6 +1,11 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
 import co.edu.uniquindio.clinica.dto.MedicoDTO;
+import co.edu.uniquindio.clinica.dto.RespuestaDTO;
+import co.edu.uniquindio.clinica.entidades.Medico;
+import co.edu.uniquindio.clinica.entidades.PQR;
+
+import java.util.List;
 
 public interface AdministradorServicio {
 
@@ -10,15 +15,15 @@ public interface AdministradorServicio {
 
     int eliminarMedico(int codigoMedico) throws Exception;
 
-    void listarMedicos();
+    List <Medico> listarMedicos();
 
-    void obtenerMedico();
+    Medico obtenerMedico(int idMedico);
 
-    void listarPQRS();
+    List<PQR> listarPQRS();
 
-    void responderPQRS();
+    int responderPQRS(RespuestaDTO respuestaDTO, int idPqr);
 
-    void verDetallePQRS();
+    String verDetallePQRS(int idPqr);
 
 
 

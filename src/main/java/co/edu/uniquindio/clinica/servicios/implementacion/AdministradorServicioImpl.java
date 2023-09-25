@@ -1,15 +1,27 @@
 package co.edu.uniquindio.clinica.servicios.implementacion;
 
 import co.edu.uniquindio.clinica.dto.MedicoDTO;
+import co.edu.uniquindio.clinica.dto.RespuestaDTO;
+import co.edu.uniquindio.clinica.entidades.Ciudad;
+import co.edu.uniquindio.clinica.entidades.Especialidad;
+import co.edu.uniquindio.clinica.entidades.Medico;
+import co.edu.uniquindio.clinica.entidades.PQR;
 import co.edu.uniquindio.clinica.repositorios.AdministradorRepo;
+import co.edu.uniquindio.clinica.repositorios.MedicoRepo;
 import co.edu.uniquindio.clinica.servicios.interfaces.AdministradorServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class AdministradorServicioImpl implements AdministradorServicio {
+
+
+    private final MedicoRepo medicoRepo;
 
     private final AdministradorRepo administradorRepo;
 
@@ -19,8 +31,21 @@ public class AdministradorServicioImpl implements AdministradorServicio {
     @Override
     public int crearMedico(MedicoDTO medicoDTO) {
 
+    Medico medicoNuevo = new Medico();
 
-        return 0;
+    medicoNuevo.setCiudad(Ciudad.values()[medicoDTO.codigoCiudad()]);
+    medicoNuevo.setNombre(medicoDTO.nombre());
+    medicoNuevo.setCedula(medicoDTO.cedula());
+    medicoNuevo.setTelefono(medicoDTO.telefono());
+    medicoNuevo.setUrlFoto(medicoDTO.URL_foto());
+    medicoNuevo.setEspecialidad(Especialidad.values()[medicoDTO.codigoEspecialidad()]);
+
+
+    medicoNuevo.setPassword(medicoDTO.password());
+    medicoNuevo.setEmail(medicoDTO.correo());
+
+        Medico medicoRegistrado = medicoRepo.save(medicoNuevo);
+        return medicoRegistrado.getCodigo();
     }
 
     @Override
@@ -39,27 +64,30 @@ public class AdministradorServicioImpl implements AdministradorServicio {
     }
 
     @Override
-    public void listarMedicos() {
-
+    public List<Medico> listarMedicos() {
+        return null;
     }
 
     @Override
-    public void obtenerMedico() {
-
+    public Medico obtenerMedico(int idMedico) {
+        return null;
     }
 
     @Override
-    public void listarPQRS() {
-
+    public List<PQR> listarPQRS() {
+        return null;
     }
 
     @Override
-    public void responderPQRS() {
-
+    public int responderPQRS(RespuestaDTO respuestaDTO, int idPqr) {
+        return 0;
     }
+
 
     @Override
-    public void verDetallePQRS() {
-
+    public String verDetallePQRS(int idPqr) {
+        return null;
     }
+
+
 }
