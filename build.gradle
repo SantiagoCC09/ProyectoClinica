@@ -20,12 +20,9 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-<<<<<<< HEAD
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     runtimeOnly 'com.mysql:mysql-connector-j'
-=======
     implementation 'org.springframework.boot:spring-boot-starter-mail'
->>>>>>> f298e736126ce9e440da94d6ef514bb53848a9b6
 }
 
 group = 'org.example'

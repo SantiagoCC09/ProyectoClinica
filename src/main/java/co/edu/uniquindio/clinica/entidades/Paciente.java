@@ -35,7 +35,7 @@ public class Paciente extends Usuario implements Serializable {
     @OneToMany(mappedBy = "paciente")
     private List<PQR> listaPqrs;
 
-    @OneToMany
+    @OneToMany (mappedBy = "cedulaPaciente")
     private List <AlergiaPaciente> alergiasPaciente;
 
 

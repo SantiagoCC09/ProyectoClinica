@@ -28,9 +28,6 @@ public interface PacienteServicio {
 
     void verDetalleCita();
 
-<<<<<<< HEAD
-=======
-     PacienteGetDTO obtenerPaciente(int cedulaPaciente) throws Exception;
      void validarExiste(int cedulaPaciente) throws Exception;
     public void actualizarDatosPersonales();
 
@@ -52,7 +49,4 @@ public interface PacienteServicio {
 
 
 
-
-
->>>>>>> 78a94fc0915872cb17a36fd45902461b806e39bf
 }

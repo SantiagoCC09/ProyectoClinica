@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-application.properties
->>>>>>> f298e736126ce9e440da94d6ef514bb53848a9b6
 /.idea/
 *.class
 /.gradle/
@@ -53,4 +48,3 @@ bin/
 
 ### Mac OS ###
 .DS_Store
->>>>>>> b9c335b0125dc3bcbc85fff384f78bc2b9e529ef
