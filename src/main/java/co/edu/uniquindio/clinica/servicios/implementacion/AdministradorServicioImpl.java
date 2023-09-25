@@ -29,7 +29,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
 
     @Override
-    public int crearMedico(MedicoDTO medicoDTO) {
+    public int crearMedico(MedicoDTO medicoDTO) throws Exception {
 
     Medico medicoNuevo = new Medico();
 
@@ -44,8 +44,34 @@ public class AdministradorServicioImpl implements AdministradorServicio {
     medicoNuevo.setPassword(medicoDTO.password());
     medicoNuevo.setEmail(medicoDTO.correo());
 
+
+    if (estaRepetidoCorreo(medicoDTO.correo()) ){
+
+        throw new Exception("El correo está repetido");
+
+        }
+
+    if (estaRepetidoCedula(medicoDTO.cedula())){
+
+        throw new Exception("la cedula está repetida");
+
+    }
         Medico medicoRegistrado = medicoRepo.save(medicoNuevo);
         return medicoRegistrado.getCodigo();
+    }
+
+    private boolean estaRepetidoCorreo(String correo) {
+
+        boolean esRepetido = medicoRepo.buscarEstaCorreo (correo);
+        return esRepetido;
+    }
+
+    private boolean estaRepetidoCedula(String cedula) {
+
+
+        boolean esRepetido = medicoRepo.buscarEstaCedula(cedula);
+        return esRepetido;
+
     }
 
     @Override
