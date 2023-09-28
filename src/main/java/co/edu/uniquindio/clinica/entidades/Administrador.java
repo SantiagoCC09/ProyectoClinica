@@ -13,8 +13,8 @@ import java.util.List;
 @ToString
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Administrador extends Cuenta implements Serializable {
+
     @OneToMany (mappedBy = "administrador")
     private List<PQR> pqrs;
-
 
 }

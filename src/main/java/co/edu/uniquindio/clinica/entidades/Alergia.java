@@ -17,6 +17,7 @@ import java.io.Serializable;
 public class Alergia implements Serializable {
 
     @Id
+    @EqualsAndHashCode.Include
     private int idAlergia;
 
     @Column(nullable = false, length = 100)

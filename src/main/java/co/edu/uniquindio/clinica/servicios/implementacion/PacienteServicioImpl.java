@@ -4,12 +4,15 @@ import co.edu.uniquindio.clinica.dto.*;
 import co.edu.uniquindio.clinica.entidades.Cita;
 import co.edu.uniquindio.clinica.entidades.PQR;
 import co.edu.uniquindio.clinica.entidades.Paciente;
+import co.edu.uniquindio.clinica.repositorios.CitaRepo;
 import co.edu.uniquindio.clinica.repositorios.PacienteRepo;
 import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.PacienteServicio;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +24,10 @@ public class PacienteServicioImpl implements PacienteServicio {
 
 
     private final PacienteRepo pacienteRepo;
+
+    private final CitaRepo citaRepo;
+
+    private final PasswordEncoder passwordEncoder;
 
     private final EmailServicio emailServicio;
 
@@ -199,8 +206,11 @@ public class PacienteServicioImpl implements PacienteServicio {
         Cita cita = new Cita();
 
         cita.setPaciente(this.obtenerPaciente(citaDTOAdmin.cedulaPaciente()));
+        cita.setFechaCreacion(LocalDateTime.now());
         cita.setFechaCita(citaDTOAdmin.fechaCita());
-        return 0;
+        cita.setMotivo(citaDTOAdmin.motivo());
+
+        return citaRepo.save(cita).getIdCita();
     }
 
     @Override

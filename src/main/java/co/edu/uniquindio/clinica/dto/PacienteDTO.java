@@ -15,7 +15,7 @@ public record PacienteDTO( String cedulaPaciente,
 
         String telefono,
 
-        String ciudadResidencia, Date fechaNacimiento, TipoSangre rh   ) {
+        String ciudadResidencia, Date fechaNacimiento, TipoSangre rh) {
 
 
 }

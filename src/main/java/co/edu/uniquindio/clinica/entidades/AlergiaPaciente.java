@@ -16,8 +16,10 @@ public class AlergiaPaciente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
+
     @ManyToOne
     private Alergia idAlergia;
+
     @ManyToOne
     private Paciente cedulaPaciente;
 
