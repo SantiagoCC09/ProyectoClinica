@@ -12,10 +12,9 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
-<<<<<<< HEAD
-=======
+
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
->>>>>>> 39cd575613b41066f6e51dd93de0b1ffee0d3fcc
+
 
 public class Usuario extends Cuenta implements Serializable {
 
