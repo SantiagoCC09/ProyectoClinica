@@ -22,4 +22,9 @@ public class Medico extends Usuario implements Serializable {
     @Column(nullable = false)
     private Especialidad especialidad;
 
+    @OneToMany (mappedBy = "medico")
+
+    private List<DiaTrabajoMedico> diasTrabajo;
+
+
 }

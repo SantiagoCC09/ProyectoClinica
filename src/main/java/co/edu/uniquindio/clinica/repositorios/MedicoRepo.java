@@ -10,8 +10,10 @@ import org.springframework.stereotype.Repository;
 public interface MedicoRepo extends JpaRepository<Medico,Integer> {
 
     @Query("select m from Medico m where m.email = :correo")
-    boolean buscarEstaCorreo(String correo);
+    boolean findByCorreo(String correo);
 
     @Query("select m from Medico m where m.cedula = :cedula")
-    boolean buscarEstaCedula(String cedula);
+
+    //si usamos findBy no hay que usar el query
+    boolean findByCedula(String cedula);
 }

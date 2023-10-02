@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
@@ -26,5 +27,8 @@ public class Cuenta implements Serializable {
 
     @Column(nullable = false,length = 100)
     private String password;
+
+    @OneToMany
+    private List<Respuesta> respuesta;
 
 }

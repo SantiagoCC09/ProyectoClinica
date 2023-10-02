@@ -20,7 +20,7 @@ public class PQR implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPqr;
 
-    private int estado;
+    private String estado;
 
     @OneToMany ( mappedBy = "pqr")
     private List<Respuesta> respuestas;
@@ -28,14 +28,21 @@ public class PQR implements Serializable {
     @Column(nullable = false, length = 15)
     private String descripcion;
 
+    @Column
+    private String motivo;
+
     @Column(nullable = false)
     private Date fecha;
+
+    @Column(nullable = false)
+    private Date fechaCreacion;
 
     @ManyToOne
     private Paciente paciente;
 
     @ManyToOne
     private Administrador administrador;
+
 
 
 }
