@@ -20,7 +20,7 @@ public class PQR implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPqr;
 
-    private String estado;
+    private EstadoPqr estado;
 
     @OneToMany ( mappedBy = "pqr")
     private List<Respuesta> respuestas;

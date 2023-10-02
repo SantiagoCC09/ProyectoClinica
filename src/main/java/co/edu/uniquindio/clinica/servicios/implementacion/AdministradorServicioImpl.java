@@ -1,10 +1,12 @@
 package co.edu.uniquindio.clinica.servicios.implementacion;
 
+import co.edu.uniquindio.clinica.dto.CitaDTOAdmin;
 import co.edu.uniquindio.clinica.dto.MedicoDTO;
 import co.edu.uniquindio.clinica.dto.PQRDTO;
 import co.edu.uniquindio.clinica.dto.RespuestaDTO;
 import co.edu.uniquindio.clinica.entidades.*;
 import co.edu.uniquindio.clinica.repositorios.AdministradorRepo;
+import co.edu.uniquindio.clinica.repositorios.CitaRepo;
 import co.edu.uniquindio.clinica.repositorios.MedicoRepo;
 import co.edu.uniquindio.clinica.repositorios.PQRSRepo;
 import co.edu.uniquindio.clinica.servicios.interfaces.AdministradorServicio;
@@ -29,6 +31,9 @@ public class AdministradorServicioImpl implements AdministradorServicio {
     private final EmailServicio emailServicio;
 
     private final PQRSRepo pqrsRepo;
+
+    private final CitaRepo citaRepo;
+
 
     @Override
     public int crearMedico(MedicoDTO medicoDTO) throws Exception {
@@ -136,8 +141,21 @@ public class AdministradorServicioImpl implements AdministradorServicio {
     @Override
     public List<MedicoDTO> listarMedicos() {
 
+        List<Medico> medicos = medicoRepo.findAll();
+        List <MedicoDTO> respuesta = new ArrayList<>();
 
 
+        for (Medico m : medicos){
+
+            respuesta.add( new MedicoDTO(
+                    m.getNombre(),m.getCedula(),m.getCiudad(),m.getUrlFoto(),
+                    m.getEspecialidad(),m.getTelefono(),m.getEmail(),m.getPassword()
+
+            ));
+
+
+
+        }
 
         return null;
     }
@@ -209,7 +227,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         respuesta.setCuenta(opcional.get().getPaciente());
 
 
-        
+
 
         return 0;
     }
@@ -240,6 +258,42 @@ public class AdministradorServicioImpl implements AdministradorServicio {
     @Override
     public void cambiarEstadoPqr(int codigoPqr, EstadoPqr estadoPqr) {
 
+       Optional<PQR> pqr = pqrsRepo.findById(codigoPqr);
+
+       PQR pqrActualizada = pqr.get();
+
+       pqrActualizada.setEstado(estadoPqr);
+
+
+       pqrsRepo.save(pqrActualizada);
+
+
+    }
+
+    @Override
+    public List<CitaDTOAdmin> listarCitas() {
+
+
+        List<Cita> citas = citaRepo.findAll();
+        List<CitaDTOAdmin> respuesta = new ArrayList<>();
+
+        for (Cita c : citas){
+
+            respuesta.add(new CitaDTOAdmin(
+
+                    c.getIdCita(),c.getPaciente().getNombre(),c.getMedico().getNombre()
+                    ,c.getFechaCreacion(),c.getFechaCita(),c.getMotivo(),c.getPaciente().getCedula(),
+                    c.getMedico().getCedula()
+
+
+            ));
+
+
+
+            }
+
+
+        return respuesta;
     }
 
 
