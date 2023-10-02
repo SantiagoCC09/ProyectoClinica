@@ -209,7 +209,7 @@ public class PacienteServicioImpl implements PacienteServicio {
 
         Cita cita = new Cita();
 
-        cita.setPaciente(this.obtenerPaciente(citaDTOAdmin.cedulaPaciente()));
+        cita.setPaciente(this.obtenerPaciente(citaDTOAdmin.codigoPaciente()));
         cita.setFechaCreacion(LocalDateTime.now());
         cita.setFechaCita(citaDTOAdmin.fechaCita());
         cita.setMotivo(citaDTOAdmin.motivo());

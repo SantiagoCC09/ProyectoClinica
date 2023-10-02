@@ -1,5 +1,6 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
+import co.edu.uniquindio.clinica.dto.CitaDTOAdmin;
 import co.edu.uniquindio.clinica.dto.MedicoDTO;
 import co.edu.uniquindio.clinica.dto.PQRDTO;
 import co.edu.uniquindio.clinica.dto.RespuestaDTO;
@@ -27,6 +28,9 @@ public interface AdministradorServicio {
 
 
     void cambiarEstadoPqr (int codigoPqr, EstadoPqr estadoPqr);
+
+
+    List <CitaDTOAdmin> listarCitas();
 
 
 }
