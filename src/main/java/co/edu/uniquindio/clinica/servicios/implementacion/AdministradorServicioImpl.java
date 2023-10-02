@@ -44,11 +44,9 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         medicoNuevo.setTelefono(medicoDTO.telefono());
         medicoNuevo.setUrlFoto(medicoDTO.URL_foto());
         medicoNuevo.setEspecialidad(medicoDTO.especialidad());
-
         medicoNuevo.setEstado(EstadoUsuario.ESTADO_ACTIVO);
         medicoNuevo.setPassword(medicoDTO.password());
         medicoNuevo.setEmail(medicoDTO.correo());
-
 
         if (estaRepetidoCorreo(medicoDTO.correo())) {
 
@@ -68,15 +66,15 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
     private boolean estaRepetidoCorreo(String correo) {
 
-        boolean esRepetido = medicoRepo.findByCorreo(correo);
-        return esRepetido;
+
+         return medicoRepo.findByCorreo(correo)!=null;
     }
 
     private boolean estaRepetidoCedula(String cedula) {
 
 
-        boolean esRepetido = medicoRepo.findByCedula(cedula);
-        return esRepetido;
+
+        return medicoRepo.findByCedula(cedula)!=null;
 
     }
 
@@ -147,7 +145,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
             respuesta.add( new MedicoDTO(
                     m.getNombre(),m.getCedula(),m.getCiudad(),m.getUrlFoto(),
-                    m.getEspecialidad(),m.getTelefono(),m.getEmail(),m.getPassword()
+                    m.getEspecialidad(),m.getTelefono(),m.getEmail(),m.getPassword(), new ArrayList<>()
 
             ));
 
