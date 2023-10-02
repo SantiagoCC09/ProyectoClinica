@@ -4,12 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="2339a85a-18f9-48cb-94a3-e30ece564fc0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+=======
     <list default="true" id="54e53782-faa9-42bb-ad88-bf8cdb37f200" name="Changes" comment="">
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/entidades/AlergiaPaciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/entidades/AlergiaPaciente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/entidades/Consulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/entidades/Consulta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/entidades/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/entidades/Paciente.java" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/entidades/Respuesta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/entidades/Respuesta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/entidades/TipoSangre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/entidades/TipoSangre.java" afterDir="false" />
+>>>>>>> af536f1ae9a2bfb5ab7e5d281e449e42eb620d5a
+=======
 =======
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -17,6 +31,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/entidades/PQR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/clinica/modelo/entidades/PQR.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
 >>>>>>> 2b2f56bdbcccb9be9dc78e205ee63b9caff21c5c
+>>>>>>> f298e736126ce9e440da94d6ef514bb53848a9b6
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +71,11 @@
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
+<<<<<<< HEAD
+  &quot;associatedIndex&quot;: 0
+=======
   &quot;associatedIndex&quot;: -1
+>>>>>>> af536f1ae9a2bfb5ab7e5d281e449e42eb620d5a
 }</component>
   <component name="ProjectId" id="2UkvsNIp7WiXSyYKR9qhWbOSUDe" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -75,12 +94,24 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "android.gradle.sync.needed": "true",
     "git-widget-placeholder": "main",
+=======
+    "git-widget-placeholder": "master",
+>>>>>>> af536f1ae9a2bfb5ab7e5d281e449e42eb620d5a
+=======
+    "git-widget-placeholder": "main",
+>>>>>>> f298e736126ce9e440da94d6ef514bb53848a9b6
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+<<<<<<< HEAD
+=======
     "spring.configuration.checksum": "2e56f3357a78074e7e5e4fc31cb955ea",
+>>>>>>> af536f1ae9a2bfb5ab7e5d281e449e42eb620d5a
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -102,7 +133,17 @@
       <option name="presentableId" value="Default" />
       <updated>1693496603472</updated>
       <workItem from="1693496604342" duration="52000" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <workItem from="1693664371171" duration="267000" />
+      <workItem from="1693841756520" duration="298000" />
+      <workItem from="1694096087307" duration="2921000" />
+=======
+      <workItem from="1694095957889" duration="2896000" />
+>>>>>>> af536f1ae9a2bfb5ab7e5d281e449e42eb620d5a
+=======
       <workItem from="1694095957889" duration="4536000" />
+>>>>>>> f298e736126ce9e440da94d6ef514bb53848a9b6
     </task>
     <servers />
   </component>
