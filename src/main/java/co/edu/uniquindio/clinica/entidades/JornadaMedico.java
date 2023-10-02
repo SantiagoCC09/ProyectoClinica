@@ -7,6 +7,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 import java.io.Serializable;
+import java.nio.MappedByteBuffer;
 import java.sql.Time;
 
 @Entity

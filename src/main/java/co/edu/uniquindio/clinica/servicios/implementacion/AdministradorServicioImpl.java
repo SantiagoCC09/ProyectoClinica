@@ -61,6 +61,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
             throw new Exception("la cedula está repetida");
 
         }
+
         Medico medicoRegistrado = medicoRepo.save(medicoNuevo);
         return medicoRegistrado.getCodigo();
     }

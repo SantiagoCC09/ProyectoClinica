@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,6 +27,13 @@ public class DiaTrabajoMedico implements Serializable {
     @ManyToOne
     @JoinColumn(name = "cedulaMedico") // Nombre de la columna que contendrá la llave foránea
     private Medico medico;
+
+    @OneToMany (mappedBy = "diaTrabajo")
+    List<JornadaMedico> listaJornadasMedico;
+
+
+
+
 
 
 
