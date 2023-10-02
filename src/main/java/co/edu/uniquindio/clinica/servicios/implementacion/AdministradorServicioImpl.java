@@ -193,6 +193,8 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
         Optional <PQR> opcional = pqrsRepo.findById(idPqr);
 
+
+
         if (opcional.isEmpty()){
 
             throw new Exception("no hay pqr con esa id");
@@ -204,8 +206,10 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         respuesta.setFecha(LocalDateTime.now());
         respuesta.setDescripcion(respuestaDTO.descripcion());
         respuesta.setIdRespuesta(respuestaDTO.id());
-        respuesta.setCuenta(respuestaDTO.codigoCuenta());
+        respuesta.setCuenta(opcional.get().getPaciente());
 
+
+        
 
         return 0;
     }
@@ -231,6 +235,11 @@ public class AdministradorServicioImpl implements AdministradorServicio {
                 buscado.getPaciente().getNombre(), buscado.getAdministrador().getCodigo()
                 , buscado.getMotivo()
         );
+    }
+
+    @Override
+    public void cambiarEstadoPqr(int codigoPqr, EstadoPqr estadoPqr) {
+
     }
 
 
