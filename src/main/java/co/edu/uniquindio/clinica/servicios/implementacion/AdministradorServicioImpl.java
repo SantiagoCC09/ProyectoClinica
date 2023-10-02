@@ -157,12 +157,14 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         } else {
 
             buscado = opcional.get();
+
+            List<DiaTrabajoMedico> horarios = buscado.getDiasTrabajo();
         }
 
 
         MedicoDTO  medicoDTO = new MedicoDTO(
                 buscado.getNombre(), buscado.getCedula(), buscado.getCiudad(),buscado.getUrlFoto(),
-                buscado.getEspecialidad(),buscado.getTelefono(),buscado.getEmail(),buscado.getPassword()
+                buscado.getEspecialidad(),buscado.getTelefono(),buscado.getEmail(),buscado.getPassword(), new ArrayList<>()
         );
 
         return medicoDTO;
