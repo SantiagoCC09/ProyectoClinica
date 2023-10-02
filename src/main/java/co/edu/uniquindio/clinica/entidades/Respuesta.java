@@ -31,7 +31,7 @@ public class Respuesta implements Serializable {
     @OneToOne
     private Respuesta respuesta;
 
-    @OneToOne (mappedBy = "respuesta")
+    @ManyToOne
     private Cuenta cuenta;
 
 

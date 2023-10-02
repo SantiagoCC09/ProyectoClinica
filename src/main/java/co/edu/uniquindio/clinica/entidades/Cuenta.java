@@ -28,7 +28,7 @@ public class Cuenta implements Serializable {
     @Column(nullable = false,length = 100)
     private String password;
 
-    @OneToMany
+    @OneToMany (mappedBy = "cuenta")
     private List<Respuesta> respuesta;
 
 }

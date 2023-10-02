@@ -3,6 +3,7 @@ package co.edu.uniquindio.clinica.servicios.interfaces;
 import co.edu.uniquindio.clinica.dto.MedicoDTO;
 import co.edu.uniquindio.clinica.dto.PQRDTO;
 import co.edu.uniquindio.clinica.dto.RespuestaDTO;
+import co.edu.uniquindio.clinica.entidades.EstadoPqr;
 
 import java.util.List;
 
@@ -24,6 +25,8 @@ public interface AdministradorServicio {
 
     PQRDTO verDetallePQRS(int idPqr) throws Exception;
 
+
+    void cambiarEstadoPqr (int codigoPqr, EstadoPqr estadoPqr);
 
 
 }
