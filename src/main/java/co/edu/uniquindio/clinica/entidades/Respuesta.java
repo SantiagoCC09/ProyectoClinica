@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -22,11 +23,16 @@ public class Respuesta implements Serializable {
     private String descripcion;
 
     @Column(nullable = false)
-    private Date fecha;
+    private LocalDateTime fecha;
 
     @ManyToOne
     private PQR pqr;
 
     @OneToOne
     private Respuesta respuesta;
+
+    @OneToOne (mappedBy = "respuesta")
+    private Cuenta cuenta;
+
+
 }

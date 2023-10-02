@@ -32,6 +32,9 @@ public class Usuario extends Cuenta implements Serializable {
     @Column(nullable = false, length = 50)
     private Ciudad ciudad;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 11)
     private String cedula;
+
+    @Column
+    private EstadoUsuario estado;
 }
