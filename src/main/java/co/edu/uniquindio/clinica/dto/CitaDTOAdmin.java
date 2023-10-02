@@ -12,7 +12,11 @@ public record CitaDTOAdmin(
 
     String cedulaPaciente,
 
-   String cedulaMedico
+   String cedulaMedico,
+
+    int codigoPaciente,
+
+    int codigoMedico
 
 ) {
 

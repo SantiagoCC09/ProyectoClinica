@@ -5,10 +5,7 @@ import co.edu.uniquindio.clinica.dto.MedicoDTO;
 import co.edu.uniquindio.clinica.dto.PQRDTO;
 import co.edu.uniquindio.clinica.dto.RespuestaDTO;
 import co.edu.uniquindio.clinica.entidades.*;
-import co.edu.uniquindio.clinica.repositorios.AdministradorRepo;
-import co.edu.uniquindio.clinica.repositorios.CitaRepo;
-import co.edu.uniquindio.clinica.repositorios.MedicoRepo;
-import co.edu.uniquindio.clinica.repositorios.PQRSRepo;
+import co.edu.uniquindio.clinica.repositorios.*;
 import co.edu.uniquindio.clinica.servicios.interfaces.AdministradorServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
 import lombok.AllArgsConstructor;
@@ -34,6 +31,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
     private final CitaRepo citaRepo;
 
+    private final RespuestaRepo respuestaRepo;
 
     @Override
     public int crearMedico(MedicoDTO medicoDTO) throws Exception {
@@ -211,8 +209,6 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
         Optional <PQR> opcional = pqrsRepo.findById(idPqr);
 
-
-
         if (opcional.isEmpty()){
 
             throw new Exception("no hay pqr con esa id");
@@ -227,9 +223,11 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         respuesta.setCuenta(opcional.get().getPaciente());
 
 
+        opcional.get().getRespuestas().add(respuesta);
+        respuestaRepo.save(respuesta);
+        pqrsRepo.save(opcional.get());
 
-
-        return 0;
+        return respuesta.getIdRespuesta();
     }
 
 
@@ -283,7 +281,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
                     c.getIdCita(),c.getPaciente().getNombre(),c.getMedico().getNombre()
                     ,c.getFechaCreacion(),c.getFechaCita(),c.getMotivo(),c.getPaciente().getCedula(),
-                    c.getMedico().getCedula()
+                    c.getMedico().getCedula(), c.getPaciente().getCodigo(), c.getMedico().getCodigo()
 
 
             ));
