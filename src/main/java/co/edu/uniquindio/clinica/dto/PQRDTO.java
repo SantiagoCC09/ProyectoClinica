@@ -1,24 +1,23 @@
 package co.edu.uniquindio.clinica.dto;
 
-import co.edu.uniquindio.clinica.entidades.Estado;
-import co.edu.uniquindio.clinica.entidades.Respuesta;
+import co.edu.uniquindio.clinica.entidades.EstadoCita;
 
 import java.sql.Date;
 
 public record PQRDTO (
 
 
-        Estado estado,
+        String estado,
 
-        int idRespuesta,
 
         String descripcion,
 
         Date fecha,
 
-        int codigoPaciente,
+        String nombrePaciente,
 
-        int codigoAdministrador
+        int codigoAdministrador,
+        String motivo
 
 
 ) {
