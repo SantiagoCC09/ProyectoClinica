@@ -10,9 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface MedicoRepo extends JpaRepository<Medico,Integer> {
 
 
-    boolean findByCorreo(String correo);
 
 
-    //si usamos findBy no hay que usar el query
-    boolean findByCedula(String cedula);
 }

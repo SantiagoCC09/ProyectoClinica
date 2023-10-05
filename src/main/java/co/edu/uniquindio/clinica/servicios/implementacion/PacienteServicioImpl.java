@@ -9,6 +9,7 @@ import co.edu.uniquindio.clinica.repositorios.PacienteRepo;
 import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.PacienteServicio;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ import java.util.Optional;
 
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class PacienteServicioImpl implements PacienteServicio {
 
 
@@ -45,7 +46,10 @@ public class PacienteServicioImpl implements PacienteServicio {
                 email,
                 pacienteDTO.email()));
 
+
         Paciente paciente = convertir(pacienteDTO);
+
+        paciente.setPassword(passwordEncoder.encode(paciente.getPassword()));
 
         return pacienteRepo.save(paciente).getCodigo();
 
