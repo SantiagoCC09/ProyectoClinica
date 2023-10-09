@@ -1,9 +1,6 @@
 package co.edu.uniquindio.clinica.servicios.implementacion;
 
-import co.edu.uniquindio.clinica.dto.CitaDTOAdmin;
-import co.edu.uniquindio.clinica.dto.MedicoDTO;
-import co.edu.uniquindio.clinica.dto.PQRDTO;
-import co.edu.uniquindio.clinica.dto.RespuestaDTO;
+import co.edu.uniquindio.clinica.dto.*;
 import co.edu.uniquindio.clinica.entidades.*;
 import co.edu.uniquindio.clinica.repositorios.*;
 import co.edu.uniquindio.clinica.servicios.interfaces.AdministradorServicio;
@@ -33,6 +30,8 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
     private final RespuestaRepo respuestaRepo;
 
+    private final DiaTrabajoMedicoRepo diaTrabajoMedicoRepo;
+
     @Override
     public int crearMedico(MedicoDTO medicoDTO) throws Exception {
 
@@ -60,7 +59,26 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
         }
         Medico medicoRegistrado = medicoRepo.save(medicoNuevo);
+
+        asignarHorariosMedico( medicoNuevo, medicoDTO.horarios() );
+        
         return medicoRegistrado.getCodigo();
+    }
+
+    private void asignarHorariosMedico(Medico medicoNuevo, List<DiaTrabajoMedicoDTO> horarios) {
+
+        for( DiaTrabajoMedicoDTO h : horarios ){
+
+            DiaTrabajoMedico hm = new DiaTrabajoMedico();
+            hm.setFecha( h.fecha() );
+            hm.setEslibre( h.esLibre() );
+            hm.setMedico( medicoNuevo );
+            diaTrabajoMedicoRepo.save(hm);
+
+        }
+
+
+
     }
 
 
@@ -109,12 +127,12 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
         medicoRepo.save(medicoBuscado);
 
-        return 0;
+        return medicoBuscado.getCodigo();
 
     }
 
     @Override
-    public int eliminarMedico(int codigoMedico) throws Exception{
+    public void eliminarMedico(int codigoMedico) throws Exception{
 
 
         Optional<Medico> opcional =medicoRepo.findById(codigoMedico);
@@ -129,15 +147,22 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
            //medicoRepo.delete(buscado);  delete from medico where medigo.codigo =111
            buscado.setEstado(EstadoUsuario.ESTADO_INACTIVO);
+
+           medicoRepo.save(buscado);
        }
-        return 0;
 
     }
 
     @Override
-    public List<MedicoDTO> listarMedicos() {
+    public List<MedicoDTO> listarMedicos()throws Exception {
 
         List<Medico> medicos = medicoRepo.findAll();
+
+        if (medicos.isEmpty()){
+
+            throw new Exception("No hay ningun medico registrado");
+
+        }
         List <MedicoDTO> respuesta = new ArrayList<>();
 
 
@@ -153,7 +178,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
         }
 
-        return null;
+        return respuesta;
     }
 
     @Override

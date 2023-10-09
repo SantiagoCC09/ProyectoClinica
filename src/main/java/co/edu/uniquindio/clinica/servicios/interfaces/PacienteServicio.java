@@ -5,6 +5,7 @@ import co.edu.uniquindio.clinica.entidades.Cita;
 import co.edu.uniquindio.clinica.entidades.PQR;
 import co.edu.uniquindio.clinica.entidades.Paciente;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface PacienteServicio {
@@ -13,7 +14,7 @@ public interface PacienteServicio {
 
     int editarPerfil(PacienteDTO pacienteDTO, int codigoPaciente) throws Exception;
 
-    int eliminarCuenta(int codigoPaciente) throws Exception;
+    void eliminarCuenta(int codigoPaciente) throws Exception;
 
     Paciente obtenerPaciente(int codigoPaciente) throws Exception;
 
@@ -47,7 +48,7 @@ public interface PacienteServicio {
     List <InfoCitaDTO> listarCitasPaciente(String cedulaPaciente) throws Exception;
 
     //El paciente podrá filtrar las citas por fecha
-    void filtrarCitasPorFecha();
+    List<InfoCitaDTO> filtrarCitasPorFecha(Date fecha, String cedulaPaciente);
 
     void filtrarCitasPorMedico();
 
