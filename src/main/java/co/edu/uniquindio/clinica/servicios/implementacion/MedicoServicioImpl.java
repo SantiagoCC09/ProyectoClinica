@@ -3,9 +3,11 @@ package co.edu.uniquindio.clinica.servicios.implementacion;
 import co.edu.uniquindio.clinica.dto.*;
 import co.edu.uniquindio.clinica.entidades.Cita;
 import co.edu.uniquindio.clinica.entidades.Consulta;
+import co.edu.uniquindio.clinica.entidades.DiaTrabajoMedico;
 import co.edu.uniquindio.clinica.entidades.EstadoCita;
 import co.edu.uniquindio.clinica.repositorios.CitaRepo;
 import co.edu.uniquindio.clinica.repositorios.ConsultaRepo;
+import co.edu.uniquindio.clinica.repositorios.DiaTrabajoMedicoRepo;
 import co.edu.uniquindio.clinica.servicios.interfaces.MedicoServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,7 @@ public class MedicoServicioImpl implements MedicoServicio {
 
     private final CitaRepo citaRepo;
     private final ConsultaRepo consultaRepo;
+    private final DiaTrabajoMedicoRepo diaTrabajoMedicoRepo;
 
     @Override
     public void verPerfil() {
@@ -176,11 +179,29 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public void filtrarDisponibilidadPorFecha(Date date) {
+    public List<DiaTrabajoMedicoDTO> filtrarDisponibilidadPorFecha(LocalDateTime date) {
+
+
+        List<DiaTrabajoMedico> listaDias = this.diaTrabajoMedicoRepo.findAll();
+        List<DiaTrabajoMedicoDTO> listaMostrar = new ArrayList<>();
+        for (DiaTrabajoMedico dia : listaDias){
+
+            if (dia.getFecha().isEqual(date) && dia.isEslibre()){
+
+                listaMostrar.add(new DiaTrabajoMedicoDTO(
+                        dia.getFecha(), dia.getIdDiaTrabajo(), true,
+                        dia.getMedico().getCodigo()
+
+                        )
+
+                        );
+            }
+
+        }
 
 
 
-
+    return listaMostrar;
     }
 
     @Override

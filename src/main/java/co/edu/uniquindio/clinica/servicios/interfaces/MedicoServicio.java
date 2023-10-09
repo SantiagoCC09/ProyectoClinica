@@ -23,7 +23,7 @@ public interface MedicoServicio {
     public List <CitaDTOMedico> listarCitas() throws Exception;
     public String atenderCitaSeleccionada(CitaDTOAdmin citaDTOAdmin);
 
-    public void filtrarDisponibilidadPorFecha(Date date);
+    public List<DiaTrabajoMedicoDTO> filtrarDisponibilidadPorFecha(LocalDateTime date);
 
     public String reservarDiaLibre(Date date);
 
