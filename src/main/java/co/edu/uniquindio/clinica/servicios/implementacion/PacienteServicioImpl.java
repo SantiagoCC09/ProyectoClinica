@@ -259,6 +259,7 @@ public class PacienteServicioImpl implements PacienteServicio {
         paciente.setNombre(pacienteDTO.nombreCompleto());
         paciente.setEmail(pacienteDTO.email());
         paciente.setFechaNacimiento(pacienteDTO.fechaNacimiento());
+        paciente.setCiudadResidencia(pacienteDTO.ciudadResidencia());
         paciente.setPassword(pacienteDTO.password());
         paciente.setRh(pacienteDTO.rh());
         paciente.setCedula(pacienteDTO.cedulaPaciente());

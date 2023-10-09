@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
-
+@Transactional
 public class AdministradorTest {
 
 
@@ -39,7 +39,7 @@ public class AdministradorTest {
 
     }
     @Test
-    public void eliminarMedicoTest() throws Exception {
+    public void cambiarEstadoMedicoTest() throws Exception {
         // Supongamos que deseas eliminar al médico con el código 1, reemplaza con el código del médico que quieras eliminar.
         int codigoMedicoAEliminar = 1;
 
@@ -50,5 +50,6 @@ public class AdministradorTest {
             System.err.println("Error al eliminar el médico: " + e.getMessage());
         }
     }
+
 
 }

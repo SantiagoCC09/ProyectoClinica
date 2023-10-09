@@ -26,7 +26,7 @@ public class Paciente extends Usuario implements Serializable {
     private Date fechaNacimiento;
 
     @Column(nullable = false, length = 40)
-    private String ciudadResidencia;
+    private Ciudad ciudadResidencia;
 
     @OneToMany(mappedBy = "paciente")
     private List<Cita> citas;
