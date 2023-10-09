@@ -1,6 +1,7 @@
 package co.edu.uniquindio.clinica.repositorios;
 
 
+import co.edu.uniquindio.clinica.dto.InfoCitaDTO;
 import co.edu.uniquindio.clinica.entidades.Cita;
 import co.edu.uniquindio.clinica.entidades.Medico;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,7 +21,10 @@ public interface CitaRepo extends JpaRepository <Cita, Integer> {
     List<Cita> listarCitasPorFecha(Date fecha);
 
     @Query("select c from Cita c where c.medico.nombre = :nombreMedico")
-    List<Cita>listarCitasPorMedico(String nombreMedico);
+    List<Cita>listarCitasPorNombreMedico(String nombreMedico);
+
+    @Query("select c from Cita c where c.medico.codigo = :codigoMedico")
+    List<Cita>listarCitasPorMedico(int codigoMedico);
 
 
 

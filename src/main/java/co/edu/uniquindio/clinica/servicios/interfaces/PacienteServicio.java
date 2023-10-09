@@ -48,9 +48,9 @@ public interface PacienteServicio {
     List <InfoCitaDTO> listarCitasPaciente(String cedulaPaciente) throws Exception;
 
     //El paciente podrá filtrar las citas por fecha
-    List<InfoCitaDTO> filtrarCitasPorFecha(Date fecha, String cedulaPaciente);
+    List<InfoCitaDTO> filtrarCitasPorFecha(Date fecha, String cedulaPaciente) throws Exception;
 
-    void filtrarCitasPorMedico();
+    List<InfoCitaDTO> filtrarCitasPorMedico(int codigoMedico)throws Exception;
 
     void verDetalleCita();
 

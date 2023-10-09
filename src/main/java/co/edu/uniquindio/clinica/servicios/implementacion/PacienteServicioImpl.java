@@ -163,20 +163,38 @@ public class PacienteServicioImpl implements PacienteServicio {
 
 
     @Override
-    public List<InfoCitaDTO> filtrarCitasPorFecha(Date fecha, String cedulaPaciente) {
+    public List<InfoCitaDTO> filtrarCitasPorFecha(Date fecha, String cedulaPaciente) throws Exception {
 
         List<Cita> lista = citaRepo.listarCitasPorFecha(fecha);
+
+        if(lista.isEmpty()){
+
+            throw new Exception("No hay citas registradas en la fecha "+ fecha);
+        }
+
         List<InfoCitaDTO> respuesta = new ArrayList<>();
         for (Cita p : lista){
             respuesta.add(convertir(p));
         }
         return respuesta;
 
-
     }
 
     @Override
-    public void filtrarCitasPorMedico() {
+    public List<InfoCitaDTO> filtrarCitasPorMedico(int codigoMedico) throws Exception {
+
+        List<Cita> lista = citaRepo.listarCitasPorMedico(codigoMedico);
+
+        if(lista.isEmpty()){
+
+            throw new Exception("No hay citas registradas con el medico "+ codigoMedico);
+        }
+
+        List<InfoCitaDTO> respuesta = new ArrayList<>();
+        for (Cita p : lista){
+            respuesta.add(convertir(p));
+        }
+        return respuesta;
 
     }
 
