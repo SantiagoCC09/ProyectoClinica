@@ -16,12 +16,15 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Medico extends Usuario implements Serializable {
 
-    @Column(nullable = false, length = 40)
-    private String ciudadResidencia;
     @OneToMany(mappedBy = "medico")
     private List<Cita> citas;
 
     @Column(nullable = false)
     private Especialidad especialidad;
+
+    @OneToMany (mappedBy = "medico")
+
+    private List<DiaTrabajoMedico> diasTrabajo;
+
 
 }

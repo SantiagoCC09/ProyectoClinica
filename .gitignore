@@ -1,11 +1,11 @@
-<<<<<<< HEAD
+
 /.idea/
 *.class
 /.gradle/
 /*/bin/
 /*/build/
 /build/
-=======
+
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
@@ -48,4 +48,3 @@ bin/
 
 ### Mac OS ###
 .DS_Store
->>>>>>> b9c335b0125dc3bcbc85fff384f78bc2b9e529ef

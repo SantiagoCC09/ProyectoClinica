@@ -14,6 +14,7 @@ import java.io.Serializable;
 @ToString(callSuper = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
+
 public class Usuario extends Cuenta implements Serializable {
 
 
@@ -29,6 +30,9 @@ public class Usuario extends Cuenta implements Serializable {
     @Column(nullable = false, length = 50)
     private Ciudad ciudad;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 11)
     private String cedula;
+
+    @Column
+    private EstadoUsuario estado;
 }
