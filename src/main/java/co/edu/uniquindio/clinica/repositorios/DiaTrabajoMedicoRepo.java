@@ -14,6 +14,5 @@ public interface DiaTrabajoMedicoRepo extends JpaRepository<DiaTrabajoMedico,Int
     List<DiaTrabajoMedico> findAllByMedicoCodigo(int codigo);
 
 
-
-    DiaTrabajoMedico findDiaTrabajoMedicoByFecha_Date(LocalDateTime date);
+    DiaTrabajoMedico findDiaTrabajoMedicoByFecha(LocalDateTime date);
 }

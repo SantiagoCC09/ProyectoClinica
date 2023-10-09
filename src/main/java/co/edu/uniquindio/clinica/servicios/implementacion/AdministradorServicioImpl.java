@@ -72,7 +72,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
             DiaTrabajoMedico hm = new DiaTrabajoMedico();
             hm.setFecha( h.fecha() );
-            hm.setEslibre( h.esLibre() );
+            hm.setEstadoDia( h.estadoDia() );
             hm.setMedico( medicoNuevo );
             diaTrabajoMedicoRepo.save(hm);
 

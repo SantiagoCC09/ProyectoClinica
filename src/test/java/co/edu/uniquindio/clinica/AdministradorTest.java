@@ -40,6 +40,10 @@ public class AdministradorTest {
     @Test
     public void EliminarMedicoTest () throws Exception{
 
+        int codigoMedico = 1;
+
+
+        administradorServicio.eliminarMedico(codigoMedico);
 
 
     }

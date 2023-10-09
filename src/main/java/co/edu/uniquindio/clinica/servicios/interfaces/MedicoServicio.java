@@ -3,6 +3,7 @@ package co.edu.uniquindio.clinica.servicios.interfaces;
 
 import co.edu.uniquindio.clinica.dto.*;
 import co.edu.uniquindio.clinica.entidades.Consulta;
+import co.edu.uniquindio.clinica.entidades.Medico;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -13,6 +14,8 @@ public interface MedicoServicio {
 
 
     public void verPerfil();
+
+    Medico obtenerMedico(int idMedico) throws Exception;
 
     public List<CitaDTOMedico> filtrarCitasPendientesPorFecha(LocalDateTime date) throws Exception;
 

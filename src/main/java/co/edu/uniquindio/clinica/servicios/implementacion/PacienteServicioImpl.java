@@ -2,11 +2,9 @@ package co.edu.uniquindio.clinica.servicios.implementacion;
 
 import co.edu.uniquindio.clinica.dto.*;
 import co.edu.uniquindio.clinica.entidades.*;
-import co.edu.uniquindio.clinica.repositorios.AdministradorRepo;
-import co.edu.uniquindio.clinica.repositorios.CitaRepo;
-import co.edu.uniquindio.clinica.repositorios.PQRSRepo;
-import co.edu.uniquindio.clinica.repositorios.PacienteRepo;
+import co.edu.uniquindio.clinica.repositorios.*;
 import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
+import co.edu.uniquindio.clinica.servicios.interfaces.MedicoServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.PacienteServicio;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +25,8 @@ public class PacienteServicioImpl implements PacienteServicio {
 
 
     private final PacienteRepo pacienteRepo;
+
+    private final MedicoServicio medicoServicio;
 
     private final CitaRepo citaRepo;
 
@@ -79,15 +79,16 @@ public class PacienteServicioImpl implements PacienteServicio {
 
         Optional<Paciente> opcional = pacienteRepo.findById(codigoPaciente);
 
-        if( opcional.isEmpty() ){
-            throw new Exception("No existe un médico con el código "+codigoPaciente);
+        if (opcional.isEmpty()) {
+            throw new Exception("No existe un paciente con el código " + codigoPaciente);
         }
 
         Paciente buscado = opcional.get();
-        buscado.setEstado(EstadoUsuario.ESTADO_INACTIVO);
-        pacienteRepo.save( buscado );
 
-        //medicoRepo.delete(buscado);
+        buscado.setEstado(EstadoUsuario.ESTADO_INACTIVO);
+
+        pacienteRepo.save(buscado);
+
 
     }
 
@@ -185,7 +186,9 @@ public class PacienteServicioImpl implements PacienteServicio {
         InfoCitaDTO citaGetDTO = new InfoCitaDTO(
                 cita.getIdCita(),
                 cita.getPaciente().getNombre(),
-                cita.getMedico().getNombre()
+                cita.getMedico().getNombre(),
+                cita.getFechaCita(),
+                cita.getMotivo()
         );
         return citaGetDTO;
     }
@@ -277,6 +280,7 @@ public class PacienteServicioImpl implements PacienteServicio {
         Cita cita = new Cita();
 
         cita.setPaciente(this.obtenerPaciente(citaDTOAdmin.codigoPaciente()));
+        cita.setMedico(medicoServicio.obtenerMedico(citaDTOAdmin.codigoMedico()));
         cita.setFechaCreacion(LocalDateTime.now());
         cita.setFechaCita(citaDTOAdmin.fechaCita());
         cita.setMotivo(citaDTOAdmin.motivo());
