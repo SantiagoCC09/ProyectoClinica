@@ -1,0 +1,1 @@
+insert into medico () values ("juan","2324",1,"foto", 1, "12345","@gmali","asd","2023-10-15 7:50:00");
