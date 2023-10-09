@@ -1,12 +1,14 @@
 package co.edu.uniquindio.clinica.repositorios;
 
 
+import co.edu.uniquindio.clinica.dto.InfoCitaDTO;
 import co.edu.uniquindio.clinica.entidades.Cita;
 import co.edu.uniquindio.clinica.entidades.Paciente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +24,6 @@ public interface PacienteRepo extends JpaRepository<Paciente,Integer> {
 
     @Query("select p from Paciente p where p.cedula = :cedulaPaciente")
     List<Cita> listarCitasPaciente(String cedulaPaciente);
-
 
 
     /**

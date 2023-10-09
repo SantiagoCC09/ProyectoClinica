@@ -2,6 +2,7 @@ package co.edu.uniquindio.clinica.servicios.implementacion;
 
 import co.edu.uniquindio.clinica.dto.*;
 import co.edu.uniquindio.clinica.entidades.Cita;
+import co.edu.uniquindio.clinica.entidades.EstadoUsuario;
 import co.edu.uniquindio.clinica.entidades.PQR;
 import co.edu.uniquindio.clinica.entidades.Paciente;
 import co.edu.uniquindio.clinica.repositorios.CitaRepo;
@@ -10,9 +11,11 @@ import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.PacienteServicio;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cglib.core.Local;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,13 +72,20 @@ public class PacienteServicioImpl implements PacienteServicio {
     }
 
     @Override
-    public int eliminarCuenta(int codigoPaciente) throws Exception {
+    public void eliminarCuenta(int codigoPaciente) throws Exception {
 
-        validarExiste(codigoPaciente);
+        Optional<Paciente> opcional = pacienteRepo.findById(codigoPaciente);
 
-        pacienteRepo.deleteById(codigoPaciente);
+        if( opcional.isEmpty() ){
+            throw new Exception("No existe un médico con el código "+codigoPaciente);
+        }
 
-        return codigoPaciente;
+        Paciente buscado = opcional.get();
+        buscado.setEstado(EstadoUsuario.ESTADO_INACTIVO);
+        pacienteRepo.save( buscado );
+
+        //medicoRepo.delete(buscado);
+
     }
 
     @Override
@@ -153,14 +163,38 @@ public class PacienteServicioImpl implements PacienteServicio {
 
 
     @Override
-    public void filtrarCitasPorFecha() {
+    public List<InfoCitaDTO> filtrarCitasPorFecha(Date fecha, String cedulaPaciente) throws Exception {
 
+        List<Cita> lista = citaRepo.listarCitasPorFecha(fecha);
 
+        if(lista.isEmpty()){
+
+            throw new Exception("No hay citas registradas en la fecha "+ fecha);
+        }
+
+        List<InfoCitaDTO> respuesta = new ArrayList<>();
+        for (Cita p : lista){
+            respuesta.add(convertir(p));
+        }
+        return respuesta;
 
     }
 
     @Override
-    public void filtrarCitasPorMedico() {
+    public List<InfoCitaDTO> filtrarCitasPorMedico(int codigoMedico) throws Exception {
+
+        List<Cita> lista = citaRepo.listarCitasPorMedico(codigoMedico);
+
+        if(lista.isEmpty()){
+
+            throw new Exception("No hay citas registradas con el medico "+ codigoMedico);
+        }
+
+        List<InfoCitaDTO> respuesta = new ArrayList<>();
+        for (Cita p : lista){
+            respuesta.add(convertir(p));
+        }
+        return respuesta;
 
     }
 
@@ -213,7 +247,6 @@ public class PacienteServicioImpl implements PacienteServicio {
         cita.setFechaCreacion(LocalDateTime.now());
         cita.setFechaCita(citaDTOAdmin.fechaCita());
         cita.setMotivo(citaDTOAdmin.motivo());
-
         return citaRepo.save(cita).getIdCita();
     }
 
