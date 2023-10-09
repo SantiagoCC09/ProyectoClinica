@@ -48,9 +48,9 @@ public class PacienteServicioImpl implements PacienteServicio {
         String email = "<h1>Creacion de cuenta exitosa</h1><h2><p>Bienvenido a Clinica Uniquindio</p></h2>";
 
         emailServicio.enviarEmail(new EmailDTO(
-                "TestMail-Html",
-                email,
-                pacienteDTO.email()));
+                pacienteDTO.email(),
+                "Creacion De cuenta ClinicaUQ",
+                email));
 
 
         Paciente paciente = convertir(pacienteDTO);
@@ -265,6 +265,8 @@ public class PacienteServicioImpl implements PacienteServicio {
         paciente.setCedula(pacienteDTO.cedulaPaciente());
         paciente.setTelefono(pacienteDTO.telefono());
         paciente.setEstado(EstadoUsuario.ESTADO_ACTIVO);
+        paciente.setEps(pacienteDTO.eps());
+        paciente.setUrlFoto(pacienteDTO.URL_Foto());
 
         return paciente;
     }
