@@ -86,7 +86,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
     private boolean estaRepetidoCorreo(String correo) {
 
 
-         return medicoRepo.findByCorreo(correo)!=null;
+         return medicoRepo.findByEmail(correo)!=null;
     }
 
     private boolean estaRepetidoCedula(String cedula) {
@@ -271,7 +271,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         PQR buscado = opcional.get();
 
 
-        return new PQRDTO (
+        return new PQRDTO(
 
                 buscado.getEstado(),buscado.getDescripcion(),buscado.getFecha(),
                 buscado.getPaciente().getNombre(), buscado.getAdministrador().getCodigo()
@@ -318,6 +318,27 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
 
         return respuesta;
+    }
+
+    @Override
+    public int agregarMedicamentosDisponibles(MedicamentoDTO medicamentoDTO) {
+
+
+
+
+
+        return 0;
+    }
+
+    @Override
+    public int actualizarMedicamentosDisponibles(MedicamentoDTO medicamentoDTO) {
+
+        return 0;
+    }
+
+    @Override
+    public void eliminarMedicamentosDisponibles(int codigoMedicamento) {
+
     }
 
 

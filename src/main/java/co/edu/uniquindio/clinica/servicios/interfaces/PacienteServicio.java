@@ -23,8 +23,8 @@ public interface PacienteServicio {
 
 
 //El paciente podrá crear PQR
-    public int crearPqr(PQRDTO pqrDto) throws Exception;
-    public void actualizarPqr(PQRDTO pqrDto, int idPqr) throws Exception;
+    public int crearPqr(PQRDTOPaciente pqrDto) throws Exception;
+    public void actualizarPqr(PQRDTOPaciente pqrDto, int idPqr) throws Exception;
     public void eliminarPqr(int idPqr) throws Exception;
     public PQR obtenerPqr(int idPqr) throws Exception;
 

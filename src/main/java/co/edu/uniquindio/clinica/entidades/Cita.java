@@ -34,7 +34,11 @@ public class Cita implements Serializable {
 
     @Column(nullable = false)
     private LocalDateTime fechaCita;
-    @OneToOne
+    @OneToOne (mappedBy = "cita")
     private Consulta consulta;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private EstadoCita estadoCita;
 }
 

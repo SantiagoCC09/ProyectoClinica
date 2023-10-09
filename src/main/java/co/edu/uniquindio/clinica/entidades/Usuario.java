@@ -27,12 +27,15 @@ public class Usuario extends Cuenta implements Serializable {
     @Column(nullable = false)
     private String urlFoto;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 50)
     private Ciudad ciudad;
 
     @Column(nullable = false, length = 11)
     private String cedula;
 
+
+    @Enumerated(EnumType.STRING)
     @Column
     private EstadoUsuario estado;
 }

@@ -2,25 +2,26 @@ package co.edu.uniquindio.clinica.dto;
 
 import co.edu.uniquindio.clinica.entidades.EstadoCita;
 import co.edu.uniquindio.clinica.entidades.EstadoPqr;
+import org.springframework.cglib.core.Local;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 public record PQRDTO (
 
 
-        EstadoPqr estado,
 
+         EstadoPqr estado,
 
         String descripcion,
 
-        Date fecha,
+        LocalDateTime fecha,
 
-        String nombrePaciente,
+        String nombre,
 
-        int codigoAdministrador,
+        int codigoAdmin,
+
         String motivo
-
-
 ) {
 
 }

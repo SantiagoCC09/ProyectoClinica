@@ -1,11 +1,12 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
 
-import co.edu.uniquindio.clinica.dto.CitaDTOAdmin;
-import co.edu.uniquindio.clinica.dto.ConsultaDTO;
+import co.edu.uniquindio.clinica.dto.*;
 import co.edu.uniquindio.clinica.entidades.Consulta;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 public interface MedicoServicio {
 
@@ -13,12 +14,13 @@ public interface MedicoServicio {
 
     public void verPerfil();
 
-    public void filtrarCitasPendientesPorFecha(Date date);
+    public List<CitaDTOMedico> filtrarCitasPendientesPorFecha(LocalDateTime date) throws Exception;
 
-    public void filtrarCitasPendientesNombrePaciente(String nombre);
+    public List <CitaDTOMedico> filtrarCitasPendientesNombrePaciente(String nombre) throws Exception;
 
-    public void filtrarCitasPendientesIdPaciente(int idPaciente);
+    public List <CitaDTOMedico> filtrarCitasPendientesIdPaciente(String cedula) throws Exception;
 
+    public List <CitaDTOMedico> listarCitas() throws Exception;
     public String atenderCitaSeleccionada(CitaDTOAdmin citaDTOAdmin);
 
     public void filtrarDisponibilidadPorFecha(Date date);
@@ -32,12 +34,22 @@ public interface MedicoServicio {
     public void filtrarHistorialMedicoPorId(int idPaciente);
 
     //El médico crea y gestiona las consultas
-    public int crearConsulta(ConsultaDTO consultaDto) throws Exception;
+    public int crearConsulta(ConsultaDTO consultaDto, RecetaDTO recetaDTO) throws Exception;
 
     public int actualizarConsulta(ConsultaDTO consultaDtoint, int codigoConsulta) throws Exception;
 
     public int eliminarConsulta(int codigoConsulta) throws Exception;
 
     public Consulta obtenerConsulta(int codigoConsulta) throws Exception;
+
+    int agregarMedicamentoReceta (MedicamentoDTO medicamentoDTO , RecetaDTO recetaDTO);
+
+    int eliminarMedicamentoReceta (int idMedicamento, RecetaDTO recetaDTO);
+
+    int crearReceta (RecetaDTO recetaDTO);
+
+    int actualizarReceta (RecetaDTO recetaDTO);
+
+
 
 }

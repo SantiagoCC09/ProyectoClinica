@@ -1,11 +1,10 @@
 package co.edu.uniquindio.clinica.servicios.implementacion;
 
 import co.edu.uniquindio.clinica.dto.*;
-import co.edu.uniquindio.clinica.entidades.Cita;
-import co.edu.uniquindio.clinica.entidades.EstadoUsuario;
-import co.edu.uniquindio.clinica.entidades.PQR;
-import co.edu.uniquindio.clinica.entidades.Paciente;
+import co.edu.uniquindio.clinica.entidades.*;
+import co.edu.uniquindio.clinica.repositorios.AdministradorRepo;
 import co.edu.uniquindio.clinica.repositorios.CitaRepo;
+import co.edu.uniquindio.clinica.repositorios.PQRSRepo;
 import co.edu.uniquindio.clinica.repositorios.PacienteRepo;
 import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.PacienteServicio;
@@ -34,6 +33,10 @@ public class PacienteServicioImpl implements PacienteServicio {
     private final PasswordEncoder passwordEncoder;
 
     private final EmailServicio emailServicio;
+
+    private final PQRSRepo pqrsRepo;
+
+    private final AdministradorRepo administradorRepo;
 
     @Override
     public int registrarse(PacienteDTO pacienteDTO) throws Exception {
@@ -110,12 +113,38 @@ public class PacienteServicioImpl implements PacienteServicio {
 
 
     @Override
-    public int crearPqr(PQRDTO pqrDto) throws Exception {
-        return 0;
+    public int crearPqr(PQRDTOPaciente pqrDto) throws Exception {
+
+
+        Optional <Administrador> opcionalAdmin = administradorRepo.findById(pqrDto.codigoAdministrador());
+        Optional <Paciente> opcionalPaciente = Optional.ofNullable(this.obtenerPaciente(pqrDto.codigoPaciente()));
+
+        PQR pqr = new PQR();
+
+        pqr.setFecha(pqrDto.fecha());
+        pqr.setDescripcion(pqrDto.descripcion());
+        pqr.setMotivo(pqrDto.motivo());
+        pqr.setEstado(pqrDto.estado());
+        pqr.setFechaCreacion(pqrDto.fechaCreacion());
+        pqr.setAdministrador(opcionalAdmin.get());
+        pqr.setPaciente(opcionalPaciente.get());
+
+        PQR pqrGuardada = this.pqrsRepo.save(pqr);
+
+
+
+        return pqrGuardada.getIdPqr();
     }
 
     @Override
-    public void actualizarPqr(PQRDTO pqrDto, int idPqr) throws Exception {
+    public void actualizarPqr(PQRDTOPaciente pqrDto, int idPqr) throws Exception {
+
+
+        Optional <PQR> opcional = pqrsRepo.findById(idPqr);
+
+
+
+
 
     }
 
