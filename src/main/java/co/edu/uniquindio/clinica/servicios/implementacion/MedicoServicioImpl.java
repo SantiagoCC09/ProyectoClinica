@@ -1,15 +1,14 @@
 package co.edu.uniquindio.clinica.servicios.implementacion;
 
 import co.edu.uniquindio.clinica.dto.*;
-import co.edu.uniquindio.clinica.entidades.Cita;
-import co.edu.uniquindio.clinica.entidades.Consulta;
-import co.edu.uniquindio.clinica.entidades.DiaTrabajoMedico;
-import co.edu.uniquindio.clinica.entidades.EstadoCita;
+import co.edu.uniquindio.clinica.entidades.*;
 import co.edu.uniquindio.clinica.repositorios.CitaRepo;
 import co.edu.uniquindio.clinica.repositorios.ConsultaRepo;
 import co.edu.uniquindio.clinica.repositorios.DiaTrabajoMedicoRepo;
 import co.edu.uniquindio.clinica.servicios.interfaces.MedicoServicio;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import java.sql.ClientInfoStatus;
@@ -24,8 +23,11 @@ import java.util.Optional;
 public class MedicoServicioImpl implements MedicoServicio {
 
     private final CitaRepo citaRepo;
+
     private final ConsultaRepo consultaRepo;
+
     private final DiaTrabajoMedicoRepo diaTrabajoMedicoRepo;
+
 
     @Override
     public void verPerfil() {
@@ -186,7 +188,7 @@ public class MedicoServicioImpl implements MedicoServicio {
         List<DiaTrabajoMedicoDTO> listaMostrar = new ArrayList<>();
         for (DiaTrabajoMedico dia : listaDias){
 
-            if (dia.getFecha().isEqual(date) && dia.isEslibre()){
+            if (dia.getFecha().isEqual(date) && dia.getEstadoDia().equals(EstadoDia.IDNEFINIDO)){
 
                 listaMostrar.add(new DiaTrabajoMedicoDTO(
                         dia.getFecha(), dia.getIdDiaTrabajo(), true,
@@ -205,17 +207,23 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public String reservarDiaLibre(Date date) {
+    public String reservarDiaLibre(LocalDateTime date) {
+
+        String respuesta = "no se puede, dado que el día no es libre";
+        DiaTrabajoMedico dia = diaTrabajoMedicoRepo.findDiaTrabajoMedicoByFecha_Date(date);
+
+
+
         return null;
     }
 
     @Override
-    public String deshacerDiaLibre(Date date) {
+    public String deshacerDiaLibre(LocalDateTime date) {
         return null;
     }
 
     @Override
-    public void filtrarHistorialMedicoPorFecha(Date date) {
+    public void filtrarHistorialMedicoPorFecha(LocalDateTime date) {
 
     }
 

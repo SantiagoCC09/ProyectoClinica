@@ -25,11 +25,11 @@ public interface MedicoServicio {
 
     public List<DiaTrabajoMedicoDTO> filtrarDisponibilidadPorFecha(LocalDateTime date);
 
-    public String reservarDiaLibre(Date date);
+    public String reservarDiaLibre(LocalDateTime date);
 
-    public String deshacerDiaLibre(Date date);
+    public String deshacerDiaLibre(LocalDateTime date);
 
-    public void filtrarHistorialMedicoPorFecha(Date date);
+    public void filtrarHistorialMedicoPorFecha(LocalDateTime date);
 
     public void filtrarHistorialMedicoPorId(int idPaciente);
 
