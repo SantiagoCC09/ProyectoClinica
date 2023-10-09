@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
-
+@Transactional
 public class AdministradorTest {
 
 
@@ -34,8 +34,13 @@ public class AdministradorTest {
 
         );
 
-
         administradorServicio.crearMedico(medico);
+    }
+
+    @Test
+    public void EliminarMedicoTest () throws Exception{
+
+
 
     }
 
