@@ -5,6 +5,8 @@ import co.edu.uniquindio.clinica.entidades.Consulta;
 
 public interface ConsultaServicio {
 
+    int crearConsulta(int idCita) throws Exception;
+
 
 
 

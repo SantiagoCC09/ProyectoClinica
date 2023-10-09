@@ -171,9 +171,9 @@ public class PacienteServicioImpl implements PacienteServicio {
     }
 
     @Override
-    public List<InfoCitaDTO> listarCitasPaciente(String cedulaPaciente) throws Exception {
+    public List<InfoCitaDTO> listarCitasPaciente(int codigoPaciente) throws Exception {
 
-        List<Cita> lista = pacienteRepo.listarCitasPaciente(cedulaPaciente);
+        List<Cita> lista = citaRepo.listarCitasPaciente(codigoPaciente);
         List<InfoCitaDTO> respuesta = new ArrayList<>();
         for (Cita p : lista){
             respuesta.add(convertir(p));
@@ -192,9 +192,9 @@ public class PacienteServicioImpl implements PacienteServicio {
 
 
     @Override
-    public List<InfoCitaDTO> filtrarCitasPorFecha(Date fecha, String cedulaPaciente) throws Exception {
+    public List<InfoCitaDTO> filtrarCitasPorFecha(int codigoPaciente, Date fecha) throws Exception {
 
-        List<Cita> lista = citaRepo.listarCitasPorFecha(fecha);
+        List<Cita> lista = citaRepo.listarCitasPorFecha(codigoPaciente,fecha);
 
         if(lista.isEmpty()){
 
@@ -210,9 +210,9 @@ public class PacienteServicioImpl implements PacienteServicio {
     }
 
     @Override
-    public List<InfoCitaDTO> filtrarCitasPorMedico(int codigoMedico) throws Exception {
+    public List<InfoCitaDTO> filtrarCitasPorMedico(int codigoPaciente, int codigoMedico) throws Exception {
 
-        List<Cita> lista = citaRepo.listarCitasPorMedico(codigoMedico);
+        List<Cita> lista = citaRepo.listarCitasPorMedico(codigoPaciente, codigoMedico);
 
         if(lista.isEmpty()){
 

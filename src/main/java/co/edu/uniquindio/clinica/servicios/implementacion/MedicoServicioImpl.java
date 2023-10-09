@@ -227,7 +227,7 @@ public class MedicoServicioImpl implements MedicoServicio {
     @Override
     public int crearConsulta(ConsultaDTO consultaDto , RecetaDTO recetaDTO) throws Exception {
 
-
+    //  citaRepo.findCitaByIdCita(idCita)
 
         return 0;
     }
