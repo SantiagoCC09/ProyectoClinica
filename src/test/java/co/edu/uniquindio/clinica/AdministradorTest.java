@@ -38,6 +38,17 @@ public class AdministradorTest {
         administradorServicio.crearMedico(medico);
 
     }
+    @Test
+    public void eliminarMedicoTest() throws Exception {
+        // Supongamos que deseas eliminar al médico con el código 1, reemplaza con el código del médico que quieras eliminar.
+        int codigoMedicoAEliminar = 1;
 
+        try {
+            administradorServicio.eliminarMedico(codigoMedicoAEliminar);
+            System.out.println("Médico eliminado exitosamente");
+        } catch (Exception e) {
+            System.err.println("Error al eliminar el médico: " + e.getMessage());
+        }
+    }
 
 }
