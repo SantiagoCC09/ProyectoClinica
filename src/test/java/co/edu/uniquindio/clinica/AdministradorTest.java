@@ -37,12 +37,7 @@ public class AdministradorTest {
         administradorServicio.crearMedico(medico);
     }
 
-    @Test
-    public void EliminarMedicoTest () throws Exception{
 
-
-
-    }
     @Test
     public void cambiarEstadoMedicoTest() throws Exception {
         // Supongamos que deseas eliminar al médico con el código 1, reemplaza con el código del médico que quieras eliminar.

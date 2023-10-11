@@ -1,15 +1,15 @@
 package co.edu.uniquindio.clinica.servicios.implementacion;
 
 import co.edu.uniquindio.clinica.dto.*;
-import co.edu.uniquindio.clinica.entidades.Cita;
-import co.edu.uniquindio.clinica.entidades.Consulta;
-import co.edu.uniquindio.clinica.entidades.DiaTrabajoMedico;
-import co.edu.uniquindio.clinica.entidades.EstadoCita;
+import co.edu.uniquindio.clinica.entidades.*;
 import co.edu.uniquindio.clinica.repositorios.CitaRepo;
 import co.edu.uniquindio.clinica.repositorios.ConsultaRepo;
 import co.edu.uniquindio.clinica.repositorios.DiaTrabajoMedicoRepo;
+import co.edu.uniquindio.clinica.repositorios.MedicoRepo;
 import co.edu.uniquindio.clinica.servicios.interfaces.MedicoServicio;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import java.sql.ClientInfoStatus;
@@ -24,12 +24,28 @@ import java.util.Optional;
 public class MedicoServicioImpl implements MedicoServicio {
 
     private final CitaRepo citaRepo;
+
     private final ConsultaRepo consultaRepo;
+
+    private final MedicoRepo medicoRepo;
+
     private final DiaTrabajoMedicoRepo diaTrabajoMedicoRepo;
+
 
     @Override
     public void verPerfil() {
 
+    }
+
+    @Override
+    public Medico obtenerMedico(int idMedico) throws Exception {
+        Optional<Medico> medico = medicoRepo.findById(idMedico);
+
+        if (medico.isEmpty()) {
+            throw new Exception("El código " + idMedico + " no está asociado a ningún usuario");
+        }
+
+        return medico.get();
     }
 
     @Override
@@ -186,10 +202,10 @@ public class MedicoServicioImpl implements MedicoServicio {
         List<DiaTrabajoMedicoDTO> listaMostrar = new ArrayList<>();
         for (DiaTrabajoMedico dia : listaDias){
 
-            if (dia.getFecha().isEqual(date) && dia.isEslibre()){
+            if (dia.getFecha().isEqual(date) && dia.getEstadoDia().equals(EstadoDia.IDNEFINIDO)){
 
                 listaMostrar.add(new DiaTrabajoMedicoDTO(
-                        dia.getFecha(), dia.getIdDiaTrabajo(), true,
+                        dia.getFecha(), dia.getIdDiaTrabajo(), EstadoDia.LIBRE,
                         dia.getMedico().getCodigo()
 
                         )
@@ -205,17 +221,23 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public String reservarDiaLibre(Date date) {
+    public String reservarDiaLibre(LocalDateTime date) {
+
+        String respuesta = "no se puede, dado que el día no es libre";
+        DiaTrabajoMedico dia = diaTrabajoMedicoRepo.findDiaTrabajoMedicoByFecha(date);
+
+
+
         return null;
     }
 
     @Override
-    public String deshacerDiaLibre(Date date) {
+    public String deshacerDiaLibre(LocalDateTime date) {
         return null;
     }
 
     @Override
-    public void filtrarHistorialMedicoPorFecha(Date date) {
+    public void filtrarHistorialMedicoPorFecha(LocalDateTime date) {
 
     }
 

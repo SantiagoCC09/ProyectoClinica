@@ -21,8 +21,9 @@ public class DiaTrabajoMedico implements Serializable {
     @Id
     private int idDiaTrabajo;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private boolean eslibre;
+    private EstadoDia estadoDia;
 
     @ManyToOne
     @JoinColumn(name = "cedulaMedico") // Nombre de la columna que contendrá la llave foránea
