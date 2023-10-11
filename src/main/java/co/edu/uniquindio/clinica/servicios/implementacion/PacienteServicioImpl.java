@@ -33,6 +33,7 @@ public class PacienteServicioImpl implements PacienteServicio {
     public int registrarse(PacienteDTO pacienteDTO) throws Exception {
 
         Paciente buscado = pacienteRepo.buscarPacienteEmail(pacienteDTO.email());
+
         if (buscado != null) {
             throw new Exception("El correo " + pacienteDTO.email() + " ya está en uso");
         }
@@ -189,7 +190,6 @@ public class PacienteServicioImpl implements PacienteServicio {
         paciente.setNombre(pacienteDTO.nombreCompleto());
         paciente.setEmail(pacienteDTO.email());
         paciente.setFechaNacimiento(pacienteDTO.fechaNacimiento());
-        paciente.setCiudadResidencia(pacienteDTO.ciudadResidencia());
         paciente.setPassword(pacienteDTO.password());
         paciente.setCiudad(pacienteDTO.ciudadResidencia());
         paciente.setRh(pacienteDTO.rh());

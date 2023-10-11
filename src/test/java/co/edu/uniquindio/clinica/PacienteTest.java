@@ -20,10 +20,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 
 @SpringBootTest
-<<<<<<< HEAD
 @Transactional
-=======
->>>>>>> 23e2e725fdb409256c53cfee4f6d960ba56825dc
+
 public class PacienteTest {
     @Autowired
     private PacienteServicio pacienteServicio;
@@ -34,9 +32,9 @@ public class PacienteTest {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
         Date fechaNacimiento = (Date) formatoFecha.parse(fechaNacimientoString);
         PacienteDTO paciente = new PacienteDTO(
-                "12345", "santiago31800@hotmail.com","password",
+                "12345", "juan-felipe-00@hotmail.com","password",
                 "Santiago C", "3165308765", Ciudad.Armenia,
-                fechaNacimiento,TipoSangre.APOSTIVIO, EPS.EMSSANAR,""
+                fechaNacimiento,TipoSangre.APOSTIVIO, EPS.EMSSANAR,"mifoto"
         );
 
         pacienteServicio.registrarse(paciente);

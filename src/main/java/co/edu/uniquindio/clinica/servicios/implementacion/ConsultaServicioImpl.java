@@ -36,7 +36,7 @@ public class ConsultaServicioImpl implements ConsultaServicio {
         consulta.setNotasMedicas(consultaDTO.notasMedico());
         consulta.setDetallesConsulta(consultaDTO.detallesConsulta());
         consulta.setTratamiento(consultaDTO.tratamiento());
-        //  consulta.set
+
 
 
         return consultaRepo.save(consulta).getIdConsulta();
