@@ -1,22 +1,33 @@
 package co.edu.uniquindio.clinica.dto;
 
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDateTime;
 
 public record CitaDTOAdmin(
+        @NotNull
+        int codigoCita,
+        String nombrePaciente,
+        String nombreMedico,
 
-    int codigoCita,
-    String nombrePaciente,
-    String nombreMedico,
-    LocalDateTime fechaCreacion, LocalDateTime fechaCita,
-    String motivo,
 
-    String cedulaPaciente,
+        LocalDateTime fechaCreacion,
 
-   String cedulaMedico,
+        @NotNull
+        LocalDateTime fechaCita,
 
-    int codigoPaciente,
+        @NotNull
+        String motivo,
 
-    int codigoMedico
+        String cedulaPaciente,
+
+        String cedulaMedico,
+
+        @NotNull
+        int codigoPaciente,
+
+        @NotNull
+        int codigoMedico
 
 ) {
 

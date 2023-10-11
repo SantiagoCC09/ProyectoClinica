@@ -37,7 +37,7 @@ public interface MedicoServicio {
     public void filtrarHistorialMedicoPorId(int idPaciente);
 
     //El médico crea y gestiona las consultas
-    public int crearConsulta(ConsultaDTO consultaDto, RecetaDTO recetaDTO) throws Exception;
+    public int crearConsulta(ConsultaDTO consultaDto, RecetaDTO recetaDTO, int idCita) throws Exception;
 
     public int actualizarConsulta(ConsultaDTO consultaDtoint, int codigoConsulta) throws Exception;
 

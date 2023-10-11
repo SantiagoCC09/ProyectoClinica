@@ -3,3 +3,5 @@ insert into medico () values (2,"felipe","12324",1,"foto", 3, "657865","fe@gmali
 insert into medico () values (3,"santiago","43543",2,"foto", 2, "786776","sa@gmali","asd34", 2023-10-15 7:50:00 );
 insert into medico () values (4,"duvan","23432",3,"foto", 3, "15645","dyva@gmali","asd324", 2023-10-15 7:50:00 );
 insert into medico () values (5,"cristian","676565",1,"foto", 3, "232","cri@gmali","asd653", 2023-10-15 7:50:00 );
+
+insert into paciente () values (6,"1093234","jorge@mail.com","123jo","jorge", "3107652",1,0,0,"jorgefoto");

@@ -22,6 +22,9 @@ public class Consulta implements Serializable {
     @Column(nullable = false, length = 500)
     private String notasMedicas;
 
+    private String tratamiento;
+
+    private String detallesConsulta;
 
     @OneToOne
     private Cita cita;

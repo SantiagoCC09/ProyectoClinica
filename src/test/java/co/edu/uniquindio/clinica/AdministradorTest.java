@@ -6,6 +6,7 @@ import co.edu.uniquindio.clinica.entidades.Ciudad;
 import co.edu.uniquindio.clinica.entidades.Especialidad;
 import co.edu.uniquindio.clinica.servicios.interfaces.AdministradorServicio;
 import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,7 +35,9 @@ public class AdministradorTest {
 
         );
 
-        administradorServicio.crearMedico(medico);
+        int nuevo = administradorServicio.crearMedico(medico);
+
+        Assertions.assertNotEquals(0,nuevo);
     }
 
     @Test
