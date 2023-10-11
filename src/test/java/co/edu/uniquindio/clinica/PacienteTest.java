@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @SpringBootTest
 public class PacienteTest {
@@ -24,11 +24,11 @@ public class PacienteTest {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
         Date fechaNacimiento = (Date) formatoFecha.parse(fechaNacimientoString);
         PacienteDTO paciente = new PacienteDTO(
-
-                "12345", "santiago@email.com","password",
+                "12345", "santiago31800@hotmail.com","password",
                 "Santiago C", "3165308765", Ciudad.Armenia,
-                fechaNacimiento,TipoSangre.APOSTIVIO
+                fechaNacimiento,"",TipoSangre.APOSTIVIO
         );
+
         pacienteServicio.registrarse(paciente);
     }
 }

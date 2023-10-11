@@ -261,9 +261,11 @@ public class PacienteServicioImpl implements PacienteServicio {
         paciente.setFechaNacimiento(pacienteDTO.fechaNacimiento());
         paciente.setCiudadResidencia(pacienteDTO.ciudadResidencia());
         paciente.setPassword(pacienteDTO.password());
+        paciente.setCiudad(pacienteDTO.ciudadResidencia());
         paciente.setRh(pacienteDTO.rh());
         paciente.setCedula(pacienteDTO.cedulaPaciente());
         paciente.setTelefono(pacienteDTO.telefono());
+        paciente.setEstado(EstadoUsuario.ESTADO_ACTIVO);
 
         return paciente;
     }

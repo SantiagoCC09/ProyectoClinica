@@ -1,9 +1,11 @@
 package co.edu.uniquindio.clinica.dto;
 
 import co.edu.uniquindio.clinica.entidades.Ciudad;
+
+import co.edu.uniquindio.clinica.entidades.EstadoUsuario;
 import co.edu.uniquindio.clinica.entidades.TipoSangre;
 
-import java.sql.Date;
+import java.util.Date;
 
 
 public record PacienteDTO(String cedulaPaciente,
@@ -16,7 +18,12 @@ public record PacienteDTO(String cedulaPaciente,
 
                           String telefono,
 
-                          Ciudad ciudadResidencia, Date fechaNacimiento, TipoSangre rh) {
+                          Ciudad ciudadResidencia,
+                          Date fechaNacimiento,
+
+                          String urlFoto,
+                          TipoSangre rh
+) {
 
 
 }

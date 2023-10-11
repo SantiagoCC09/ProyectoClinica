@@ -34,8 +34,13 @@ public class AdministradorTest {
 
         );
 
-
         administradorServicio.crearMedico(medico);
+    }
+
+    @Test
+    public void EliminarMedicoTest () throws Exception{
+
+
 
     }
     @Test
