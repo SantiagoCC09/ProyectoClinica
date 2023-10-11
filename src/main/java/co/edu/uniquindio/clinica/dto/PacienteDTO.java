@@ -1,6 +1,7 @@
 package co.edu.uniquindio.clinica.dto;
 
 import co.edu.uniquindio.clinica.entidades.Ciudad;
+
 import co.edu.uniquindio.clinica.entidades.EPS;
 import co.edu.uniquindio.clinica.entidades.EstadoUsuario;
 import co.edu.uniquindio.clinica.entidades.TipoSangre;
@@ -8,7 +9,7 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
-import java.sql.Date;
+import java.util.Date;
 
 
 public record PacienteDTO(

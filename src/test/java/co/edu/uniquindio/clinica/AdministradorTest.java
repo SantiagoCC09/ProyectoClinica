@@ -40,15 +40,18 @@ public class AdministradorTest {
         Assertions.assertNotEquals(0,nuevo);
     }
 
+
     @Test
-    public void EliminarMedicoTest () throws Exception{
+    public void cambiarEstadoMedicoTest() throws Exception {
+        // Supongamos que deseas eliminar al médico con el código 1, reemplaza con el código del médico que quieras eliminar.
+        int codigoMedicoAEliminar = 1;
 
-        int codigoMedico = 1;
-
-
-        administradorServicio.eliminarMedico(codigoMedico);
-
-
+        try {
+            administradorServicio.eliminarMedico(codigoMedicoAEliminar);
+            System.out.println("Médico eliminado exitosamente");
+        } catch (Exception e) {
+            System.err.println("Error al eliminar el médico: " + e.getMessage());
+        }
     }
 
 
