@@ -6,6 +6,7 @@ import co.edu.uniquindio.clinica.repositorios.*;
 import co.edu.uniquindio.clinica.servicios.interfaces.AdministradorServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -31,6 +32,9 @@ public class AdministradorServicioImpl implements AdministradorServicio {
     private final RespuestaRepo respuestaRepo;
 
     private final DiaTrabajoMedicoRepo diaTrabajoMedicoRepo;
+
+    private final PasswordEncoder passwordEncoder;
+
 
     @Override
     public int crearMedico(MedicoDTO medicoDTO) throws Exception {
@@ -99,36 +103,28 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
     @Override
     public int actualizarMedico(int codigoMedico, MedicoDTO medicoDTO) throws Exception {
+            Optional<Medico> opcional = medicoRepo.findById(codigoMedico);
 
-        Optional <Medico> opcional = medicoRepo.findById(codigoMedico);
+            if (opcional.isPresent()) {
+                Medico medicoBuscado = opcional.get();
 
+                // Actualizamos los campos del médico con los valores del DTO
+                medicoBuscado.setCiudad(medicoDTO.ciudad());
+                medicoBuscado.setNombre(medicoDTO.nombre());
+                medicoBuscado.setCedula(medicoDTO.cedula());
+                medicoBuscado.setTelefono(medicoDTO.telefono());
+                medicoBuscado.setUrlFoto(medicoDTO.URL_foto());
+                medicoBuscado.setEspecialidad(medicoDTO.especialidad());
+                medicoBuscado.setEmail(medicoDTO.correo());
+                medicoBuscado.setPassword(passwordEncoder.encode(medicoDTO.password()));
 
+                medicoRepo.save(medicoBuscado);
 
-        Medico medicoBuscado = new Medico();
+                return medicoBuscado.getCodigo();
+            } else {
+                throw new Exception("Médico no encontrado con el código proporcionado: " + codigoMedico);
+            }
 
-        medicoBuscado.setCiudad(medicoDTO.ciudad());
-        medicoBuscado.setNombre(medicoDTO.nombre());
-        medicoBuscado.setCedula(medicoDTO.cedula());
-        medicoBuscado.setTelefono(medicoDTO.telefono());
-        medicoBuscado.setUrlFoto(medicoDTO.URL_foto());
-        medicoBuscado.setEspecialidad(medicoDTO.especialidad());
-        medicoBuscado.setEmail(medicoDTO.correo());
-
-        if (estaRepetidoCorreo(medicoDTO.correo())) {
-
-            throw new Exception("El correo está repetido");
-
-        }
-
-        if (estaRepetidoCedula(medicoDTO.cedula())) {
-
-            throw new Exception("la cedula está repetida");
-
-        }
-
-        medicoRepo.save(medicoBuscado);
-
-        return medicoBuscado.getCodigo();
 
     }
 

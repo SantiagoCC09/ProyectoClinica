@@ -37,4 +37,10 @@ public class PacienteTest {
 
         pacienteServicio.registrarse(paciente);
     }
+
+    @Test
+    public void eliminarCuenta() throws Exception{
+        int codigoEliminar=4;
+        pacienteServicio.eliminarCuenta(codigoEliminar);
+    }
 }
