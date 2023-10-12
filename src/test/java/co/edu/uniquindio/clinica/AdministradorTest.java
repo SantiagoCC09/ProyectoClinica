@@ -7,6 +7,7 @@ import co.edu.uniquindio.clinica.entidades.DiaTrabajoMedico;
 import co.edu.uniquindio.clinica.entidades.Especialidad;
 import co.edu.uniquindio.clinica.servicios.interfaces.AdministradorServicio;
 import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,12 +30,19 @@ public class AdministradorTest {
 
         MedicoDTO medico = new MedicoDTO(
 
+<<<<<<< HEAD
                 "santiago c","2324", Ciudad.Armenia,"foto", Especialidad.PEDIATRIA,
                 "12345","santiago.cifuentesc@uqvirtual.edu.co","asd",horarios
+=======
+                "juan","2324232", Ciudad.Armenia,"foto", Especialidad.PEDIATRIA,
+                "12343","chavarriajuanfelipe00@gmail.com","asd",horarios
+>>>>>>> e82ff710824b22da9c534ba99ce32bbfe345b72b
 
         );
 
-        administradorServicio.crearMedico(medico);
+        int nuevo = administradorServicio.crearMedico(medico);
+
+        Assertions.assertNotEquals(0,nuevo);
     }
 
 

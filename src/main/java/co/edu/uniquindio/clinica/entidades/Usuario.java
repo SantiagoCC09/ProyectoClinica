@@ -34,7 +34,6 @@ public class Usuario extends Cuenta implements Serializable {
     @Column(nullable = false, length = 11)
     private String cedula;
 
-
     @Enumerated(EnumType.STRING)
     @Column
     private EstadoUsuario estado;

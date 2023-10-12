@@ -247,9 +247,16 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public int crearConsulta(ConsultaDTO consultaDto , RecetaDTO recetaDTO) throws Exception {
+    public int crearConsulta(ConsultaDTO consultaDto , RecetaDTO recetaDTO, int idCita) throws Exception {
 
-    //  citaRepo.findCitaByIdCita(idCita)
+      Cita cita = citaRepo.findCitaByIdCita(idCita);
+
+      if(cita==null){
+
+          throw new Exception("La cita con el codigo "+ idCita+ "no existe");
+      }
+
+
 
         return 0;
     }

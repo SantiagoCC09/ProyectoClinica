@@ -8,7 +8,6 @@ import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +34,10 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
     private final PasswordEncoder passwordEncoder;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e82ff710824b22da9c534ba99ce32bbfe345b72b
     @Override
     public int crearMedico(MedicoDTO medicoDTO) throws Exception {
 
@@ -63,7 +65,17 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
         }
 
+        String email = "<h1>Creacion de cuenta exitosa</h1><h2><p>Bienvenido a Clinica Uniquindio Doctor </p>"+ medicoDTO.nombre() + "</h2><img src='https://ibb.co/h9v2hjn' width='1080' height='1080'>";
+
+        emailServicio.enviarEmail(new EmailDTO(
+                "Ingreso De Medico ClinicaUQ",
+                email,
+                medicoDTO.correo()));
+
         Medico medicoRegistrado = medicoRepo.save(medicoNuevo);
+
+
+        medicoRegistrado.setPassword(passwordEncoder.encode(medicoRegistrado.getPassword()));
 
         asignarHorariosMedico( medicoNuevo, medicoDTO.horarios() );
         
