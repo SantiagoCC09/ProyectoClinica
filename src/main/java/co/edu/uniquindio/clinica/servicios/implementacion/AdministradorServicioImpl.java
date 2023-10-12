@@ -8,7 +8,6 @@ import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +60,13 @@ public class AdministradorServicioImpl implements AdministradorServicio {
             throw new Exception("la cedula está repetida");
 
         }
+
+        String email = "<h1>Creacion de cuenta exitosa</h1><h2><p>Bienvenido a Clinica Uniquindio Doctor </p>"+ medicoDTO.nombre() + "</h2><img src='https://ibb.co/h9v2hjn' width='1080' height='1080'>";
+
+        emailServicio.enviarEmail(new EmailDTO(
+                "Ingreso De Medico ClinicaUQ",
+                email,
+                medicoDTO.correo()));
 
         Medico medicoRegistrado = medicoRepo.save(medicoNuevo);
 

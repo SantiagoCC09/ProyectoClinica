@@ -30,8 +30,8 @@ public class AdministradorTest {
 
         MedicoDTO medico = new MedicoDTO(
 
-                "juan","2324", Ciudad.Armenia,"foto", Especialidad.PEDIATRIA,
-                "12345","sds","asd",horarios
+                "juan","2324232", Ciudad.Armenia,"foto", Especialidad.PEDIATRIA,
+                "12343","chavarriajuanfelipe00@gmail.com","asd",horarios
 
         );
 

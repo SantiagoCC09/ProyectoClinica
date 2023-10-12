@@ -1,5 +1,6 @@
 package co.edu.uniquindio.clinica.dto;
 
+import co.edu.uniquindio.clinica.entidades.EstadoCita;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;

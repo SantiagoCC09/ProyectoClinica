@@ -9,11 +9,11 @@ import lombok.Setter;
 
 public record EmailDTO (
         @NotNull
-        String para,
-        @NotNull
         String asunto,
         @NotNull
-        String mensaje){
+        String cuerpo,
+        @NotNull
+        String destinatario){
 
 }
 

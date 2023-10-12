@@ -37,12 +37,12 @@ public class PacienteServicioImpl implements PacienteServicio {
         if (buscado != null) {
             throw new Exception("El correo " + pacienteDTO.email() + " ya está en uso");
         }
-        String email = "<h1>Creacion de cuenta exitosa</h1><h2><p>Bienvenido a Clinica Uniquindio</p></h2>";
+        String email = "<h1>Creacion de cuenta exitosa</h1><h2><p>Bienvenido a Clinica Uniquindio </p></h2>" + pacienteDTO.nombreCompleto() +"<img src='https://ibb.co/h9v2hjn' width='300' height='200'>";
 
         emailServicio.enviarEmail(new EmailDTO(
-                pacienteDTO.email(),
                 "Creacion De cuenta ClinicaUQ",
-                email));
+                email,
+                pacienteDTO.email()));
 
 
         Paciente paciente = convertir(pacienteDTO);

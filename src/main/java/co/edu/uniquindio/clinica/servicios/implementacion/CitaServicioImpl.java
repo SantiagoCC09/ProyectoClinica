@@ -4,6 +4,7 @@ import co.edu.uniquindio.clinica.dto.CitaDTOAdmin;
 import co.edu.uniquindio.clinica.dto.InfoCitaDTO;
 import co.edu.uniquindio.clinica.entidades.Cita;
 import co.edu.uniquindio.clinica.entidades.Consulta;
+import co.edu.uniquindio.clinica.entidades.EstadoCita;
 import co.edu.uniquindio.clinica.repositorios.CitaRepo;
 import co.edu.uniquindio.clinica.servicios.interfaces.CitaServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.MedicoServicio;
@@ -38,7 +39,7 @@ public class CitaServicioImpl implements CitaServicio {
         cita.setFechaCreacion(LocalDateTime.now());
         cita.setFechaCita(citaDTOAdmin.fechaCita());
         cita.setMotivo(citaDTOAdmin.motivo());
-       // cita.setConsulta();
+        cita.setEstadoCita(EstadoCita.Programada);
         return citaRepo.save(cita).getIdCita();
 
     }

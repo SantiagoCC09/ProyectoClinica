@@ -1,7 +1,48 @@
-insert into medico () values (1,"juan","2324",1,"foto", 1, "12345","@gmali","asd", 2023-10-15 7:50:00 );
-insert into medico () values (2,"felipe","12324",1,"foto", 3, "657865","fe@gmali","asde", 2023-10-15 7:50:00 );
-insert into medico () values (3,"santiago","43543",2,"foto", 2, "786776","sa@gmali","asd34", 2023-10-15 7:50:00 );
-insert into medico () values (4,"duvan","23432",3,"foto", 3, "15645","dyva@gmali","asd324", 2023-10-15 7:50:00 );
-insert into medico () values (5,"cristian","676565",1,"foto", 3, "232","cri@gmali","asd653", 2023-10-15 7:50:00 );
 
-insert into paciente () values (6,"1093234","jorge@mail.com","123jo","jorge", "3107652",1,0,0,"jorgefoto");
+insert into cuenta values (1, "juan@gmali" , "juasd" );
+insert into cuenta values (2, "jhon@gmali" , "jhonsd" );
+insert into cuenta values (3, "ca@gmali" , "casd" );
+
+insert into cuenta values (4, "ale@gmali" , "aleasd" );
+insert into cuenta values (5, "sa@gmalil" , "saasd" );
+insert into cuenta values (6, "duva@gmali" , "duasd" );
+
+
+insert into usuario values (1,"12345", "3128823", "Armenia", "juan", "ESTADO_ACTIVO", "mifoto");
+insert into usuario values (2,"123453534", "31235434", "Calarca", "jhon", "ESTADO_ACTIVO", "mifoto");
+insert into usuario values (3,"123", "31288243", "Circasia", "carlos", "ESTADO_ACTIVO", "mifoto");
+
+insert into usuario values (4,"123432", "334321288", "Genova", "alexander", "ESTADO_ACTIVO", "mifoto");
+insert into usuario values (5,"123453", "312882343", "Montenegro", "santiago", "ESTADO_ACTIVO", "mifoto");
+insert into usuario values (6,"1234530", "3128823532", "Armenia", "duvan", "ESTADO_ACTIVO", "mifoto");
+
+insert into medico values ( 1,"INFECTOLOGIA" );
+insert into medico values (2,"GERIATRIA" );
+insert into medico values (3,"GASTROENTEROLOGIA");
+
+
+insert into paciente () values ( 4,0,1, "2003-02-28" );
+insert into paciente () values ( 5,1,2,"2003-02-28" );
+insert into paciente () values ( 6,2,1,"2003-02-28" );
+
+
+insert into dia_trabajo_medico values (1, 1,"2023-10-15 00:00:00","LIBRE",1,1);
+insert into dia_trabajo_medico values (3, 2,"2023-10-15 00:00:00", "LIBRE",3,3 );
+insert into dia_trabajo_medico values (2, 3,"2023-10-15 00:00:00", "LIBRE",2,2);
+
+insert into jornada_medico values (1,"07:00:00","18:00:00",1);
+insert into jornada_medico values (2,"00:00:00","07:00:00",3);
+insert into jornada_medico values (3,"18:00:00","00:00:00",2);
+
+insert into alergia values (1,"rinitis");
+insert into alergia values (2,"dermatitis");
+insert into alergia values (3,"alergia a alimentos");
+insert into alergia values (4,"alergia a farmacos");
+
+insert into alergia_paciente values (4,1,1);
+insert into alergia_paciente values (5,2,2);
+insert into alergia_paciente values (6,3,3);
+
+
+
+
