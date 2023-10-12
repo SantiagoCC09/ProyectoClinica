@@ -34,10 +34,6 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
     private final PasswordEncoder passwordEncoder;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e82ff710824b22da9c534ba99ce32bbfe345b72b
     @Override
     public int crearMedico(MedicoDTO medicoDTO) throws Exception {
 
