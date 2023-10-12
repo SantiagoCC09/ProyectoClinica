@@ -3,6 +3,7 @@ package co.edu.uniquindio.clinica;
 import co.edu.uniquindio.clinica.dto.DiaTrabajoMedicoDTO;
 import co.edu.uniquindio.clinica.dto.MedicoDTO;
 import co.edu.uniquindio.clinica.entidades.Ciudad;
+import co.edu.uniquindio.clinica.entidades.DiaTrabajoMedico;
 import co.edu.uniquindio.clinica.entidades.Especialidad;
 import co.edu.uniquindio.clinica.servicios.interfaces.AdministradorServicio;
 import jakarta.transaction.Transactional;
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
-@Transactional
 public class AdministradorTest {
 
 
@@ -30,8 +30,13 @@ public class AdministradorTest {
 
         MedicoDTO medico = new MedicoDTO(
 
+<<<<<<< HEAD
+                "santiago c","2324", Ciudad.Armenia,"foto", Especialidad.PEDIATRIA,
+                "12345","santiago.cifuentesc@uqvirtual.edu.co","asd",horarios
+=======
                 "juan","2324232", Ciudad.Armenia,"foto", Especialidad.PEDIATRIA,
                 "12343","chavarriajuanfelipe00@gmail.com","asd",horarios
+>>>>>>> e82ff710824b22da9c534ba99ce32bbfe345b72b
 
         );
 
@@ -44,7 +49,7 @@ public class AdministradorTest {
     @Test
     public void cambiarEstadoMedicoTest() throws Exception {
         // Supongamos que deseas eliminar al médico con el código 1, reemplaza con el código del médico que quieras eliminar.
-        int codigoMedicoAEliminar = 1;
+        int codigoMedicoAEliminar = 3;
 
         try {
             administradorServicio.eliminarMedico(codigoMedicoAEliminar);
@@ -52,6 +57,15 @@ public class AdministradorTest {
         } catch (Exception e) {
             System.err.println("Error al eliminar el médico: " + e.getMessage());
         }
+    }
+    @Test
+    public void actualizarMedico() throws Exception{
+        List<DiaTrabajoMedicoDTO> diasTrabajo = new ArrayList<>();
+        int codigoMedico=3;
+        MedicoDTO medicoDTO = new MedicoDTO("santiago","54321",Ciudad.Armenia,"",
+                Especialidad.INFECTOLOGIA, "9876", "santiago.cifuentesc@uqvirtual.edu.co",
+                "passwd", diasTrabajo);
+        administradorServicio.actualizarMedico(codigoMedico, medicoDTO);
     }
 
 

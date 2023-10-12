@@ -70,10 +70,17 @@ public class PacienteServicioImpl implements PacienteServicio {
     public void eliminarCuenta(int codigoPaciente) throws Exception {
 
         Optional<Paciente> opcional = pacienteRepo.findById(codigoPaciente);
+        Paciente paciente = obtenerPaciente(codigoPaciente);
 
         if (opcional.isEmpty()) {
             throw new Exception("No existe un paciente con el código " + codigoPaciente);
         }
+        String email = "<h1>Su cuenta ha sido desactivada</h1><h2><p>Clinica Uniquindio ha desactivado su cuenta</p></h2>";
+
+        emailServicio.enviarEmail(new EmailDTO(
+                paciente.getEmail(),
+                "Desactivacion De cuenta ClinicaUQ",
+                email));
 
         Paciente buscado = opcional.get();
 
