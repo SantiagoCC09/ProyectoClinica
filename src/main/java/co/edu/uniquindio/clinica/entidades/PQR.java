@@ -22,6 +22,8 @@ public class PQR implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPqr;
 
+    @Enumerated(EnumType.STRING)
+    @Column
     private EstadoPqr estado;
 
     @OneToMany ( mappedBy = "pqr")

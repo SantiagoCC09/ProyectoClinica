@@ -109,6 +109,16 @@ public class PacienteServicioImpl implements PacienteServicio {
 
     }
 
+<<<<<<< HEAD
+=======
+
+    @Override
+    public List<InfoPQRSDTO> listarPQRSPaciente(int codigoPaciente) throws Exception {
+        return null;
+    }
+
+
+>>>>>>> feeb75b9f53cf00495e34b796ae09ca5a8517c3c
     @Override
     public void responderPQRS() {
 

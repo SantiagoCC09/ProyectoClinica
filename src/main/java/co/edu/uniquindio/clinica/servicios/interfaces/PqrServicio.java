@@ -22,6 +22,9 @@ public interface PqrServicio {
 
 
 
-
+   public int crearPqr(PQRDTOPaciente pqrDto) throws Exception;
+   public int actualizarPqr(PQRDTOPaciente pqrDto, int idPqr) throws Exception;
+   public int eliminarPqr(int idPqr) throws Exception;
+   public PQR obtenerPqr(int idPqr) throws Exception;
     
 }
