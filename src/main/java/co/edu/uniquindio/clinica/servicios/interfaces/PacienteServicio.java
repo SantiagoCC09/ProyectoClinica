@@ -23,14 +23,7 @@ public interface PacienteServicio {
 
 
 //El paciente podrá crear PQR
-<<<<<<< HEAD
-=======
 
-
-    List<InfoPQRSDTO> listarPQRSPaciente(int codigoPaciente) throws Exception;
->>>>>>> feeb75b9f53cf00495e34b796ae09ca5a8517c3c
-
-    void responderPQRS();
 
     void verDetalleCita();
 
