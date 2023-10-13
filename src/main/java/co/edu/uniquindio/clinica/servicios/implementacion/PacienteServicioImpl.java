@@ -78,9 +78,9 @@ public class PacienteServicioImpl implements PacienteServicio {
         String email = "<h1>Su cuenta ha sido desactivada</h1><h2><p>Clinica Uniquindio ha desactivado su cuenta</p></h2>";
 
         emailServicio.enviarEmail(new EmailDTO(
-                paciente.getEmail(),
                 "Desactivacion De cuenta ClinicaUQ",
-                email));
+                email,
+                paciente.getEmail()));
 
         Paciente buscado = opcional.get();
 
@@ -108,56 +108,6 @@ public class PacienteServicioImpl implements PacienteServicio {
     public void enviarLinkRecuperacion() {
 
     }
-
-
-    @Override
-    public int crearPqr(PQRDTOPaciente pqrDto) throws Exception {
-
-
-        Optional<Administrador> opcionalAdmin = administradorRepo.findById(pqrDto.codigoAdministrador());
-        Optional<Paciente> opcionalPaciente = Optional.ofNullable(this.obtenerPaciente(pqrDto.codigoPaciente()));
-
-        PQR pqr = new PQR();
-
-        pqr.setFecha(pqrDto.fecha());
-        pqr.setDescripcion(pqrDto.descripcion());
-        pqr.setMotivo(pqrDto.motivo());
-        pqr.setEstado(pqrDto.estado());
-        pqr.setFechaCreacion(pqrDto.fechaCreacion());
-        pqr.setAdministrador(opcionalAdmin.get());
-        pqr.setPaciente(opcionalPaciente.get());
-
-        PQR pqrGuardada = this.pqrsRepo.save(pqr);
-
-
-        return pqrGuardada.getIdPqr();
-    }
-
-    @Override
-    public void actualizarPqr(PQRDTOPaciente pqrDto, int idPqr) throws Exception {
-
-
-        Optional<PQR> opcional = pqrsRepo.findById(idPqr);
-
-
-    }
-
-    @Override
-    public void eliminarPqr(int idPqr) throws Exception {
-
-    }
-
-    @Override
-    public PQR obtenerPqr(int idPqr) throws Exception {
-        return null;
-    }
-
-
-    @Override
-    public List<InfoPQRSDTO> listarPQRSPaciente(int codigoPaciente) throws Exception {
-        return null;
-    }
-
 
     @Override
     public void responderPQRS() {

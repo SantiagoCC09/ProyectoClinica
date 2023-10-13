@@ -38,7 +38,8 @@ public class ConsultaServicioImpl implements ConsultaServicio {
         consulta.setTratamiento(consultaDTO.tratamiento());
 
 
-
         return consultaRepo.save(consulta).getIdConsulta();
     }
+
+
 }

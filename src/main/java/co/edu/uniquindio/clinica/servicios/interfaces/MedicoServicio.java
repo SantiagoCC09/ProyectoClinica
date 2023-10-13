@@ -12,18 +12,18 @@ import java.util.List;
 public interface MedicoServicio {
 
 
-
     public void verPerfil();
 
     Medico obtenerMedico(int idMedico) throws Exception;
 
     public List<CitaDTOMedico> filtrarCitasPendientesPorFecha(LocalDateTime date) throws Exception;
 
-    public List <CitaDTOMedico> filtrarCitasPendientesNombrePaciente(String nombre) throws Exception;
+    public List<CitaDTOMedico> filtrarCitasPendientesNombrePaciente(String nombre) throws Exception;
 
-    public List <CitaDTOMedico> filtrarCitasPendientesIdPaciente(String cedula) throws Exception;
+    public List<CitaDTOMedico> filtrarCitasPendientesIdPaciente(String cedula) throws Exception;
 
-    public List <CitaDTOMedico> listarCitas() throws Exception;
+    public List<CitaDTOMedico> listarCitas() throws Exception;
+
     public String atenderCitaSeleccionada(CitaDTOAdmin citaDTOAdmin);
 
     public List<DiaTrabajoMedicoDTO> filtrarDisponibilidadPorFecha(LocalDateTime date);
@@ -37,7 +37,6 @@ public interface MedicoServicio {
     public void filtrarHistorialMedicoPorId(int idPaciente);
 
     //El médico crea y gestiona las consultas
-    public int crearConsulta(ConsultaDTO consultaDto, RecetaDTO recetaDTO, int idCita) throws Exception;
 
     public int actualizarConsulta(ConsultaDTO consultaDtoint, int codigoConsulta) throws Exception;
 

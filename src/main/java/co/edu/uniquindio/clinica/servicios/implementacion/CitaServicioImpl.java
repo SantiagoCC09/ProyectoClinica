@@ -87,7 +87,8 @@ public class CitaServicioImpl implements CitaServicio {
         List<Cita> lista = citaRepo.listarCitasPaciente(codigoPaciente);
 
         if(lista.isEmpty()){
-            throw new Exception("EL paciente "+ codigoPaciente+ "no tiene citas registradas");
+
+            throw new Exception("EL paciente "+ codigoPaciente+ " no tiene citas registradas");
         }
 
         List<InfoCitaDTO> respuesta = new ArrayList<>();
