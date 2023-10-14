@@ -246,37 +246,11 @@ public class MedicoServicioImpl implements MedicoServicio {
 
     }
 
-    @Override
-    public int crearConsulta(ConsultaDTO consultaDto , RecetaDTO recetaDTO, int idCita) throws Exception {
-
-      Cita cita = citaRepo.findCitaByIdCita(idCita);
-
-      if(cita==null){
-
-          throw new Exception("La cita con el codigo "+ idCita+ "no existe");
-      }
-
-
-
-        return 0;
-    }
-
 
     //Según mi plantemiento, nos ahorramos el actualizar y el eliminar
     @Override
     public int actualizarConsulta(ConsultaDTO consultaDtoint, int codigoConsulta) throws Exception {
         return 0;
-    }
-
-    @Override
-    public int eliminarConsulta(int codigoConsulta) throws Exception {
-        return 0;
-    }
-
-//********************************************************************
-    @Override
-    public Consulta obtenerConsulta(int codigoConsulta) throws Exception {
-        return null;
     }
 
     @Override

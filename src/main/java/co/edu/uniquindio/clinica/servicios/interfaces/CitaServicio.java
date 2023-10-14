@@ -15,7 +15,7 @@ public interface CitaServicio {
 
     int actualizarCita(CitaDTOAdmin citaDTOAdmin , int codigoCita) throws Exception;
 
-    int eliminarCita(int codigoCita) throws Exception;
+    void eliminarCita(int codigoCita) throws Exception;
 
     List<InfoCitaDTO> listarCitasPaciente(int codigoPaciente) throws Exception;
 

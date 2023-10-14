@@ -11,11 +11,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
+@Transactional
+
 public class AdministradorTest {
 
 
@@ -42,6 +45,7 @@ public class AdministradorTest {
 
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void cambiarEstadoMedicoTest() throws Exception {
         // Supongamos que deseas eliminar al médico con el código 1, reemplaza con el código del médico que quieras eliminar.
         int codigoMedicoAEliminar = 3;

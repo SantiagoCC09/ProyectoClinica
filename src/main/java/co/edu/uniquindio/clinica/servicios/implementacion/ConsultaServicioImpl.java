@@ -3,6 +3,7 @@ package co.edu.uniquindio.clinica.servicios.implementacion;
 import co.edu.uniquindio.clinica.dto.ConsultaDTO;
 import co.edu.uniquindio.clinica.entidades.Cita;
 import co.edu.uniquindio.clinica.entidades.Consulta;
+import co.edu.uniquindio.clinica.entidades.EstadoCita;
 import co.edu.uniquindio.clinica.repositorios.CitaRepo;
 import co.edu.uniquindio.clinica.repositorios.ConsultaRepo;
 import co.edu.uniquindio.clinica.servicios.interfaces.CitaServicio;
@@ -33,12 +34,24 @@ public class ConsultaServicioImpl implements ConsultaServicio {
         Consulta consulta = new Consulta();
 
         consulta.setCita(citaServicio.obtenerCita(consultaDTO.idCita()));
+        cita.setEstadoCita(EstadoCita.Completada);
         consulta.setNotasMedicas(consultaDTO.notasMedico());
         consulta.setDetallesConsulta(consultaDTO.detallesConsulta());
         consulta.setTratamiento(consultaDTO.tratamiento());
 
 
-
         return consultaRepo.save(consulta).getIdConsulta();
     }
+
+    @Override
+    public void eliminarConsulta(int codigoConsulta) throws Exception {
+
+    }
+
+    @Override
+    public Consulta obtenerConsulta(int codigoConsulta) throws Exception {
+        return null;
+    }
+
+
 }
