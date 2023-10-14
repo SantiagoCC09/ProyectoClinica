@@ -1,11 +1,11 @@
 
 insert into cuenta values (1, "juan@gmali" , "juasd" );
 insert into cuenta values (2, "jhon@gmali" , "jhonsd" );
-insert into cuenta values (3, "ca@gmali" , "casd" );
+insert into cuenta values (3, "chavarriajuanfelipe00@gmail.com" , "casd" );
 
 insert into cuenta values (4, "ale@gmali" , "aleasd" );
 insert into cuenta values (5, "sa@gmalil" , "saasd" );
-insert into cuenta values (6, "duva@gmali" , "duasd" );
+insert into cuenta values (6, "juan-felipe-00@hotmail.com" , "duasd" );
 
 
 insert into usuario values (1,"12345", "3128823", "Armenia", "juan", "ESTADO_ACTIVO", "mifoto");
@@ -26,9 +26,9 @@ insert into paciente () values ( 5,1,2,"2003-02-28" );
 insert into paciente () values ( 6,2,1,"2003-02-28" );
 
 
-insert into dia_trabajo_medico values (1, 1,"2023-10-15 00:00:00","LIBRE",1,1);
-insert into dia_trabajo_medico values (3, 2,"2023-10-15 00:00:00", "LIBRE",3,3 );
-insert into dia_trabajo_medico values (2, 3,"2023-10-15 00:00:00", "LIBRE",2,2);
+insert into dia_trabajo_medico values (1, 1,"2023-10-15 00:00:00","LIBRE");
+insert into dia_trabajo_medico values (3, 2,"2023-10-15 00:00:00", "LIBRE");
+insert into dia_trabajo_medico values (2, 3,"2023-10-15 00:00:00", "LIBRE");
 
 insert into jornada_medico values (1,"07:00:00","18:00:00",1);
 insert into jornada_medico values (2,"00:00:00","07:00:00",3);

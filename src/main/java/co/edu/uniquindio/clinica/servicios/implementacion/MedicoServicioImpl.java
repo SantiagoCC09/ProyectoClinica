@@ -254,17 +254,6 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public int eliminarConsulta(int codigoConsulta) throws Exception {
-        return 0;
-    }
-
-//********************************************************************
-    @Override
-    public Consulta obtenerConsulta(int codigoConsulta) throws Exception {
-        return null;
-    }
-
-    @Override
     public int agregarMedicamentoReceta(MedicamentoDTO medicamentoDTO, RecetaDTO recetaDTO) {
 
 

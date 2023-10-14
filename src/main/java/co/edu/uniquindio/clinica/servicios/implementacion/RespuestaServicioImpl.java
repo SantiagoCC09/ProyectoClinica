@@ -55,7 +55,8 @@ public class RespuestaServicioImpl implements RespuestaServicio {
         respuesta.setCuenta(pacienteServicio.obtenerPaciente(respuestaDto.codigoCuenta()));
         respuesta.setDescripcion(respuestaDto.descripcion());
 
-        String email = "<h1>Respuesta A Su PQR</h1><h2><p> Estimado(a) " +opcional.get().getNombre() + " Su PQR ha sido respondida </p> </h2>";
+
+        String email = "<h1>Respuesta A Su PQR</h1><h2><p> Estimado(a) " +opcional.get().getNombre() + " SuPQ R ha sido respondida </p> </h2>";
 
         emailServicio.enviarEmail(new EmailDTO(
                 "Notificacion PQR",

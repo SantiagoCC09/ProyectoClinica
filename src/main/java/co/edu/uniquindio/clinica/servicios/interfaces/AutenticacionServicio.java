@@ -5,5 +5,5 @@ import co.edu.uniquindio.clinica.dto.TokenDTO;
 
 public interface AutenticacionServicio {
 
-    TokenDTO login(SesionDTO sesionDTO);
+    TokenDTO login(SesionDTO sesionDTO) throws Exception;
 }
