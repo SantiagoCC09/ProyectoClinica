@@ -1,11 +1,11 @@
 
 insert into cuenta values (1, "juan@gmali" , "juasd" );
 insert into cuenta values (2, "jhon@gmali" , "jhonsd" );
-insert into cuenta values (3, "chavarriajuanfelipe00@gmail.com" , "casd" );
+insert into cuenta values (3, "Ca@mail.com", "casd" );
 
 insert into cuenta values (4, "ale@gmali" , "aleasd" );
 insert into cuenta values (5, "sa@gmalil" , "saasd" );
-insert into cuenta values (6, "juan-felipe-00@hotmail.com" , "duasd" );
+insert into cuenta values (6, "du@gmail.com" , "duasd" );
 
 
 insert into usuario values (1,"12345", "3128823", "Armenia", "juan", "ESTADO_ACTIVO", "mifoto");
