@@ -1,6 +1,7 @@
 package co.edu.uniquindio.clinica;
 
 import co.edu.uniquindio.clinica.dto.CitaDTOAdmin;
+import co.edu.uniquindio.clinica.dto.InfoCitaDTO;
 import co.edu.uniquindio.clinica.servicios.interfaces.AdministradorServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.CitaServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.MedicoServicio;
@@ -16,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 @SpringBootTest
 @Transactional
@@ -55,9 +57,14 @@ public class CitaTest {
     @Sql("classpath:dataset.sql")
     public void listarCitasPaciente() throws Exception{
         int codigoPaciente =4;
+<<<<<<< HEAD
         citaServicio.listarCitasPaciente(codigoPaciente);
 
         Assertions.assertNotEquals(0 ,citaServicio.listarCitasPaciente(codigoPaciente));
+=======
+        List<InfoCitaDTO> lista = citaServicio.listarCitasPaciente(codigoPaciente);
+        System.out.println(lista);
+>>>>>>> ce1152c31f35e597e2d66d3d9b1771618523c275
     }
 
 
