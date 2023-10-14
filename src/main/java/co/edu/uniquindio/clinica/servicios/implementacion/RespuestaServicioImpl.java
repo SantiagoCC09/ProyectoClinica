@@ -16,6 +16,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -56,15 +57,32 @@ public class RespuestaServicioImpl implements RespuestaServicio {
         respuesta.setDescripcion(respuestaDto.descripcion());
 
 
-        String email = "<h1>Respuesta A Su PQR</h1><h2><p> Estimado(a) " +opcional.get().getNombre() + " SuPQ R ha sido respondida </p> </h2>";
+        String email = "<h1>Respuesta A Su PQR</h1><h2><p> Estimado(a) " +opcional.get().getNombre() + " Su PQR ha sido respondida ingrese a la pagina para conocer mas detalles </p> </h2>";
 
         emailServicio.enviarEmail(new EmailDTO(
                 "Notificacion PQR",
                 email,
                 opcional.get().getEmail()));
 
+        asignarRespuestas(respuesta, respuestaDto.repuestas());
 
 
         return respuestaRepo.save(respuesta).getIdRespuesta();
     }
+
+    private void asignarRespuestas (Respuesta respuestaNueva , List<RespuestaDTO> respuestas) throws Exception {
+
+      for(RespuestaDTO r : respuestas){
+
+          Respuesta rpqr = new Respuesta();
+
+          rpqr.setFecha(r.fecha());
+          rpqr.setDescripcion(r.descripcion());
+          rpqr.setIdRespuesta(respuestaNueva.getIdRespuesta());
+          rpqr.setCuenta(respuestaNueva.getCuenta());
+          rpqr.setPqr(respuestaNueva.getPqr());
+
+      }
+    }
+
 }

@@ -44,9 +44,7 @@ public class PqrServicioImpl implements PqrServicio {
         pqr.setFecha(pqrDto.fecha());
         pqr.setDescripcion(pqrDto.descripcion());
         pqr.setMotivo(pqrDto.motivo());
-
         pqr.setEstado(EstadoPqr.RADICADA);
-
 
         pqr.setFechaCreacion(pqrDto.fechaCreacion());
         pqr.setAdministrador(opcionalAdmin.get());
@@ -64,6 +62,7 @@ public class PqrServicioImpl implements PqrServicio {
 
         return pqrGuardada.getIdPqr();
     }
+
 
 
     @Override
@@ -161,7 +160,6 @@ public class PqrServicioImpl implements PqrServicio {
 
 
         return pqrsRepo.save(pqr).getIdPqr();
-
 
     }
 
