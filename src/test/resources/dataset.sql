@@ -39,9 +39,9 @@ insert into alergia values (2,"dermatitis");
 insert into alergia values (3,"alergia a alimentos");
 insert into alergia values (4,"alergia a farmacos");
 
-insert into alergia_paciente values (4,1,1);
-insert into alergia_paciente values (5,2,2);
-insert into alergia_paciente values (6,3,3);
+insert into alergia_paciente values (1,4,1);
+insert into alergia_paciente values (2,5,2);
+insert into alergia_paciente values (3,6,3);
 
 
 
