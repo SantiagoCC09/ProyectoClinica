@@ -15,7 +15,7 @@ import java.util.List;
 public interface CitaRepo extends JpaRepository < Cita, Integer > {
 
 
-    @Query("select p from Paciente p where p.cedula = :codigoPaciente")
+    @Query("select c from Cita c where c.paciente.codigo = :codigoPaciente")
     List<Cita> listarCitasPaciente(int codigoPaciente);
 
     @Query("select c from Cita c where c.paciente.codigo = :codigoPaciente and c.fechaCita = :fecha")
