@@ -51,6 +51,12 @@ public class CitaTest {
 
     }
 
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void listarCitasPaciente() throws Exception{
+
+    }
+
 
 
 }
