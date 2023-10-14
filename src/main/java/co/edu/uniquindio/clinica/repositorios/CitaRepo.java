@@ -15,14 +15,14 @@ import java.util.List;
 public interface CitaRepo extends JpaRepository < Cita, Integer > {
 
 
-    @Query("select p from Paciente p where p.cedula = :codigoPaciente")
+    @Query("select c from Cita c where c.paciente.codigo = :codigoPaciente")
     List<Cita> listarCitasPaciente(int codigoPaciente);
 
     @Query("select c from Cita c where c.paciente.codigo = :codigoPaciente and c.fechaCita = :fecha")
     List<Cita> listarCitasPorFecha(int codigoPaciente, Date fecha);
 
-    @Query("select c from Cita c where c.medico.nombre = :nombreMedico")
-    List<Cita>listarCitasPorNombreMedico(String nombreMedico);
+    @Query("select c from Cita c where c.paciente.codigo = :codigoPaciente and c.medico.nombre = :nombreMedico")
+    List<Cita>listarCitasPorNombreMedico(int codigoPaciente , String nombreMedico);
 
     @Query("select c from Cita c where c.paciente.codigo = :codigoPaciente and c.medico.codigo = :codigoMedico")
     List<Cita>listarCitasPorMedico(int codigoPaciente, int codigoMedico );

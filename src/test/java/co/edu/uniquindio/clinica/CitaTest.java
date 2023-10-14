@@ -54,9 +54,13 @@ public class CitaTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void listarCitasPaciente() throws Exception{
-        int codigoPaciente =3;
+        int codigoPaciente =4;
         citaServicio.listarCitasPaciente(codigoPaciente);
+
+        Assertions.assertNotEquals(0 ,citaServicio.listarCitasPaciente(codigoPaciente));
     }
+
+
 
 
 
