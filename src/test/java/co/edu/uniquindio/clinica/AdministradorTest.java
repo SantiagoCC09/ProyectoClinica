@@ -33,10 +33,9 @@ public class AdministradorTest {
 
         MedicoDTO medico = new MedicoDTO(
 
-                "juan","2324232", Ciudad.Armenia,"foto", Especialidad.PEDIATRIA,
-                "12343","chavarriajuanfelipe00@gmail.com","asd",horarios
-
-
+                "santiago c","2324", Ciudad.Armenia,"foto", Especialidad.PEDIATRIA,
+                "12345","santiago.cifuentesc@uqvirtual.edu.co","asd",
+                horarios
         );
 
         int nuevo = administradorServicio.crearMedico(medico);

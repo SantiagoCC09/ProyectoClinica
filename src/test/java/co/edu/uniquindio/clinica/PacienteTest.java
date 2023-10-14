@@ -20,8 +20,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 
 @SpringBootTest
-@Transactional
-
 public class PacienteTest {
     @Autowired
     private PacienteServicio pacienteServicio;
@@ -32,8 +30,8 @@ public class PacienteTest {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
         Date fechaNacimiento = (Date) formatoFecha.parse(fechaNacimientoString);
         PacienteDTO paciente = new PacienteDTO(
-                "12345", "alf@gmail.com","password",
-                "Alf", "3165308765", Ciudad.Armenia,
+                "12345", "juanp.cardonag@uqvirtual.edu.co","password",
+                "Juan Felipe Chavarria Vidal", "3165308765", Ciudad.Armenia,
                 fechaNacimiento,TipoSangre.APOSTIVIO, EPS.EMSSANAR,"mifoto"
         );
 
@@ -42,7 +40,7 @@ public class PacienteTest {
 
     @Test
     public void eliminarCuenta() throws Exception{
-        int codigoEliminar=4;
+        int codigoEliminar=3;
         pacienteServicio.eliminarCuenta(codigoEliminar);
     }
 }
