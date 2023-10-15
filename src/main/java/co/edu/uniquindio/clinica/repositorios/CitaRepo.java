@@ -3,6 +3,7 @@ package co.edu.uniquindio.clinica.repositorios;
 
 
 import co.edu.uniquindio.clinica.entidades.Cita;
+import co.edu.uniquindio.clinica.entidades.EstadoCita;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -29,4 +30,12 @@ public interface CitaRepo extends JpaRepository < Cita, Integer > {
 
     Cita findCitaByIdCita(int id);
 
+    @Query ("select c from Cita c where c.fechaCita = :fecha and c.estadoCita = 'Programada' ")
+    List <Cita> listarCitaPendientePorFecha(LocalDateTime fecha);
+
+    @Query ("select c from Cita c where c.paciente.nombre = :nombre")
+    List<Cita> listarPorNombrePaciente(String nombre);
+
+    @Query ("select c from Cita c where c.paciente.cedula = :cedula")
+    List<Cita> listarPorCedulaPaciente(String cedula);
 }

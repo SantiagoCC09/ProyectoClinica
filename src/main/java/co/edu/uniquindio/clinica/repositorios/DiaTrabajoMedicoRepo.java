@@ -3,6 +3,7 @@ package co.edu.uniquindio.clinica.repositorios;
 
 import co.edu.uniquindio.clinica.entidades.DiaTrabajoMedico;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -14,5 +15,6 @@ public interface DiaTrabajoMedicoRepo extends JpaRepository<DiaTrabajoMedico,Int
     List<DiaTrabajoMedico> findAllByMedicoCodigo(int codigo);
 
 
-    DiaTrabajoMedico findDiaTrabajoMedicoByFecha(LocalDateTime date);
+    @Query ("select d from DiaTrabajoMedico d where d.fecha = :fecha")
+    DiaTrabajoMedico findDiaTrabajoMedicoByFecha(LocalDateTime fecha);
 }

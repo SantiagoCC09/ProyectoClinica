@@ -52,7 +52,7 @@ public class MedicoServicioImpl implements MedicoServicio {
     public List <CitaDTOMedico> filtrarCitasPendientesPorFecha(LocalDateTime date) throws Exception {
 
 
-        List<Cita> listaCitas = citaRepo.findAll();
+        List<Cita> listaCitas = citaRepo.listarCitaPendientePorFecha(date);
 
         List<CitaDTOMedico> listaCitasPendientes = new ArrayList<>();
 
@@ -63,17 +63,14 @@ public class MedicoServicioImpl implements MedicoServicio {
 
         for (Cita cita : listaCitas) {
 
-            CitaDTOMedico citaMedico = new CitaDTOMedico(
+            CitaDTOMedico citaMedicoDto = new CitaDTOMedico(
 
                     cita.getIdCita(), cita.getPaciente().getNombre(),
                     cita.getFechaCreacion(), cita.getFechaCita(), cita.getMotivo(),
                     cita.getPaciente().getCedula(), cita.getPaciente().getCodigo()
 
             );
-            if (cita.getFechaCita().isEqual(date)) {
-
-                listaCitasPendientes.add(citaMedico);
-            }
+            listaCitasPendientes.add(citaMedicoDto);
 
         }
 
@@ -84,7 +81,7 @@ public class MedicoServicioImpl implements MedicoServicio {
     @Override
     public List <CitaDTOMedico> filtrarCitasPendientesNombrePaciente(String nombre) throws Exception {
 
-        List<Cita> listaCitas = citaRepo.findAll();
+        List<Cita> listaCitas = citaRepo.listarPorNombrePaciente(nombre);
 
         List<CitaDTOMedico> listaCitasPendientes = new ArrayList<>();
 
@@ -95,28 +92,27 @@ public class MedicoServicioImpl implements MedicoServicio {
 
         for (Cita cita : listaCitas) {
 
-            CitaDTOMedico citaMedico = new CitaDTOMedico(
+            CitaDTOMedico citaMedicoDto = new CitaDTOMedico(
 
                     cita.getIdCita(), cita.getPaciente().getNombre(),
                     cita.getFechaCreacion(), cita.getFechaCita(), cita.getMotivo(),
                     cita.getPaciente().getCedula(), cita.getPaciente().getCodigo()
 
             );
-            if (cita.getPaciente().getNombre().equals(nombre)) {
-
-                listaCitasPendientes.add(citaMedico);
-            }
+            listaCitasPendientes.add(citaMedicoDto);
 
         }
 
 
         return listaCitasPendientes;
-    }
+        }
+
+
 
     @Override
-    public List <CitaDTOMedico> filtrarCitasPendientesIdPaciente(String cedula) throws Exception {
+    public List <CitaDTOMedico> filtrarCitasPendientesCedulaPaciente(String cedula) throws Exception {
 
-        List<Cita> listaCitas = citaRepo.findAll();
+        List<Cita> listaCitas = citaRepo.listarPorCedulaPaciente(cedula);
 
         List<CitaDTOMedico> listaCitasPendientes = new ArrayList<>();
 
@@ -127,18 +123,14 @@ public class MedicoServicioImpl implements MedicoServicio {
 
         for (Cita cita : listaCitas) {
 
-            CitaDTOMedico citaMedico = new CitaDTOMedico(
+            CitaDTOMedico citaMedicoDto = new CitaDTOMedico(
 
                     cita.getIdCita(), cita.getPaciente().getNombre(),
                     cita.getFechaCreacion(), cita.getFechaCita(), cita.getMotivo(),
                     cita.getPaciente().getCedula(), cita.getPaciente().getCodigo()
 
             );
-
-            if (cita.getPaciente().getCedula().equalsIgnoreCase(cedula)){
-
-                listaCitasPendientes.add(citaMedico);
-            }
+            listaCitasPendientes.add(citaMedicoDto);
 
         }
 
@@ -195,30 +187,33 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public List<DiaTrabajoMedicoDTO> filtrarDisponibilidadPorFecha(LocalDateTime date) {
+    public DiaTrabajoMedicoDTO filtrarDisponibilidadPorFecha(LocalDateTime date) throws Exception {
 
+        DiaTrabajoMedicoDTO diaDto = null;
 
-        List<DiaTrabajoMedico> listaDias = this.diaTrabajoMedicoRepo.findAll();
-        List<DiaTrabajoMedicoDTO> listaMostrar = new ArrayList<>();
-        for (DiaTrabajoMedico dia : listaDias){
+        Optional <DiaTrabajoMedico> dia = Optional.ofNullable(diaTrabajoMedicoRepo.findDiaTrabajoMedicoByFecha(date));
 
-            if (dia.getFecha().isEqual(date) && dia.getEstadoDia().equals(EstadoDia.IDNEFINIDO)){
+        if (dia.isPresent()){
 
-                listaMostrar.add(new DiaTrabajoMedicoDTO(
-                        dia.getFecha(), dia.getIdDiaTrabajo(), EstadoDia.LIBRE,
-                        dia.getMedico().getCodigo()
+            diaDto = new DiaTrabajoMedicoDTO(
+                    dia.get().getFecha(), dia.get().getIdDiaTrabajo(), dia.get().getEstadoDia()
+                    ,dia.get().getMedico().getCodigo()
 
-                        )
-
-                        );
-            }
+            );
 
         }
 
 
+        if (diaDto == null){
 
-    return listaMostrar;
-    }
+            throw new Exception("no se encontró el día");
+        }
+
+
+        return diaDto;
+
+        }
+
 
     @Override
     public String reservarDiaLibre(LocalDateTime date) {
@@ -237,15 +232,50 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public void filtrarHistorialMedicoPorFecha(LocalDateTime date) {
+    public List <ConsultaDTO> filtrarHistorialMedicoPorFecha(LocalDateTime date) {
 
+        List <Consulta> consultas = consultaRepo.findConsultaByFecha(date);
+
+        List <ConsultaDTO> consultasMostrar = new ArrayList<>();
+
+
+        for (Consulta consulta : consultas){
+
+            ConsultaDTO consultaDto = new ConsultaDTO(
+                    consulta.getIdConsulta(),consulta.getTratamiento(),
+                    consulta.getNotasMedicas(),consulta.getDetallesConsulta()
+                    ,consulta.getCita().getIdCita()
+            );
+
+            consultasMostrar.add(consultaDto);
+
+
+        }
+    return consultasMostrar;
     }
 
     @Override
-    public void filtrarHistorialMedicoPorId(int idPaciente) {
+    public List <ConsultaDTO> filtrarHistorialMedicoPorId(String cedulaPaciente) {
 
+        List <Consulta> consultas = consultaRepo.findByPacienteId (cedulaPaciente);
+
+        List <ConsultaDTO> consultasMostrar = new ArrayList<>();
+
+
+        for (Consulta consulta : consultas){
+
+            ConsultaDTO consultaDto = new ConsultaDTO(
+                    consulta.getIdConsulta(),consulta.getTratamiento(),
+                    consulta.getNotasMedicas(),consulta.getDetallesConsulta()
+                    ,consulta.getCita().getIdCita()
+            );
+
+            consultasMostrar.add(consultaDto);
+
+
+        }
+        return consultasMostrar;
     }
-
 
     //Según mi plantemiento, nos ahorramos el actualizar y el eliminar
     @Override
