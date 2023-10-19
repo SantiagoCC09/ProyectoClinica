@@ -5,7 +5,7 @@ import lombok.*;
 import org.springframework.cglib.core.Local;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class PQR implements Serializable {
     private String motivo;
 
     @Column(nullable = false)
-    private LocalDateTime fecha;
+    private Date fecha;
 
     @Column(nullable = false)
     private LocalDateTime fechaCreacion;

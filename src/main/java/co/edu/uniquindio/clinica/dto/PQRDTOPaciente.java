@@ -4,6 +4,7 @@ import co.edu.uniquindio.clinica.entidades.EstadoPqr;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public record PQRDTOPaciente(
 
@@ -14,7 +15,7 @@ public record PQRDTOPaciente(
         String descripcion,
 
         @NotNull
-        LocalDateTime fecha,
+        Date fecha,
 
         @NotNull
         LocalDateTime fechaCreacion,
