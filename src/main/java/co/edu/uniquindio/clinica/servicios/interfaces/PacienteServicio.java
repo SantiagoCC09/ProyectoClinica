@@ -23,34 +23,7 @@ public interface PacienteServicio {
 
 
 //El paciente podrá crear PQR
-    public int crearPqr(PQRDTO pqrDto) throws Exception;
-    public void actualizarPqr(PQRDTO pqrDto, int idPqr) throws Exception;
-    public void eliminarPqr(int idPqr) throws Exception;
-    public PQR obtenerPqr(int idPqr) throws Exception;
 
-    List<InfoPQRSDTO> listarPQRSPaciente(int codigoPaciente) throws Exception;
-
-    void responderPQRS();
-
-
-
-//EL paciente podrá crear las citas y demás
-
-    int crearCita(CitaDTOAdmin citaDTOAdmin) throws Exception;
-
-    int actualizarCita(CitaDTOAdmin citaDTOAdmin , int codigoCita) throws Exception;
-
-    int eliminarCita(int codigoCita) throws Exception;
-
-    Cita obtenerCita(int codigoCita) throws Exception;
-
-
-    List <InfoCitaDTO> listarCitasPaciente(String cedulaPaciente) throws Exception;
-
-    //El paciente podrá filtrar las citas por fecha
-    List<InfoCitaDTO> filtrarCitasPorFecha(Date fecha, String cedulaPaciente) throws Exception;
-
-    List<InfoCitaDTO> filtrarCitasPorMedico(int codigoMedico)throws Exception;
 
     void verDetalleCita();
 

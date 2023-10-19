@@ -6,8 +6,8 @@ import co.edu.uniquindio.clinica.repositorios.*;
 import co.edu.uniquindio.clinica.servicios.interfaces.AdministradorServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +31,8 @@ public class AdministradorServicioImpl implements AdministradorServicio {
     private final RespuestaRepo respuestaRepo;
 
     private final DiaTrabajoMedicoRepo diaTrabajoMedicoRepo;
+
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public int crearMedico(MedicoDTO medicoDTO) throws Exception {
@@ -58,7 +60,18 @@ public class AdministradorServicioImpl implements AdministradorServicio {
             throw new Exception("la cedula está repetida");
 
         }
+
+        String email = "<h1>Creacion de cuenta exitosa</h1><h2><p>Bienvenido a Clinica Uniquindio Doctor </p>"+ medicoDTO.nombre() + "</h2><img src='https://ibb.co/h9v2hjn' width='1080' height='1080'>";
+
+        emailServicio.enviarEmail(new EmailDTO(
+                "Ingreso De Medico ClinicaUQ",
+                email,
+                medicoDTO.correo()));
+
         Medico medicoRegistrado = medicoRepo.save(medicoNuevo);
+
+
+        medicoRegistrado.setPassword(passwordEncoder.encode(medicoRegistrado.getPassword()));
 
         asignarHorariosMedico( medicoNuevo, medicoDTO.horarios() );
         
@@ -71,13 +84,11 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
             DiaTrabajoMedico hm = new DiaTrabajoMedico();
             hm.setFecha( h.fecha() );
-            hm.setEslibre( h.esLibre() );
+            hm.setEstadoDia( h.estadoDia() );
             hm.setMedico( medicoNuevo );
             diaTrabajoMedicoRepo.save(hm);
 
         }
-
-
 
     }
 
@@ -85,7 +96,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
     private boolean estaRepetidoCorreo(String correo) {
 
 
-         return medicoRepo.findByCorreo(correo)!=null;
+         return medicoRepo.findByEmail(correo)!=null;
     }
 
     private boolean estaRepetidoCedula(String cedula) {
@@ -98,36 +109,28 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
     @Override
     public int actualizarMedico(int codigoMedico, MedicoDTO medicoDTO) throws Exception {
+            Optional<Medico> opcional = medicoRepo.findById(codigoMedico);
 
-        Optional <Medico> opcional = medicoRepo.findById(codigoMedico);
+            if (opcional.isPresent()) {
+                Medico medicoBuscado = opcional.get();
 
+                // Actualizamos los campos del médico con los valores del DTO
+                medicoBuscado.setCiudad(medicoDTO.ciudad());
+                medicoBuscado.setNombre(medicoDTO.nombre());
+                medicoBuscado.setCedula(medicoDTO.cedula());
+                medicoBuscado.setTelefono(medicoDTO.telefono());
+                medicoBuscado.setUrlFoto(medicoDTO.URL_foto());
+                medicoBuscado.setEspecialidad(medicoDTO.especialidad());
+                medicoBuscado.setEmail(medicoDTO.correo());
+                medicoBuscado.setPassword(passwordEncoder.encode(medicoDTO.password()));
 
+                medicoRepo.save(medicoBuscado);
 
-        Medico medicoBuscado = new Medico();
+                return medicoBuscado.getCodigo();
+            } else {
+                throw new Exception("Médico no encontrado con el código proporcionado: " + codigoMedico);
+            }
 
-        medicoBuscado.setCiudad(medicoDTO.ciudad());
-        medicoBuscado.setNombre(medicoDTO.nombre());
-        medicoBuscado.setCedula(medicoDTO.cedula());
-        medicoBuscado.setTelefono(medicoDTO.telefono());
-        medicoBuscado.setUrlFoto(medicoDTO.URL_foto());
-        medicoBuscado.setEspecialidad(medicoDTO.especialidad());
-        medicoBuscado.setEmail(medicoDTO.correo());
-
-        if (estaRepetidoCorreo(medicoDTO.correo())) {
-
-            throw new Exception("El correo está repetido");
-
-        }
-
-        if (estaRepetidoCedula(medicoDTO.cedula())) {
-
-            throw new Exception("la cedula está repetida");
-
-        }
-
-        medicoRepo.save(medicoBuscado);
-
-        return medicoBuscado.getCodigo();
 
     }
 
@@ -270,7 +273,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         PQR buscado = opcional.get();
 
 
-        return new PQRDTO (
+        return new PQRDTO(
 
                 buscado.getEstado(),buscado.getDescripcion(),buscado.getFecha(),
                 buscado.getPaciente().getNombre(), buscado.getAdministrador().getCodigo()
@@ -311,12 +314,31 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
             ));
 
-
-
             }
 
 
         return respuesta;
+    }
+
+    @Override
+    public int agregarMedicamentosDisponibles(MedicamentoDTO medicamentoDTO) {
+
+
+
+
+
+        return 0;
+    }
+
+    @Override
+    public int actualizarMedicamentosDisponibles(MedicamentoDTO medicamentoDTO) {
+
+        return 0;
+    }
+
+    @Override
+    public void eliminarMedicamentosDisponibles(int codigoMedicamento) {
+
     }
 
 

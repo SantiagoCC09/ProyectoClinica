@@ -1,23 +1,15 @@
 package co.edu.uniquindio.clinica.servicios.implementacion;
 
 import co.edu.uniquindio.clinica.dto.*;
-import co.edu.uniquindio.clinica.entidades.Cita;
-import co.edu.uniquindio.clinica.entidades.EstadoUsuario;
-import co.edu.uniquindio.clinica.entidades.PQR;
-import co.edu.uniquindio.clinica.entidades.Paciente;
-import co.edu.uniquindio.clinica.repositorios.CitaRepo;
-import co.edu.uniquindio.clinica.repositorios.PacienteRepo;
+import co.edu.uniquindio.clinica.entidades.*;
+import co.edu.uniquindio.clinica.repositorios.*;
 import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
+import co.edu.uniquindio.clinica.servicios.interfaces.MedicoServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.PacienteServicio;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cglib.core.Local;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.sql.Date;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,23 +21,26 @@ public class PacienteServicioImpl implements PacienteServicio {
 
     private final PacienteRepo pacienteRepo;
 
-    private final CitaRepo citaRepo;
-
     private final PasswordEncoder passwordEncoder;
 
     private final EmailServicio emailServicio;
+
+    private final PQRSRepo pqrsRepo;
+
+    private final AdministradorRepo administradorRepo;
 
     @Override
     public int registrarse(PacienteDTO pacienteDTO) throws Exception {
 
         Paciente buscado = pacienteRepo.buscarPacienteEmail(pacienteDTO.email());
+
         if (buscado != null) {
             throw new Exception("El correo " + pacienteDTO.email() + " ya está en uso");
         }
-        String email = "<h1>Creacion de cuenta exitosa</h1><h2><p>Bienvenido a Clinica Uniquindio</p></h2>";
+        String email = "<h1>Creacion de cuenta exitosa</h1><h2><p>Bienvenido a Clinica Uniquindio </p></h2>" + pacienteDTO.nombreCompleto() +"<img src='https://ibb.co/h9v2hjn' width='300' height='200'>";
 
         emailServicio.enviarEmail(new EmailDTO(
-                "TestMail-Html",
+                "Creacion De cuenta ClinicaUQ",
                 email,
                 pacienteDTO.email()));
 
@@ -75,16 +70,24 @@ public class PacienteServicioImpl implements PacienteServicio {
     public void eliminarCuenta(int codigoPaciente) throws Exception {
 
         Optional<Paciente> opcional = pacienteRepo.findById(codigoPaciente);
+        Paciente paciente = obtenerPaciente(codigoPaciente);
 
-        if( opcional.isEmpty() ){
-            throw new Exception("No existe un médico con el código "+codigoPaciente);
+        if (opcional.isEmpty()) {
+            throw new Exception("No existe un paciente con el código " + codigoPaciente);
         }
+        String email = "<h1>Su cuenta ha sido desactivada</h1><h2><p>Clinica Uniquindio ha desactivado su cuenta</p></h2>";
+
+        emailServicio.enviarEmail(new EmailDTO(
+                "Desactivacion De cuenta ClinicaUQ",
+                email,
+                paciente.getEmail()));
 
         Paciente buscado = opcional.get();
-        buscado.setEstado(EstadoUsuario.ESTADO_INACTIVO);
-        pacienteRepo.save( buscado );
 
-        //medicoRepo.delete(buscado);
+        buscado.setEstado(EstadoUsuario.ESTADO_INACTIVO);
+
+        pacienteRepo.save(buscado);
+
 
     }
 
@@ -106,97 +109,6 @@ public class PacienteServicioImpl implements PacienteServicio {
 
     }
 
-
-
-
-    @Override
-    public int crearPqr(PQRDTO pqrDto) throws Exception {
-        return 0;
-    }
-
-    @Override
-    public void actualizarPqr(PQRDTO pqrDto, int idPqr) throws Exception {
-
-    }
-
-    @Override
-    public void eliminarPqr(int idPqr) throws Exception {
-
-    }
-
-    @Override
-    public PQR obtenerPqr(int idPqr) throws Exception {
-        return null;
-    }
-
-
-    @Override
-    public List<InfoPQRSDTO> listarPQRSPaciente(int codigoPaciente) throws Exception {
-        return null;
-    }
-
-
-    @Override
-    public void responderPQRS() {
-
-    }
-
-    @Override
-    public List<InfoCitaDTO> listarCitasPaciente(String cedulaPaciente) throws Exception {
-
-        List<Cita> lista = pacienteRepo.listarCitasPaciente(cedulaPaciente);
-        List<InfoCitaDTO> respuesta = new ArrayList<>();
-        for (Cita p : lista){
-            respuesta.add(convertir(p));
-        }
-        return respuesta;
-    }
-
-    private InfoCitaDTO convertir(Cita cita){
-        InfoCitaDTO citaGetDTO = new InfoCitaDTO(
-                cita.getIdCita(),
-                cita.getPaciente().getNombre(),
-                cita.getMedico().getNombre()
-        );
-        return citaGetDTO;
-    }
-
-
-    @Override
-    public List<InfoCitaDTO> filtrarCitasPorFecha(Date fecha, String cedulaPaciente) throws Exception {
-
-        List<Cita> lista = citaRepo.listarCitasPorFecha(fecha);
-
-        if(lista.isEmpty()){
-
-            throw new Exception("No hay citas registradas en la fecha "+ fecha);
-        }
-
-        List<InfoCitaDTO> respuesta = new ArrayList<>();
-        for (Cita p : lista){
-            respuesta.add(convertir(p));
-        }
-        return respuesta;
-
-    }
-
-    @Override
-    public List<InfoCitaDTO> filtrarCitasPorMedico(int codigoMedico) throws Exception {
-
-        List<Cita> lista = citaRepo.listarCitasPorMedico(codigoMedico);
-
-        if(lista.isEmpty()){
-
-            throw new Exception("No hay citas registradas con el medico "+ codigoMedico);
-        }
-
-        List<InfoCitaDTO> respuesta = new ArrayList<>();
-        for (Cita p : lista){
-            respuesta.add(convertir(p));
-        }
-        return respuesta;
-
-    }
 
     @Override
     public void verDetalleCita() {
@@ -231,43 +143,15 @@ public class PacienteServicioImpl implements PacienteServicio {
         paciente.setEmail(pacienteDTO.email());
         paciente.setFechaNacimiento(pacienteDTO.fechaNacimiento());
         paciente.setPassword(pacienteDTO.password());
+        paciente.setCiudad(pacienteDTO.ciudadResidencia());
         paciente.setRh(pacienteDTO.rh());
         paciente.setCedula(pacienteDTO.cedulaPaciente());
         paciente.setTelefono(pacienteDTO.telefono());
+        paciente.setEstado(EstadoUsuario.ESTADO_ACTIVO);
+        paciente.setEps(pacienteDTO.eps());
+        paciente.setUrlFoto(pacienteDTO.URL_Foto());
 
         return paciente;
     }
-
-    @Override
-    public int crearCita(CitaDTOAdmin citaDTOAdmin) throws Exception {
-
-        Cita cita = new Cita();
-
-        cita.setPaciente(this.obtenerPaciente(citaDTOAdmin.codigoPaciente()));
-        cita.setFechaCreacion(LocalDateTime.now());
-        cita.setFechaCita(citaDTOAdmin.fechaCita());
-        cita.setMotivo(citaDTOAdmin.motivo());
-        return citaRepo.save(cita).getIdCita();
-    }
-
-    @Override
-    public int actualizarCita(CitaDTOAdmin citaDTOAdmin, int codigoCita) throws Exception {
-        return 0;
-    }
-
-    @Override
-    public int eliminarCita(int codigoCita) throws Exception {
-        return 0;
-    }
-
-    @Override
-    public Cita obtenerCita(int codigoCita) throws Exception {
-
-
-
-
-        return null;
-    }
-
 
 }

@@ -17,4 +17,6 @@ public class Administrador extends Cuenta implements Serializable {
     @OneToMany (mappedBy = "administrador")
     private List<PQR> pqrs;
 
+    @OneToMany (mappedBy = "administrador")
+    private List<Medicamento> medicamentosDisponibles;
 }

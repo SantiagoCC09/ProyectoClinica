@@ -1,9 +1,6 @@
 package co.edu.uniquindio.clinica.servicios.interfaces;
 
-import co.edu.uniquindio.clinica.dto.CitaDTOAdmin;
-import co.edu.uniquindio.clinica.dto.MedicoDTO;
-import co.edu.uniquindio.clinica.dto.PQRDTO;
-import co.edu.uniquindio.clinica.dto.RespuestaDTO;
+import co.edu.uniquindio.clinica.dto.*;
 import co.edu.uniquindio.clinica.entidades.EstadoPqr;
 
 import java.util.List;
@@ -32,5 +29,10 @@ public interface AdministradorServicio {
 
     List <CitaDTOAdmin> listarCitas();
 
+    int agregarMedicamentosDisponibles(MedicamentoDTO medicamentoDTO);
+
+    int actualizarMedicamentosDisponibles(MedicamentoDTO medicamentoDTO);
+
+    void eliminarMedicamentosDisponibles (int codigoMedicamento);
 
 }

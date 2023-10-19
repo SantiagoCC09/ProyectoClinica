@@ -7,7 +7,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-public record EmailDTO (String para, String asunto, String mensaje){
+public record EmailDTO (
+        @NotNull
+        String asunto,
+        @NotNull
+        String cuerpo,
+        @NotNull
+        String destinatario){
 
 }
 

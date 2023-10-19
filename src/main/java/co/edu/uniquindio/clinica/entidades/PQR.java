@@ -2,9 +2,11 @@ package co.edu.uniquindio.clinica.entidades;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.cglib.core.Local;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -20,6 +22,8 @@ public class PQR implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPqr;
 
+    @Enumerated(EnumType.STRING)
+    @Column
     private EstadoPqr estado;
 
     @OneToMany ( mappedBy = "pqr")
@@ -32,10 +36,10 @@ public class PQR implements Serializable {
     private String motivo;
 
     @Column(nullable = false)
-    private Date fecha;
+    private LocalDateTime fecha;
 
     @Column(nullable = false)
-    private Date fechaCreacion;
+    private LocalDateTime fechaCreacion;
 
     @ManyToOne
     private Paciente paciente;
