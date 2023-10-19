@@ -20,21 +20,21 @@ public interface MedicoServicio {
 
     public List<CitaDTOMedico> filtrarCitasPendientesNombrePaciente(String nombre) throws Exception;
 
-    public List<CitaDTOMedico> filtrarCitasPendientesIdPaciente(String cedula) throws Exception;
+    public List<CitaDTOMedico> filtrarCitasPendientesCedulaPaciente(String cedula) throws Exception;
 
     public List<CitaDTOMedico> listarCitas() throws Exception;
 
     public String atenderCitaSeleccionada(CitaDTOAdmin citaDTOAdmin);
 
-    public List<DiaTrabajoMedicoDTO> filtrarDisponibilidadPorFecha(LocalDateTime date);
+    public DiaTrabajoMedicoDTO filtrarDisponibilidadPorFecha(LocalDateTime date) throws Exception;
 
     public String reservarDiaLibre(LocalDateTime date);
 
     public String deshacerDiaLibre(LocalDateTime date);
 
-    public void filtrarHistorialMedicoPorFecha(LocalDateTime date);
+    public List <ConsultaDTO> filtrarHistorialMedicoPorFecha(LocalDateTime date);
 
-    public void filtrarHistorialMedicoPorId(int idPaciente);
+    public List <ConsultaDTO> filtrarHistorialMedicoPorId(String cedulaPaciente);
 
     //El médico crea y gestiona las consultas
 
