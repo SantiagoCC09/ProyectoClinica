@@ -57,14 +57,26 @@ public class CitaTest {
     @Sql("classpath:dataset.sql")
     public void listarCitasPaciente() throws Exception{
         int codigoPaciente =4;
-<<<<<<< HEAD
+
         citaServicio.listarCitasPaciente(codigoPaciente);
 
-        Assertions.assertNotEquals(0 ,citaServicio.listarCitasPaciente(codigoPaciente));
-=======
         List<InfoCitaDTO> lista = citaServicio.listarCitasPaciente(codigoPaciente);
         System.out.println(lista);
->>>>>>> ce1152c31f35e597e2d66d3d9b1771618523c275
+
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void listarCitasPorFecha() throws Exception{
+
+        int codigoPaciente =4;
+
+        String fechaCitaString = "2023-10-10";
+        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime fechaCita = LocalDateTime.parse(fechaCitaString, formatoFecha);
+
+        citaServicio.filtrarCitasPorFecha(codigoPaciente, fechaCita);
+
     }
 
 
