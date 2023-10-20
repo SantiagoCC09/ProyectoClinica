@@ -10,6 +10,8 @@ import co.edu.uniquindio.clinica.servicios.interfaces.CitaServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.ConsultaServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import java.lang.Object;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -45,6 +47,15 @@ public class ConsultaServicioImpl implements ConsultaServicio {
 
     @Override
     public void eliminarConsulta(int codigoConsulta) throws Exception {
+        Optional<Consulta> opcionalConsulta = consultaRepo.findById(codigoConsulta);
+
+        if(opcionalConsulta.isEmpty()){
+            throw new Exception("no existe una consulta con el codigo " + codigoConsulta);
+        }else{
+            Consulta consulta= opcionalConsulta.get();
+            consultaRepo.save(consulta);
+        }
+
 
     }
 
