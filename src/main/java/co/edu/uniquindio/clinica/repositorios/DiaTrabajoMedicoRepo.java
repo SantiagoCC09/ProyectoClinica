@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -16,5 +17,5 @@ public interface DiaTrabajoMedicoRepo extends JpaRepository<DiaTrabajoMedico,Int
 
 
     @Query ("select d from DiaTrabajoMedico d where d.fecha = :fecha")
-    DiaTrabajoMedico findDiaTrabajoMedicoByFecha(LocalDateTime fecha);
+    DiaTrabajoMedico findDiaTrabajoMedicoByFecha(Date fecha);
 }

@@ -21,7 +21,7 @@ public class AlergiaPaciente implements Serializable {
     private Alergia idAlergia;
 
     @ManyToOne
-    private Paciente cedulaPaciente;
+    private Paciente codigoPaciente;
 
 
 

@@ -49,7 +49,7 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public List <CitaDTOMedico> filtrarCitasPendientesPorFecha(LocalDateTime date) throws Exception {
+    public List <CitaDTOMedico> filtrarCitasPendientesPorFecha(Date date) throws Exception {
 
 
         List<Cita> listaCitas = citaRepo.listarCitaPendientePorFecha(date);
@@ -187,7 +187,7 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public DiaTrabajoMedicoDTO filtrarDisponibilidadPorFecha(LocalDateTime date) throws Exception {
+    public DiaTrabajoMedicoDTO filtrarDisponibilidadPorFecha(Date date) throws Exception {
 
         DiaTrabajoMedicoDTO diaDto = null;
 
@@ -216,7 +216,7 @@ public class MedicoServicioImpl implements MedicoServicio {
 
 
     @Override
-    public String reservarDiaLibre(LocalDateTime date) {
+    public String reservarDiaLibre(Date date) {
 
         String respuesta = "no se puede, dado que el día no es libre";
         DiaTrabajoMedico dia = diaTrabajoMedicoRepo.findDiaTrabajoMedicoByFecha(date);
@@ -227,12 +227,13 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public String deshacerDiaLibre(LocalDateTime date) {
+    public String deshacerDiaLibre(Date date) {
         return null;
     }
 
+
     @Override
-    public List <ConsultaDTO> filtrarHistorialMedicoPorFecha(LocalDateTime date) {
+    public List <ConsultaDTO> filtrarHistorialMedicoPorFecha(Date date) {
 
         List <Consulta> consultas = consultaRepo.findConsultaByFecha(date);
 

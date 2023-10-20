@@ -16,7 +16,7 @@ public interface MedicoServicio {
 
     Medico obtenerMedico(int idMedico) throws Exception;
 
-    public List<CitaDTOMedico> filtrarCitasPendientesPorFecha(LocalDateTime date) throws Exception;
+    public List<CitaDTOMedico> filtrarCitasPendientesPorFecha(Date date) throws Exception;
 
     public List<CitaDTOMedico> filtrarCitasPendientesNombrePaciente(String nombre) throws Exception;
 
@@ -26,13 +26,13 @@ public interface MedicoServicio {
 
     public String atenderCitaSeleccionada(CitaDTOAdmin citaDTOAdmin);
 
-    public DiaTrabajoMedicoDTO filtrarDisponibilidadPorFecha(LocalDateTime date) throws Exception;
+    public DiaTrabajoMedicoDTO filtrarDisponibilidadPorFecha(Date date) throws Exception;
 
-    public String reservarDiaLibre(LocalDateTime date);
+    public String reservarDiaLibre(Date date);
 
-    public String deshacerDiaLibre(LocalDateTime date);
+    public String deshacerDiaLibre(Date date);
 
-    public List <ConsultaDTO> filtrarHistorialMedicoPorFecha(LocalDateTime date);
+    public List <ConsultaDTO> filtrarHistorialMedicoPorFecha(Date date);
 
     public List <ConsultaDTO> filtrarHistorialMedicoPorId(String cedulaPaciente);
 

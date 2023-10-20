@@ -62,12 +62,31 @@ public class CitaTest {
     @Sql("classpath:dataset.sql")
     public void listarCitasPaciente() throws Exception{
         int codigoPaciente =4;
+
+        citaServicio.listarCitasPaciente(codigoPaciente);
+
         List<InfoCitaDTO> lista = citaServicio.listarCitasPaciente(codigoPaciente);
         System.out.println(lista);
+
     }
 
     @Test
     @Sql("classpath:dataset.sql")
+
+    public void listarCitasPorFecha() throws Exception{
+
+        int codigoPaciente =4;
+
+        String fechaCitaString = "2023-10-10 08:00:00";
+        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime fechaCita = LocalDateTime.parse(fechaCitaString, formatoFecha);
+
+        citaServicio.filtrarCitasPorFecha(codigoPaciente, fechaCita);
+
+    }
+
+
+
     public void actualizarCita() throws Exception{
 
         String fechaString = "2023-10-19";
@@ -78,6 +97,7 @@ public class CitaTest {
                 "4","3",4,3,EstadoCita.Completada);
         citaServicio.actualizarCita(citaDTOAdmin, codigoCita);
     }
+
 
 
 }

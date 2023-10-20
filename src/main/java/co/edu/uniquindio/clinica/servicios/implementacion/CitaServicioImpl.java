@@ -167,7 +167,7 @@ public class CitaServicioImpl implements CitaServicio {
     }
 
     @Override
-    public List<InfoCitaDTO> filtrarCitasPorFecha(int codigoPaciente, Date fecha) throws Exception {
+    public List<InfoCitaDTO> filtrarCitasPorFecha(int codigoPaciente, LocalDateTime fecha) throws Exception {
 
         List<Cita> lista = citaRepo.listarCitasPorFecha(codigoPaciente,fecha);
 

@@ -20,10 +20,10 @@ public interface CitaRepo extends JpaRepository < Cita, Integer > {
     List<Cita> listarCitasPaciente(int codigoPaciente);
 
     @Query("select c from Cita c where c.paciente.codigo = :codigoPaciente and c.fechaCita = :fecha")
-    List<Cita> listarCitasPorFecha(int codigoPaciente, Date fecha);
+    List<Cita> listarCitasPorFecha(int codigoPaciente, LocalDateTime fecha);
 
-    @Query("select c from Cita c where c.medico.nombre = :nombreMedico")
-    List<Cita>listarCitasPorNombreMedico(String nombreMedico);
+    @Query("select c from Cita c where c.paciente.codigo = :codigoPaciente and c.medico.nombre = :nombreMedico")
+    List<Cita>listarCitasPorNombreMedico(int codigoPaciente , String nombreMedico);
 
     @Query("select c from Cita c where c.paciente.codigo = :codigoPaciente and c.medico.codigo = :codigoMedico")
     List<Cita>listarCitasPorMedico(int codigoPaciente, int codigoMedico );
@@ -31,7 +31,7 @@ public interface CitaRepo extends JpaRepository < Cita, Integer > {
     Cita findCitaByIdCita(int id);
 
     @Query ("select c from Cita c where c.fechaCita = :fecha and c.estadoCita = 'Programada' ")
-    List <Cita> listarCitaPendientePorFecha(LocalDateTime fecha);
+    List <Cita> listarCitaPendientePorFecha(Date fecha);
 
     @Query ("select c from Cita c where c.paciente.nombre = :nombre")
     List<Cita> listarPorNombrePaciente(String nombre);
