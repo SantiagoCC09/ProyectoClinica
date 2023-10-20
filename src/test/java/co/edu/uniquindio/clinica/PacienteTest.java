@@ -1,5 +1,6 @@
 package co.edu.uniquindio.clinica;
 
+import co.edu.uniquindio.clinica.dto.InfoCitaDTO;
 import co.edu.uniquindio.clinica.dto.PacienteDTO;
 import co.edu.uniquindio.clinica.entidades.*;
 import co.edu.uniquindio.clinica.servicios.implementacion.PacienteServicioImpl;
@@ -64,6 +65,19 @@ public class PacienteTest {
     public void obtenerPaciente() throws Exception{
         int codigoPaciente=5;
         Paciente paciente = pacienteServicio.obtenerPaciente(codigoPaciente);
+
+    }
+    
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void verDetalleCita ()throws Exception{
+
+        int idCita=1;
+
+        InfoCitaDTO infoCitaDTO = pacienteServicio.verDetalleCita(idCita);
+
+        System.out.println(infoCitaDTO);
+
 
     }
 }

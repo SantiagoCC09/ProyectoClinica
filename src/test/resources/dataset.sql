@@ -1,11 +1,11 @@
 
 insert into cuenta values (1, "juan@gmali" , "juasd" );
 insert into cuenta values (2, "jhon@gmali" , "jhonsd" );
-insert into cuenta values (3, "Ca@mail.com", "casd" );
+insert into cuenta values (3, "juanf.chavarriav@uqvirtual.edu.co", "casd" );
 
 insert into cuenta values (4, "ale@gmali" , "aleasd" );
 insert into cuenta values (5, "sa@gmalil" , "saasd" );
-insert into cuenta values (6, "du@gmail.com" , "duasd" );
+insert into cuenta values (6, "juan-felipe-00@hotmail.com" , "duasd" );
 
 
 insert into usuario values (1,"12345", "3128823", "Armenia", "juan", "ESTADO_ACTIVO", "mifoto");
@@ -26,7 +26,7 @@ insert into paciente () values ( 4,0,1, "2003-02-28" );
 insert into paciente () values ( 5,1,2,"2003-02-28" );
 insert into paciente () values ( 6,2,1,"2003-02-28" );
 
-insert into cita values (1, 3, 4, "2023-12-12", "2023-10-10 08:00:00", "Infeccion renal", "Programada");
+insert into cita values (1, 3, 4, "2023-12-12 08:00:00", "2023-10-10 08:00:00", "Infeccion renal", "Programada");
 insert into cita values (2, 2, 5, "2023-11-15", "2023-10-13", "Infeccion", "Programada");
 insert into cita values (3, 1, 6, "2023-10-05", "2023-09-20", "Dolor de espalda", "Completada");
 

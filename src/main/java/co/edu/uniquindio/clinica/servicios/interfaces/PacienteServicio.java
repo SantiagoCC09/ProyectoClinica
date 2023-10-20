@@ -25,7 +25,7 @@ public interface PacienteServicio {
 //El paciente podrá crear PQR
 
 
-    void verDetalleCita();
+    InfoCitaDTO verDetalleCita(int idCita) throws Exception;
 
      void validarExiste(int cedulaPaciente) throws Exception;
 

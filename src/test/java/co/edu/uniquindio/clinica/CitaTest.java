@@ -74,7 +74,7 @@ public class CitaTest {
 
         int codigoPaciente =4;
 
-        String fechaCitaString = "2023-10-10 08:00:00";
+        String fechaCitaString = "2023-12-12 08:00:00";
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime fechaCita = LocalDateTime.parse(fechaCitaString, formatoFecha);
 
@@ -94,6 +94,8 @@ public class CitaTest {
                 "4","3",4,3,EstadoCita.Completada);
         citaServicio.actualizarCita(citaDTOAdmin, codigoCita);
     }
+
+
 
 
 

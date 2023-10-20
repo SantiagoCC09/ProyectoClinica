@@ -37,4 +37,6 @@ public class ConsultaTest {
         int codigoConsulta=2;
         Consulta consulta = consultaServicio.obtenerConsulta(codigoConsulta);
 }
+
+
 }

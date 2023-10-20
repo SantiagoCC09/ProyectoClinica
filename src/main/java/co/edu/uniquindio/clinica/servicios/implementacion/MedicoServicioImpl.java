@@ -219,9 +219,8 @@ public class MedicoServicioImpl implements MedicoServicio {
     public String reservarDiaLibre(Date date) {
 
         String respuesta = "no se puede, dado que el día no es libre";
+
         DiaTrabajoMedico dia = diaTrabajoMedicoRepo.findDiaTrabajoMedicoByFecha(date);
-
-
 
         return null;
     }

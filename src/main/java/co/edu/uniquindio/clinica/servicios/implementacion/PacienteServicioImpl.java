@@ -27,6 +27,7 @@ public class PacienteServicioImpl implements PacienteServicio {
 
     private final PQRSRepo pqrsRepo;
 
+    private final CitaRepo citaRepo;
     private final AdministradorRepo administradorRepo;
 
     @Override
@@ -111,7 +112,23 @@ public class PacienteServicioImpl implements PacienteServicio {
 
 
     @Override
-    public void verDetalleCita() {
+    public InfoCitaDTO verDetalleCita(int idCita) throws Exception {
+
+        Optional <Cita> opcional = citaRepo.findById(idCita);
+
+        if (opcional.isEmpty()){
+
+            throw new Exception("no hay pqr con la id" +idCita);
+        }
+
+        Cita buscado = opcional.get();
+
+
+        return new InfoCitaDTO(
+
+                buscado.getIdCita(), buscado.getPaciente().getNombre(),buscado.getMedico().getNombre(),
+                buscado.getFechaCita(),buscado.getMotivo()
+        );
 
     }
 
