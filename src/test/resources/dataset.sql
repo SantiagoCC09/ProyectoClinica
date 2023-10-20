@@ -26,7 +26,7 @@ insert into paciente () values ( 4,0,1, "2003-02-28" );
 insert into paciente () values ( 5,1,2,"2003-02-28" );
 insert into paciente () values ( 6,2,1,"2003-02-28" );
 
-insert into cita values (1, 3, 4, "2023-12-12", "2023-10-10", "Infeccion renal", "Programada");
+insert into cita values (1, 3, 4, "2023-12-12", "2023-10-10 08:00:00", "Infeccion renal", "Programada");
 insert into cita values (2, 2, 5, "2023-11-15", "2023-10-13", "Infeccion", "Programada");
 insert into cita values (3, 1, 6, "2023-10-05", "2023-09-20", "Dolor de espalda", "Completada");
 
@@ -44,9 +44,9 @@ insert into alergia values (2,"dermatitis");
 insert into alergia values (3,"alergia a alimentos");
 insert into alergia values (4,"alergia a farmacos");
 
-insert into alergia_paciente values (4,1,1);
-insert into alergia_paciente values (5,2,2);
-insert into alergia_paciente values (6,3,3);
+insert into alergia_paciente values (1,4,1);
+insert into alergia_paciente values (2,5,2);
+insert into alergia_paciente values (3,6,3);
 
 insert into pqr values (1, 1, 4, "2023-10-30", "2023-10-20","Cancelar cita","RADICADA","Calamidad domestica");
 

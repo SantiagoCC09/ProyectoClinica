@@ -4,15 +4,12 @@ package co.edu.uniquindio.clinica;
 import co.edu.uniquindio.clinica.dto.PQRDTO;
 import co.edu.uniquindio.clinica.dto.PQRDTOPaciente;
 import co.edu.uniquindio.clinica.entidades.EstadoPqr;
-import co.edu.uniquindio.clinica.servicios.implementacion.PqrServicioImpl;
 import co.edu.uniquindio.clinica.servicios.interfaces.PqrServicio;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
-
-import java.rmi.server.ExportException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -71,8 +68,11 @@ public class PqrTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void listarPQRSPaciente() throws Exception{
+
         int codigoPaciente=4;
         List<PQRDTO> lista = pqrServicio.listarPQRSPaciente(codigoPaciente);
+
+        System.out.println(lista);
     }
 
 

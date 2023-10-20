@@ -4,6 +4,7 @@ import co.edu.uniquindio.clinica.dto.CitaDTOAdmin;
 import co.edu.uniquindio.clinica.dto.InfoCitaDTO;
 import co.edu.uniquindio.clinica.entidades.Cita;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public interface CitaServicio {
     List<InfoCitaDTO> listarCitasPaciente(int codigoPaciente) throws Exception;
 
     //El paciente podrá filtrar las citas por fecha
-    List<InfoCitaDTO> filtrarCitasPorFecha(int codigoPaciente, Date fecha) throws Exception;
+    List<InfoCitaDTO> filtrarCitasPorFecha(int codigoPaciente, LocalDateTime fecha) throws Exception;
 
     List<InfoCitaDTO> filtrarCitasPorMedico(int codigoPaciente, int codigoMedico)throws Exception;
 
