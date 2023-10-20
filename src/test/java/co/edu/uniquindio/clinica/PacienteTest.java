@@ -17,14 +17,17 @@ import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 
 
 @SpringBootTest
+@Transactional
 public class PacienteTest {
     @Autowired
     private PacienteServicio pacienteServicio;
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void crearPaciente() throws Exception{
         String fechaNacimientoString = "2002-09-09";
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
@@ -39,8 +42,22 @@ public class PacienteTest {
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void eliminarCuenta() throws Exception{
-        int codigoEliminar=3;
+        int codigoEliminar=4;
         pacienteServicio.eliminarCuenta(codigoEliminar);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void editarPerfil() throws Exception{
+        int codigoPaciente=5;
+
+        String fechaNacimientoString = "2002-09-09";
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+        Date fechaNacimiento = (Date) formatoFecha.parse(fechaNacimientoString);
+        PacienteDTO pacienteDTO = new PacienteDTO("5","santi@gmail.com", "passwd","Santiago CC","31666",
+                Ciudad.Armenia,fechaNacimiento,TipoSangre.APOSTIVIO,EPS.EMSSANAR,"urlFoto");
+        pacienteServicio.editarPerfil(pacienteDTO, codigoPaciente);
     }
 }
