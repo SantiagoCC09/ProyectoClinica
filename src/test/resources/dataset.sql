@@ -49,8 +49,12 @@ insert into alergia_paciente values (2,5,2);
 insert into alergia_paciente values (3,6,3);
 
 insert into pqr values (1, 1, 4, "2023-10-30", "2023-10-20","Cancelar cita","RADICADA","Calamidad domestica");
+insert into pqr values (1, 2, 5, "2023-09-23", "2023-10-20","Consulta me","RADICADA","Consultar Medicos ");
+insert into pqr values (1, 3, 6, "2023-08-14", "2023-10-20","Modificar cita","RADICADA","Modificar Fecha de una cita");
+insert into pqr values (1, 4, 5, "2023-07-15", "2023-10-20","denunciar me","RADICADA","Denunciar medico");
+insert into pqr values (1, 5, 4, "2023-09-18", "2023-10-20","Consulta ex","RADICADA","Consultar Medicamentos");
 
 insert into consulta values(1, 2, "Peticion prueba sangre", "Paciente necesita prueba de sangre", "El paciente debe seguir las indicaciones");
-
-
+insert into consulta values(2, 3, "Anemia", "Paciente con anemia", "El paciente debe seguir las indicaciones");
+insert into consulta values(3, 4, "Hemorroides", "Paciente con hemorroides", "El paciente debe seguir las indicaciones");
 

@@ -243,7 +243,7 @@ public class MedicoServicioImpl implements MedicoServicio {
         for (Consulta consulta : consultas){
 
             ConsultaDTO consultaDto = new ConsultaDTO(
-                    consulta.getIdConsulta(),consulta.getTratamiento(),
+                    consulta.getTratamiento(),
                     consulta.getNotasMedicas(),consulta.getDetallesConsulta()
                     ,consulta.getCita().getIdCita()
             );
@@ -266,7 +266,7 @@ public class MedicoServicioImpl implements MedicoServicio {
         for (Consulta consulta : consultas){
 
             ConsultaDTO consultaDto = new ConsultaDTO(
-                    consulta.getIdConsulta(),consulta.getTratamiento(),
+                    consulta.getTratamiento(),
                     consulta.getNotasMedicas(),consulta.getDetallesConsulta()
                     ,consulta.getCita().getIdCita()
             );

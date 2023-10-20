@@ -18,7 +18,7 @@ public class ConsultaTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void crearConsulta() throws Exception{
-        ConsultaDTO consultaDTO = new ConsultaDTO(1,"Ingerir carbohidratos","Reducir azucar",
+        ConsultaDTO consultaDTO = new ConsultaDTO("Ingerir carbohidratos","Reducir azucar",
                 "El paciente va a morir",1);
         int codigo = consultaServicio.crearConsulta(consultaDTO);
     }
@@ -26,8 +26,8 @@ public class ConsultaTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void eliminarConsulta() throws Exception{
-        int codigoConsulta=1;
-        consultaServicio.eliminarConsulta(1);
+        int codigoConsulta=2;
+        consultaServicio.eliminarConsulta(codigoConsulta);
     }
 
     @Test
