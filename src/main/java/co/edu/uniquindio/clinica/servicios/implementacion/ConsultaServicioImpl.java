@@ -30,7 +30,7 @@ public class ConsultaServicioImpl implements ConsultaServicio {
 
         if (cita == null){
 
-            throw new Exception("no hay ninguna cita asociada al codigo "+ consultaDTO.idConsulta());
+            throw new Exception("no hay ninguna cita asociada al codigo "+ consultaDTO.idCita());
         }
 
         Consulta consulta = new Consulta();
@@ -61,7 +61,12 @@ public class ConsultaServicioImpl implements ConsultaServicio {
 
     @Override
     public Consulta obtenerConsulta(int codigoConsulta) throws Exception {
-        return null;
+        Optional<Consulta> opcionalConsulta = consultaRepo.findById(codigoConsulta);
+        if(opcionalConsulta.isEmpty()){
+            throw new Exception("El código " + codigoConsulta + " no está asociado a ninguna consulta");
+        }
+        return opcionalConsulta.get();
+
     }
 
 

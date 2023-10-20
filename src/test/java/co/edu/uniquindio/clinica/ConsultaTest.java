@@ -1,6 +1,7 @@
 package co.edu.uniquindio.clinica;
 
 import co.edu.uniquindio.clinica.dto.ConsultaDTO;
+import co.edu.uniquindio.clinica.entidades.Consulta;
 import co.edu.uniquindio.clinica.servicios.interfaces.ConsultaServicio;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ public class ConsultaTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void crearConsulta() throws Exception{
-        ConsultaDTO consultaDTO = new ConsultaDTO(2,"Ingerir carbohidratos","Reducir azucar",
+        ConsultaDTO consultaDTO = new ConsultaDTO(1,"Ingerir carbohidratos","Reducir azucar",
                 "El paciente va a morir",1);
         int codigo = consultaServicio.crearConsulta(consultaDTO);
     }
@@ -28,4 +29,12 @@ public class ConsultaTest {
         int codigoConsulta=1;
         consultaServicio.eliminarConsulta(1);
     }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void obtenerConsulta() throws Exception{
+
+        int codigoConsulta=2;
+        Consulta consulta = consultaServicio.obtenerConsulta(codigoConsulta);
+}
 }
