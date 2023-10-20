@@ -1,11 +1,9 @@
 package co.edu.uniquindio.clinica;
 
 import co.edu.uniquindio.clinica.dto.PacienteDTO;
-import co.edu.uniquindio.clinica.entidades.Ciudad;
-import co.edu.uniquindio.clinica.entidades.TipoSangre;
+import co.edu.uniquindio.clinica.entidades.*;
 import co.edu.uniquindio.clinica.servicios.implementacion.PacienteServicioImpl;
 import co.edu.uniquindio.clinica.servicios.interfaces.PacienteServicio;
-import co.edu.uniquindio.clinica.entidades.EPS;
 import co.edu.uniquindio.clinica.entidades.TipoSangre;
 import co.edu.uniquindio.clinica.servicios.interfaces.PacienteServicio;
 
@@ -59,5 +57,13 @@ public class PacienteTest {
         PacienteDTO pacienteDTO = new PacienteDTO("5","santi@gmail.com", "passwd","Santiago CC","31666",
                 Ciudad.Armenia,fechaNacimiento,TipoSangre.APOSTIVIO,EPS.EMSSANAR,"urlFoto");
         pacienteServicio.editarPerfil(pacienteDTO, codigoPaciente);
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void obtenerPaciente() throws Exception{
+        int codigoPaciente=5;
+        Paciente paciente = pacienteServicio.obtenerPaciente(codigoPaciente);
+
     }
 }
