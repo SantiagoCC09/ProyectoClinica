@@ -4,6 +4,7 @@ import co.edu.uniquindio.clinica.entidades.EstadoCita;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public record CitaDTOAdmin(
         @NotNull
@@ -15,7 +16,7 @@ public record CitaDTOAdmin(
         LocalDateTime fechaCreacion,
 
         @NotNull
-        LocalDateTime fechaCita,
+        Date fechaCita,
 
         @NotNull
         String motivo,
@@ -28,7 +29,9 @@ public record CitaDTOAdmin(
         int codigoPaciente,
 
         @NotNull
-        int codigoMedico
+        int codigoMedico,
+
+        EstadoCita estadoCita
 
 ) {
 

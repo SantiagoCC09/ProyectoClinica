@@ -4,7 +4,7 @@ import co.edu.uniquindio.clinica.dto.CitaDTOAdmin;
 import co.edu.uniquindio.clinica.dto.InfoCitaDTO;
 import co.edu.uniquindio.clinica.entidades.Cita;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 public interface CitaServicio {

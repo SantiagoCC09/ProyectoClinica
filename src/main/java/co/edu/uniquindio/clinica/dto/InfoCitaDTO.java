@@ -3,6 +3,7 @@ package co.edu.uniquindio.clinica.dto;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public record InfoCitaDTO (
 
@@ -13,7 +14,7 @@ public record InfoCitaDTO (
         @NotNull
         String nombreMedico,
         @NotNull
-        LocalDateTime fecha,
+        Date fecha,
         @NotNull
         String motivo){
 

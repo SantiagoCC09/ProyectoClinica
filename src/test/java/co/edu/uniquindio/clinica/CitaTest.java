@@ -2,6 +2,7 @@ package co.edu.uniquindio.clinica;
 
 import co.edu.uniquindio.clinica.dto.CitaDTOAdmin;
 import co.edu.uniquindio.clinica.dto.InfoCitaDTO;
+import co.edu.uniquindio.clinica.entidades.EstadoCita;
 import co.edu.uniquindio.clinica.servicios.interfaces.AdministradorServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.CitaServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.MedicoServicio;
@@ -37,13 +38,13 @@ public class CitaTest {
     @Sql("classpath:dataset.sql")
     public void crearCitaTest() throws Exception {
 
-        String fechaCitaString = "2023-10-15 08:00:00";
-        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime fechaCita = LocalDateTime.parse(fechaCitaString, formatoFecha);
+        String fechaString = "2023-10-19";
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha = (Date) formatoFecha.parse(fechaString);
 
         CitaDTOAdmin cita = new CitaDTOAdmin(1,"alexander",
-        "carlos", LocalDateTime.now(),fechaCita,"Medicina General","123432","123"
-                ,6,3);
+        "carlos", LocalDateTime.now(),fecha,"Medicina General","123432","123"
+                ,6,3, EstadoCita.Completada);
 
 
 
@@ -64,6 +65,18 @@ public class CitaTest {
         System.out.println(lista);
     }
 
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void actualizarCita() throws Exception{
+
+        String fechaString = "2023-10-19";
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha = (Date) formatoFecha.parse(fechaString);
+        int codigoCita=1;
+        CitaDTOAdmin citaDTOAdmin = new CitaDTOAdmin(codigoCita,"Carlos","Julian",LocalDateTime.now(),fecha,"Aplazar",
+                "4","3",4,3,EstadoCita.Completada);
+        citaServicio.actualizarCita(citaDTOAdmin, codigoCita);
+    }
 
 
 }

@@ -48,6 +48,7 @@ insert into alergia_paciente values (4,1,1);
 insert into alergia_paciente values (5,2,2);
 insert into alergia_paciente values (6,3,3);
 
+insert into pqr values (1, 1, 4, "2023-10-30", "2023-10-20","Cancelar cita","RADICADA","Calamidad domestica");
 
 
 

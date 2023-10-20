@@ -72,6 +72,8 @@ public class PqrServicioImpl implements PqrServicio {
 
         if (pqr.isEmpty()) {
             throw new Exception("El código " + idPqr + " no está asociado a ningun pqr");
+        }else{
+            System.out.println("Sí hay pqr asociado");
         }
 
         return pqr.get();
