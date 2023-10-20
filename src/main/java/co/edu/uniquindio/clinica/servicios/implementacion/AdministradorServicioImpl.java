@@ -319,26 +319,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         return respuesta;
     }
 
-    @Override
-    public int agregarMedicamentosDisponibles(MedicamentoDTO medicamentoDTO) {
 
-
-
-
-
-        return 0;
-    }
-
-    @Override
-    public int actualizarMedicamentosDisponibles(MedicamentoDTO medicamentoDTO) {
-
-        return 0;
-    }
-
-    @Override
-    public void eliminarMedicamentosDisponibles(int codigoMedicamento) {
-
-    }
 
 
 }

@@ -29,10 +29,5 @@ public interface AdministradorServicio {
 
     List <CitaDTOAdmin> listarCitas();
 
-    int agregarMedicamentosDisponibles(MedicamentoDTO medicamentoDTO);
-
-    int actualizarMedicamentosDisponibles(MedicamentoDTO medicamentoDTO);
-
-    void eliminarMedicamentosDisponibles (int codigoMedicamento);
 
 }
