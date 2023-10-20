@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface PQRSRepo extends JpaRepository<PQR, Integer> {
 
-    @Query("select pq from PQR pq where pq.paciente = :codigoPaciente")
+    @Query("select pq from PQR pq where pq.paciente.codigo = :codigoPaciente")
     List<PQR>listarPQRSPorPaciente(int codigoPaciente);
 
     PQR findPQRByIdPqr(int idPqr);

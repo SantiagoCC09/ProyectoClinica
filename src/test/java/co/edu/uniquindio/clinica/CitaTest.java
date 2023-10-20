@@ -72,12 +72,12 @@ public class CitaTest {
 
     @Test
     @Sql("classpath:dataset.sql")
-<<<<<<< HEAD
+
     public void listarCitasPorFecha() throws Exception{
 
         int codigoPaciente =4;
 
-        String fechaCitaString = "2023-10-10";
+        String fechaCitaString = "2023-10-10 08:00:00";
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime fechaCita = LocalDateTime.parse(fechaCitaString, formatoFecha);
 
@@ -87,7 +87,6 @@ public class CitaTest {
 
 
 
-=======
     public void actualizarCita() throws Exception{
 
         String fechaString = "2023-10-19";
@@ -98,7 +97,7 @@ public class CitaTest {
                 "4","3",4,3,EstadoCita.Completada);
         citaServicio.actualizarCita(citaDTOAdmin, codigoCita);
     }
->>>>>>> 40a4dd674e2822773c22779078794962ba139159
+
 
 
 }
