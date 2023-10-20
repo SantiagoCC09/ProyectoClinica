@@ -5,7 +5,7 @@ import co.edu.uniquindio.clinica.entidades.EstadoPqr;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.cglib.core.Local;
 
-import java.sql.Date;
+import java.util.Date;
 import java.time.LocalDateTime;
 
 public record PQRDTO (
@@ -17,7 +17,7 @@ public record PQRDTO (
         String descripcion,
 
         @NotNull
-        LocalDateTime fecha,
+        Date fecha,
 
         @NotNull
         String nombre,

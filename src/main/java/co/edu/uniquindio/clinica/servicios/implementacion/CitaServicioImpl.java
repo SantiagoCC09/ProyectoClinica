@@ -5,13 +5,15 @@ import co.edu.uniquindio.clinica.dto.EmailDTO;
 import co.edu.uniquindio.clinica.dto.InfoCitaDTO;
 import co.edu.uniquindio.clinica.entidades.*;
 import co.edu.uniquindio.clinica.repositorios.CitaRepo;
+import co.edu.uniquindio.clinica.repositorios.MedicoRepo;
+import co.edu.uniquindio.clinica.repositorios.PacienteRepo;
 import co.edu.uniquindio.clinica.servicios.interfaces.CitaServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.EmailServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.MedicoServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.PacienteServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.sql.Date;
+import java.util.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,10 @@ import java.util.Optional;
 public class CitaServicioImpl implements CitaServicio {
 
     private final CitaRepo citaRepo;
+
+    private final MedicoRepo medicoRepo;
+
+    private final PacienteRepo pacienteRepo;
 
     private final PacienteServicio pacienteServicio;
 
@@ -103,7 +109,26 @@ public class CitaServicioImpl implements CitaServicio {
 
     @Override
     public int actualizarCita(CitaDTOAdmin citaDTOAdmin, int codigoCita) throws Exception {
-        return 0;
+        Optional<Cita> opcionalCita = citaRepo.findById(codigoCita);
+
+        if(opcionalCita.isPresent()){
+            Cita citaBuscada = opcionalCita.get();
+            Optional<Medico> opcionalMedico = medicoRepo.findById(citaDTOAdmin.codigoMedico());
+            Optional<Paciente> opcionalPaciente = pacienteRepo.findById(citaDTOAdmin.codigoPaciente());
+
+            citaBuscada.setFechaCita(citaDTOAdmin.fechaCita());
+            citaBuscada.setIdCita(citaDTOAdmin.codigoCita());
+            citaBuscada.setMotivo(citaDTOAdmin.motivo());
+            citaBuscada.setMedico(opcionalMedico.get());
+            citaBuscada.setPaciente(opcionalPaciente.get());
+            citaBuscada.setEstadoCita(citaDTOAdmin.estadoCita());
+
+            citaRepo.save(citaBuscada);
+
+            return citaBuscada.getIdCita();
+        }else{
+            throw new Exception("Cita no encontrada con el código proporcionado: " + codigoCita);
+        }
     }
 
     @Override

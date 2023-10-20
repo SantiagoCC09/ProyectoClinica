@@ -2,10 +2,7 @@ package co.edu.uniquindio.clinica.servicios.implementacion;
 
 import co.edu.uniquindio.clinica.dto.*;
 import co.edu.uniquindio.clinica.entidades.*;
-import co.edu.uniquindio.clinica.repositorios.CitaRepo;
-import co.edu.uniquindio.clinica.repositorios.ConsultaRepo;
-import co.edu.uniquindio.clinica.repositorios.DiaTrabajoMedicoRepo;
-import co.edu.uniquindio.clinica.repositorios.MedicoRepo;
+import co.edu.uniquindio.clinica.repositorios.*;
 import co.edu.uniquindio.clinica.servicios.interfaces.MedicoServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +28,9 @@ public class MedicoServicioImpl implements MedicoServicio {
 
     private final DiaTrabajoMedicoRepo diaTrabajoMedicoRepo;
 
+    private final RecetaRepo recetaRepo;
+
+    private final MedicamentoRepo medicamentoRepo;
 
     @Override
     public void verPerfil() {
@@ -277,14 +277,11 @@ public class MedicoServicioImpl implements MedicoServicio {
         return consultasMostrar;
     }
 
-    //Según mi plantemiento, nos ahorramos el actualizar y el eliminar
+   // métodos de la funcionalidad extra
     @Override
     public int actualizarConsulta(ConsultaDTO consultaDtoint, int codigoConsulta) throws Exception {
-        return 0;
-    }
 
-    @Override
-    public int agregarMedicamentoReceta(MedicamentoDTO medicamentoDTO, RecetaDTO recetaDTO) {
+
 
 
 
@@ -292,23 +289,98 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public int eliminarMedicamentoReceta(int idMedicamento, RecetaDTO recetaDTO) {
+    public int agregarMedicamentoReceta(MedicamentoDTO medicamentoDTO, RecetaDTO recetaDTO) throws Exception {
+
+        Medicamento medicamento = new Medicamento();
+
+        Optional <Receta> recetaBuscada = recetaRepo.findById(recetaDTO.idReceta());
+
+        Receta receta = new Receta();
+        if (recetaBuscada.isPresent()){
+
+            medicamento.setReceta(recetaBuscada.get());
+            medicamento.setNombre(medicamentoDTO.nombre());
+            medicamento.setEfectosSecundarios(medicamentoDTO.efectosSecundarios());
+
+            receta = recetaRepo.save(recetaBuscada.get());
+
+        }else{
+
+            throw new Exception("la receta es nula, entonces no se puede agregar medicamentos a ella");
+        }
 
 
 
-        return 0;
+        return receta.getIdReceta();
+    }
+
+    @Override
+    public int eliminarMedicamentoReceta(int idMedicamento, RecetaDTO recetaDTO) throws Exception {
+
+            Optional <Medicamento> medicamento = medicamentoRepo.findById(idMedicamento);
+            Optional <Receta> recetaBuscada = recetaRepo.findById(recetaDTO.idReceta());
+            Receta receta = new Receta();
+            if (recetaBuscada.isPresent() && medicamento.isPresent()){
+
+                receta = recetaBuscada.get();
+                List <Medicamento> listaMedicamentos = receta.getListaMedicamentos();
+
+                for (Medicamento listaMedicamento : listaMedicamentos) {
+
+                    if (listaMedicamento.getIdMedicamento() == idMedicamento) {
+
+                        listaMedicamento.setEstadoMedicamento(EstadoMedicamento.DESHABILITADO);
+                    }
+
+                }
+
+
+
+
+            }else{
+
+                throw new Exception("la receta no se encontró para poder actualizarla");
+            }
+
+            Receta recetaGuardada = recetaRepo.save(receta);
+
+        return recetaGuardada.getIdReceta();
     }
 
     @Override
     public int crearReceta(RecetaDTO recetaDTO) {
 
+            Optional <Consulta> consulta = consultaRepo.findById(recetaDTO.idConsulta());
+            Receta receta = new Receta();
+            receta.setDescripcion(recetaDTO.descripcion());
+            receta.setInstrucciones(recetaDTO.instrucciones());
+            consulta.ifPresent(receta::setConsulta);
+
+           Receta recetaGuaradada = recetaRepo.save(receta);
 
 
-        return 0;
+
+        return  recetaGuaradada.getIdReceta();
     }
 
     @Override
-    public int actualizarReceta(RecetaDTO recetaDTO) {
-        return 0;
+    public int actualizarReceta(RecetaDTO recetaDTO) throws Exception {
+        Optional <Consulta> consulta = consultaRepo.findById(recetaDTO.idConsulta());
+        Optional <Receta> recetaBuscada = recetaRepo.findById(recetaDTO.idReceta());
+        Receta receta = new Receta();
+        if (recetaBuscada.isPresent()){
+
+            receta = recetaBuscada.get();
+            receta.setDescripcion(recetaDTO.descripcion());
+            receta.setInstrucciones(recetaDTO.instrucciones());
+            consulta.ifPresent(receta::setConsulta);
+        }else{
+
+            throw new Exception("la receta no se encontró para poder actualizarla");
+        }
+
+        Receta recetaGuardada = recetaRepo.save(receta);
+
+        return recetaGuardada.getIdReceta();
     }
 }

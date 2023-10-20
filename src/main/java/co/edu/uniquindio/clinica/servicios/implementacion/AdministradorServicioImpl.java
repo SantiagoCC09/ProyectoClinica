@@ -309,8 +309,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
                     c.getIdCita(),c.getPaciente().getNombre(),c.getMedico().getNombre()
                     ,c.getFechaCreacion(),c.getFechaCita(),c.getMotivo(),c.getPaciente().getCedula(),
-                    c.getMedico().getCedula(), c.getPaciente().getCodigo(), c.getMedico().getCodigo()
-
+                    c.getMedico().getCedula(), c.getPaciente().getCodigo(), c.getMedico().getCodigo(),c.getEstadoCita()
 
             ));
 

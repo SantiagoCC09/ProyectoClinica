@@ -16,6 +16,8 @@ insert into usuario values (4,"123432", "334321288", "Genova", "alexander", "EST
 insert into usuario values (5,"123453", "312882343", "Montenegro", "santiago", "ESTADO_ACTIVO", "mifoto");
 insert into usuario values (6,"1234530", "3128823532", "Armenia", "duvan", "ESTADO_ACTIVO", "mifoto");
 
+insert into administrador values (1);
+
 insert into medico values ( 1,"INFECTOLOGIA" );
 insert into medico values (2,"GERIATRIA" );
 insert into medico values (3,"GASTROENTEROLOGIA");
@@ -46,6 +48,7 @@ insert into alergia_paciente values (1,4,1);
 insert into alergia_paciente values (2,5,2);
 insert into alergia_paciente values (3,6,3);
 
+insert into pqr values (1, 1, 4, "2023-10-30", "2023-10-20","Cancelar cita","RADICADA","Calamidad domestica");
 
 
 

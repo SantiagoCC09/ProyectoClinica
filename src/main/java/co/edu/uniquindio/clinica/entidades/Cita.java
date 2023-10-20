@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -33,7 +34,7 @@ public class Cita implements Serializable {
     private LocalDateTime fechaCreacion;
 
     @Column(nullable = false)
-    private LocalDateTime fechaCita;
+    private Date fechaCita;
     @OneToOne (mappedBy = "cita")
     private Consulta consulta;
 
