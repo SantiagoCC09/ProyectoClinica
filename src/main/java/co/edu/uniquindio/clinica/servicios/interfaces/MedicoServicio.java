@@ -40,13 +40,13 @@ public interface MedicoServicio {
 
     public int actualizarConsulta(ConsultaDTO consultaDtoint, int codigoConsulta) throws Exception;
 
-    int agregarMedicamentoReceta (MedicamentoDTO medicamentoDTO , RecetaDTO recetaDTO);
+    int agregarMedicamentoReceta (MedicamentoDTO medicamentoDTO , RecetaDTO recetaDTO) throws Exception;
 
-    int eliminarMedicamentoReceta (int idMedicamento, RecetaDTO recetaDTO);
+    int eliminarMedicamentoReceta (int idMedicamento, RecetaDTO recetaDTO) throws Exception;
 
     int crearReceta (RecetaDTO recetaDTO);
 
-    int actualizarReceta (RecetaDTO recetaDTO);
+    int actualizarReceta (RecetaDTO recetaDTO) throws Exception;
 
 
 
