@@ -73,6 +73,7 @@ public class PqrTest {
         List<PQRDTO> lista = pqrServicio.listarPQRSPaciente(codigoPaciente);
 
         System.out.println(lista);
+        System.out.println("");
     }
 
 

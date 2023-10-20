@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ import java.util.List;
 public class DiaTrabajoMedico implements Serializable {
 
     @Column(nullable = false)
-    private LocalDateTime fecha;
+    private Date fecha;
 
     @Id
     private int idDiaTrabajo;

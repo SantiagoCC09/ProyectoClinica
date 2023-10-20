@@ -67,7 +67,26 @@ public class AdministradorTest {
         administradorServicio.actualizarMedico(codigoMedico, medicoDTO);
     }
 
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void listarCitas() throws Exception {
 
+        administradorServicio.listarCitas();
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void listarMedicos() throws Exception {
+
+        administradorServicio.listarMedicos();
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void listarPqr() throws Exception {
+
+        administradorServicio.listarPQRS();
+    }
 
 
 

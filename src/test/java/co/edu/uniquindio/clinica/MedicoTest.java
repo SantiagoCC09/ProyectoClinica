@@ -88,10 +88,15 @@ public class MedicoTest {
     @Test
     @Sql("classpath:dataset.sql")
     public void filtrarHistorial() throws Exception {
-    
-
+        String fechaString = "2023-12-12";
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha = (Date) formatoFecha.parse(fechaString);
+    medicoServicio.reservarDiaLibre(fecha);
 
     }
+
+
+
 
 
 
