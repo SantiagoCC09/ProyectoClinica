@@ -67,7 +67,7 @@ public class PacienteTest {
         Paciente paciente = pacienteServicio.obtenerPaciente(codigoPaciente);
 
     }
-    
+
     @Test
     @Sql("classpath:dataset.sql")
     public void verDetalleCita ()throws Exception{
