@@ -30,12 +30,14 @@ public interface CitaRepo extends JpaRepository < Cita, Integer > {
 
     Cita findCitaByIdCita(int id);
 
-    @Query ("select c from Cita c where c.fechaCita = :fecha and c.estadoCita = 'Programada' ")
-    List <Cita> listarCitaPendientePorFecha(Date fecha);
+    @Query ("select c from Cita c where c.fechaCita = :fecha and c.medico.codigo =:codigoMedico and c.estadoCita = 'Programada' ")
+    List <Cita> listarCitaPendientePorFecha(Date fecha, int codigoMedico);
 
-    @Query ("select c from Cita c where c.paciente.nombre = :nombre")
-    List<Cita> listarPorNombrePaciente(String nombre);
+    @Query ("select c from Cita c where c.paciente.nombre = :nombre and c.medico.codigo = :codigoMedico")
+    List<Cita> listarPorNombrePaciente(String nombre, int codigoMedico);
 
-    @Query ("select c from Cita c where c.paciente.cedula = :cedula")
-    List<Cita> listarPorCedulaPaciente(String cedula);
+    @Query ("select c from Cita c where c.paciente.cedula = :cedula and c.medico.codigo = :codigoMedico")
+    List<Cita> listarPorCedulaPaciente(String cedula, int codigoMedico);
+    @Query("select c from Cita c where c.medico.codigo = :codigoMedico")
+    List<Cita> listarCitasMedico(int codigoMedico);
 }

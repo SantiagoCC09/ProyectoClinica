@@ -82,7 +82,7 @@ public class FiltroToken implements Filter {
     }
     private void crearRespuestaError(String mensaje, int codigoError, HttpServletResponse
             response) throws IOException {
-        MensajeDTO<String> dto = new MensajeDTO<>(HttpStatus.CONFLICT,true, mensaje);
+        MensajeDTO<String> dto = new MensajeDTO<>(true, mensaje);
         response.setContentType("application/json");
         response.setStatus(codigoError);
         response.getWriter().write(new ObjectMapper().writeValueAsString(dto));

@@ -7,6 +7,7 @@ import co.edu.uniquindio.clinica.dto.PQRDTO;
 import co.edu.uniquindio.clinica.dto.RespuestaDTO;
 import co.edu.uniquindio.clinica.entidades.EstadoPqr;
 import co.edu.uniquindio.clinica.servicios.interfaces.AdministradorServicio;
+import co.edu.uniquindio.clinica.servicios.interfaces.RespuestaServicio;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ import java.util.List;
 public class AdministradorController {
 
     private final AdministradorServicio administradorServicio;
+
 
 
     @PostMapping("/crear-medico")

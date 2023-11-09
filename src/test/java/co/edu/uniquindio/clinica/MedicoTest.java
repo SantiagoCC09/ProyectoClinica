@@ -32,20 +32,21 @@ public class MedicoTest {
 @Sql("classpath:dataset.sql")
     public void filtrarCitasPendientesPorFecha () throws Exception {
 
+    int codigoMedico = 3;
 
     String fechaString = "2023-12-12";
     SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
     Date fecha = (Date) formatoFecha.parse(fechaString);
 
 
-    medicoServicio.filtrarCitasPendientesPorFecha(fecha);
+    medicoServicio.filtrarCitasPendientesPorFecha(fecha, codigoMedico);
 }
     @Test
     @Sql("classpath:dataset.sql")
     public void filtrarCitasPendientesPorCedulaPaciente() throws Exception {
 
 
-    medicoServicio.filtrarCitasPendientesCedulaPaciente("123432");
+    medicoServicio.filtrarCitasPendientesCedulaPaciente("123432",3);
 
     }
 
@@ -54,11 +55,10 @@ public class MedicoTest {
     public void filtrarCitasPendientesPorNombrePaciente() throws Exception {
 
 
-        medicoServicio.filtrarCitasPendientesNombrePaciente("alexander");
+        medicoServicio.filtrarCitasPendientesNombrePaciente("alexander",3);
 
 
     }
-
 
     @Test
     @Sql("classpath:dataset.sql")

@@ -49,10 +49,10 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public List <CitaDTOMedico> filtrarCitasPendientesPorFecha(Date date) throws Exception {
+    public List <CitaDTOMedico> filtrarCitasPendientesPorFecha(Date date, int codigoMedico) throws Exception {
 
 
-        List<Cita> listaCitas = citaRepo.listarCitaPendientePorFecha(date);
+        List<Cita> listaCitas = citaRepo.listarCitaPendientePorFecha(date, codigoMedico);
 
         List<CitaDTOMedico> listaCitasPendientes = new ArrayList<>();
 
@@ -79,9 +79,9 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public List <CitaDTOMedico> filtrarCitasPendientesNombrePaciente(String nombre) throws Exception {
+    public List <CitaDTOMedico> filtrarCitasPendientesNombrePaciente(String nombre, int codigoMedico) throws Exception {
 
-        List<Cita> listaCitas = citaRepo.listarPorNombrePaciente(nombre);
+        List<Cita> listaCitas = citaRepo.listarPorNombrePaciente(nombre, codigoMedico);
 
         List<CitaDTOMedico> listaCitasPendientes = new ArrayList<>();
 
@@ -110,9 +110,9 @@ public class MedicoServicioImpl implements MedicoServicio {
 
 
     @Override
-    public List <CitaDTOMedico> filtrarCitasPendientesCedulaPaciente(String cedula) throws Exception {
+    public List <CitaDTOMedico> filtrarCitasPendientesCedulaPaciente(String cedula, int codigoMedico) throws Exception {
 
-        List<Cita> listaCitas = citaRepo.listarPorCedulaPaciente(cedula);
+        List<Cita> listaCitas = citaRepo.listarPorCedulaPaciente(cedula,codigoMedico);
 
         List<CitaDTOMedico> listaCitasPendientes = new ArrayList<>();
 
@@ -142,8 +142,8 @@ public class MedicoServicioImpl implements MedicoServicio {
     }
 
     @Override
-    public List<CitaDTOMedico> listarCitas() throws Exception {
-        List<Cita> listaCitas = citaRepo.findAll();
+    public List<CitaDTOMedico> listarCitas(int codigoMedico) throws Exception {
+        List<Cita> listaCitas = citaRepo.listarCitasMedico(codigoMedico);
 
         List<CitaDTOMedico> listaCitasPendientes = new ArrayList<>();
 

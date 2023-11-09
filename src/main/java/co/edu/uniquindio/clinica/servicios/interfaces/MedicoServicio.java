@@ -16,13 +16,13 @@ public interface MedicoServicio {
 
     Medico obtenerMedico(int idMedico) throws Exception;
 
-    public List<CitaDTOMedico> filtrarCitasPendientesPorFecha(Date date) throws Exception;
+    public List<CitaDTOMedico> filtrarCitasPendientesPorFecha(Date date,int codigoMedico) throws Exception;
 
-    public List<CitaDTOMedico> filtrarCitasPendientesNombrePaciente(String nombre) throws Exception;
+    public List<CitaDTOMedico> filtrarCitasPendientesNombrePaciente(String nombre, int codigoMedico) throws Exception;
 
-    public List<CitaDTOMedico> filtrarCitasPendientesCedulaPaciente(String cedula) throws Exception;
+    public List<CitaDTOMedico> filtrarCitasPendientesCedulaPaciente(String cedula, int codigoMedico) throws Exception;
 
-    public List<CitaDTOMedico> listarCitas() throws Exception;
+    public List<CitaDTOMedico> listarCitas(int codigoMedico) throws Exception;
 
     public String atenderCitaSeleccionada(CitaDTOAdmin citaDTOAdmin);
 
