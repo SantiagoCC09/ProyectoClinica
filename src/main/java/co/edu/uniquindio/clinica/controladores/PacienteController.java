@@ -5,12 +5,11 @@ import co.edu.uniquindio.clinica.dto.*;
 import co.edu.uniquindio.clinica.servicios.interfaces.CitaServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.PacienteServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.PqrServicio;
+import co.edu.uniquindio.clinica.servicios.interfaces.ReestablecerPasswordServicio;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -26,6 +25,7 @@ public class PacienteController {
 
     private final PqrServicio pqrServicio;
 
+    private final ReestablecerPasswordServicio reestablecerPasswordServicio;
 
     @PutMapping("/editar-perfil")
     public ResponseEntity<MensajeDTO<String>> editarPerfil(@Valid @RequestBody PacienteDTO pacienteDTO, int codigoPaciente) throws Exception {
@@ -99,6 +99,23 @@ public class PacienteController {
     public ResponseEntity<MensajeDTO<List<PQRDTO>>> listarPQRSPaciente(int codigoPaciente) throws Exception {
         return ResponseEntity.ok().body( new MensajeDTO<>(false, pqrServicio.listarPQRSPaciente(codigoPaciente)));
     }
+
+    @PutMapping("/cambiarContraseniaAnterior/{idPerson}")
+    public ResponseEntity<MensajeDTO<String>> cambiarConstrasenaAnterior(@PathVariable int idPerson, @Valid @RequestBody PasswordDTO passwordDTO) throws Exception{
+       reestablecerPasswordServicio.cambiarConstrasenaAnterior(idPerson,passwordDTO);
+         return ResponseEntity.ok().body( new MensajeDTO<>(false, "Contraseña Actualizada correctamente"));
+    }
+    @PutMapping("/cambiarContrasenaRecuperada/{emailPerson}")
+    public ResponseEntity<MensajeDTO<String>> cambiarContrasenaRecuperada(@PathVariable String emailPerson,@Valid @RequestBody PasswordDTO passwordDTO) throws Exception{
+        reestablecerPasswordServicio.cambiarContrasenaRecuperada(emailPerson,passwordDTO);
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, "Contraseña Cambiada correctamente"));
+    }
+    @PostMapping("/recuperarContrasena/{email}")
+    public ResponseEntity<MensajeDTO<String>> recuperarContrasena(@PathVariable String email) throws Exception {
+        reestablecerPasswordServicio.recuperarContrasena(email);
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, "Correo Enviado correctamente"));
+    }
+
 
 
 
