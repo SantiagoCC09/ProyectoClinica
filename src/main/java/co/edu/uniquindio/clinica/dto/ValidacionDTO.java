@@ -3,6 +3,7 @@ package co.edu.uniquindio.clinica.dto;
 public record ValidacionDTO (
 
      String campo,
-     String mensaje){
+     String mensaje
+){
 
 }

@@ -36,7 +36,7 @@ public class AdministradorController {
     }
 
     @DeleteMapping("/eliminarMedico/{codigoMedico}")
-    public void eliminarMedico(@Valid @RequestBody int codigoMedico) throws Exception {
+    public void eliminarMedico(@PathVariable  int codigoMedico) throws Exception {
         administradorServicio.eliminarMedico(codigoMedico);
     }
 
@@ -51,19 +51,19 @@ public class AdministradorController {
     }
 
     @PostMapping("/responder-pqrs/{idPqr}")
-    public int responderPQRS(@Valid @RequestBody RespuestaDTO respuestaDTO, int idPqr) throws Exception {
+    public int responderPQRS(@Valid @RequestBody RespuestaDTO respuestaDTO,@PathVariable  int idPqr) throws Exception {
 
         return administradorServicio.responderPQRS(respuestaDTO,idPqr);
     }
 
     @GetMapping("/verDetalle-pqrs/{idPqr}")
-    public PQRDTO verDetallePQRS(@Valid @RequestBody int idPqr) throws Exception {
+    public PQRDTO verDetallePQRS(@Valid @RequestBody @PathVariable  int idPqr) throws Exception {
 
         return administradorServicio.verDetallePQRS(idPqr);
     }
 
     @PutMapping("/camiarEstado-pqrs/{codigo}")
-    public void cambiarEstadoPqr(@Valid @RequestBody int codigoPqr, EstadoPqr estadoPqr) throws Exception{
+    public void cambiarEstadoPqr(@Valid @RequestBody  @PathVariable  int codigoPqr, EstadoPqr estadoPqr) throws Exception{
 
          administradorServicio.cambiarEstadoPqr(codigoPqr,estadoPqr);
 
