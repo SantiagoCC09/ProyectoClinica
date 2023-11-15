@@ -64,11 +64,4 @@ public class MedicoController {
         return ResponseEntity.ok().body( new MensajeDTO<>(false, medicoServicio.filtrarCitasPendientesPorFecha(date,codigoMedico)));
     }
 
-
-
-
-
-
-
-
 }
