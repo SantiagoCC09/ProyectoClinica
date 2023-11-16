@@ -1,15 +1,13 @@
 package co.edu.uniquindio.clinica.controladores;
 
 
-import co.edu.uniquindio.clinica.dto.CitaDTOAdmin;
-import co.edu.uniquindio.clinica.dto.MedicoDTO;
-import co.edu.uniquindio.clinica.dto.PQRDTO;
-import co.edu.uniquindio.clinica.dto.RespuestaDTO;
+import co.edu.uniquindio.clinica.dto.*;
 import co.edu.uniquindio.clinica.entidades.EstadoPqr;
 import co.edu.uniquindio.clinica.servicios.interfaces.AdministradorServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.RespuestaServicio;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,36 +22,45 @@ public class AdministradorController {
 
 
     @PostMapping("/crear-medico")
-    public int crearMedico(@Valid @RequestBody MedicoDTO medicoDTO) throws Exception {
-
-        return administradorServicio.crearMedico(medicoDTO);
+    public ResponseEntity<MensajeDTO<String>>  crearMedico(@Valid @RequestBody MedicoDTO medicoDTO) throws Exception {
+        administradorServicio.crearMedico(medicoDTO);
+          return ResponseEntity.ok().body( new MensajeDTO<>(false, "Medico creado correctamente"));
     }
 
     @PutMapping("/actualizar-medico")
-    public int actualizarMedico(@Valid @RequestBody MedicoDTO medicoDTO, int codigoMedico) throws Exception {
+    public ResponseEntity<MensajeDTO<String>> actualizarMedico(@Valid @RequestBody MedicoDTO medicoDTO, int codigoMedico) throws Exception {
 
-        return administradorServicio.actualizarMedico(codigoMedico, medicoDTO);
+         administradorServicio.actualizarMedico(codigoMedico, medicoDTO);
+
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, "Medico actualizado"));
+
     }
 
     @DeleteMapping("/eliminarMedico/{codigoMedico}")
-    public void eliminarMedico(@PathVariable  int codigoMedico) throws Exception {
+    public ResponseEntity<MensajeDTO<String>> eliminarMedico(@PathVariable  int codigoMedico) throws Exception {
         administradorServicio.eliminarMedico(codigoMedico);
+
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, "Medico eliminado correctamente")
+        );
     }
 
     @GetMapping("/listar-medicos")
-    public List<MedicoDTO> listarMedicos() throws Exception{
-        return administradorServicio.listarMedicos();
+    public ResponseEntity<MensajeDTO<List<MedicoDTO>>> listarMedicos() throws Exception{
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, administradorServicio.listarMedicos()));
     }
 
     @GetMapping("/listar-pqrs")
-    public List<PQRDTO> listarPQRS(){
-        return administradorServicio.listarPQRS();
+    public ResponseEntity<MensajeDTO<List<PQRDTO>>>  listarPQRS(){
+
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, administradorServicio.listarPQRS()));
     }
 
     @PostMapping("/responder-pqrs/{idPqr}")
-    public int responderPQRS(@Valid @RequestBody RespuestaDTO respuestaDTO,@PathVariable  int idPqr) throws Exception {
+    public ResponseEntity<MensajeDTO<String>> responderPQRS(@Valid @RequestBody RespuestaDTO respuestaDTO,@PathVariable  int idPqr) throws Exception {
 
-        return administradorServicio.responderPQRS(respuestaDTO,idPqr);
+         administradorServicio.responderPQRS(respuestaDTO,idPqr);
+
+         return ResponseEntity.ok().body( new MensajeDTO<>(false, "Respuesta generada correctamente"));
     }
 
     @GetMapping("/verDetalle-pqrs/{idPqr}")
@@ -63,16 +70,17 @@ public class AdministradorController {
     }
 
     @PutMapping("/camiarEstado-pqrs/{codigo}")
-    public void cambiarEstadoPqr(@Valid @RequestBody  @PathVariable  int codigoPqr, EstadoPqr estadoPqr) throws Exception{
+    public ResponseEntity<MensajeDTO<String>> cambiarEstadoPqr(@Valid @RequestBody  @PathVariable  int codigoPqr, EstadoPqr estadoPqr) throws Exception{
 
          administradorServicio.cambiarEstadoPqr(codigoPqr,estadoPqr);
 
     }
 
     @GetMapping("/listar-citas")
-    public List<CitaDTOAdmin> listarCitas(){
+    public ResponseEntity<MensajeDTO<List<CitaDTOAdmin>>> listarCitas(){
 
-        return administradorServicio.listarCitas();
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, administradorServicio.listarCitas()));
+
     }
 
 
