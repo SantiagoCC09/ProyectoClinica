@@ -64,9 +64,11 @@ public class AdministradorController {
     }
 
     @GetMapping("/verDetalle-pqrs/{idPqr}")
-    public PQRDTO verDetallePQRS(@Valid @RequestBody @PathVariable  int idPqr) throws Exception {
+    public ResponseEntity<MensajeDTO<String>> verDetallePQRS(@Valid @RequestBody @PathVariable  int idPqr) throws Exception {
 
-        return administradorServicio.verDetallePQRS(idPqr);
+         administradorServicio.verDetallePQRS(idPqr);
+
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, "Detalle de pqr generado correctamente"));
     }
 
     @PutMapping("/camiarEstado-pqrs/{codigo}")
@@ -74,6 +76,7 @@ public class AdministradorController {
 
          administradorServicio.cambiarEstadoPqr(codigoPqr,estadoPqr);
 
+         return ResponseEntity.ok().body( new MensajeDTO<>(false, "Estado de pqr cambiado correctamente"));
     }
 
     @GetMapping("/listar-citas")

@@ -36,7 +36,7 @@ public record RegistroPacienteDTO (@NotNull
                                    Date fechaNacimiento,
 
                                    @NotNull
-                                   Alergia alergias,
+                                   String alergias,
 
                                    @NotNull
                                    TipoSangre rh,

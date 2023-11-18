@@ -167,6 +167,8 @@ public class PacienteServicioImpl implements PacienteServicio {
         paciente.setEstado(EstadoUsuario.ESTADO_ACTIVO);
         paciente.setEps(pacienteDTO.eps());
         paciente.setUrlFoto(pacienteDTO.URL_Foto());
+        paciente.setAlergias(pacienteDTO.alergias());
+
 
         return paciente;
     }

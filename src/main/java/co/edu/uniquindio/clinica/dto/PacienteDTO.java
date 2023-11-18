@@ -41,7 +41,9 @@ public record PacienteDTO(
                            @NotNull
                            EPS eps,
                            @NotNull
-                           String URL_Foto
+                           String URL_Foto,
+                           @NotNull
+                           String alergias
 ) {
 
 
