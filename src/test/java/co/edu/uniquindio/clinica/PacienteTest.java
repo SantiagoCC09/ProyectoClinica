@@ -32,7 +32,7 @@ public class PacienteTest {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
         Date fechaNacimiento = (Date) formatoFecha.parse(fechaNacimientoString);
         PacienteDTO paciente = new PacienteDTO(
-                "12345", "juan-felipe-00@hotmail.com","password",
+                "12345", "santiago31800@hotmail.com","password",
                 "Juan Felipe Chavarria Vidal", "3165308765", Ciudad.Armenia,
                 fechaNacimiento,TipoSangre.APOSTIVIO, EPS.EMSSANAR,"mifoto","alergia a los perros"
         );
