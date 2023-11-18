@@ -20,8 +20,7 @@ public class AlergiaPaciente implements Serializable {
     @ManyToOne
     private Alergia idAlergia;
 
-    @ManyToOne
-    private Paciente codigoPaciente;
+
 
 
 

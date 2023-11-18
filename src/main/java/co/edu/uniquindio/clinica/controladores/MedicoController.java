@@ -65,10 +65,12 @@ public class MedicoController {
     }
 
 
+
     @PostMapping("/agendarDia-libre")
     public ResponseEntity<MensajeDTO<String>> agendarDiaLibre(@Valid @RequestBody Date dia) throws Exception{
         medicoServicio.reservarDiaLibre(dia);
         return ResponseEntity.ok().body( new MensajeDTO<>(false, "Dia libre agendado correctamente"));
     }
+
 
 }

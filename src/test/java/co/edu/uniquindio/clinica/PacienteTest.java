@@ -20,21 +20,21 @@ import org.springframework.test.context.jdbc.Sql;
 
 
 @SpringBootTest
-@Transactional
+
 public class PacienteTest {
     @Autowired
     private PacienteServicio pacienteServicio;
 
     @Test
-    @Sql("classpath:dataset.sql")
+  //  @Sql("classpath:dataset.sql")
     public void crearPaciente() throws Exception{
         String fechaNacimientoString = "2002-09-09";
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
         Date fechaNacimiento = (Date) formatoFecha.parse(fechaNacimientoString);
         PacienteDTO paciente = new PacienteDTO(
-                "12345", "juanp.cardonag@uqvirtual.edu.co","password",
+                "12345", "juan-felipe-00@hotmail.com","password",
                 "Juan Felipe Chavarria Vidal", "3165308765", Ciudad.Armenia,
-                fechaNacimiento,TipoSangre.APOSTIVIO, EPS.EMSSANAR,"mifoto"
+                fechaNacimiento,TipoSangre.APOSTIVIO, EPS.EMSSANAR,"mifoto","alergia a los perros"
         );
 
         pacienteServicio.registrarse(paciente);
@@ -56,7 +56,7 @@ public class PacienteTest {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
         Date fechaNacimiento = (Date) formatoFecha.parse(fechaNacimientoString);
         PacienteDTO pacienteDTO = new PacienteDTO("5","santi@gmail.com", "passwd","Santiago CC","31666",
-                Ciudad.Armenia,fechaNacimiento,TipoSangre.APOSTIVIO,EPS.EMSSANAR,"urlFoto");
+                Ciudad.Armenia,fechaNacimiento,TipoSangre.APOSTIVIO,EPS.EMSSANAR,"urlFoto","alergia a los perros");
         pacienteServicio.editarPerfil(pacienteDTO, codigoPaciente);
     }
 
