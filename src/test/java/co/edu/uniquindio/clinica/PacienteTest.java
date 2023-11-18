@@ -20,13 +20,13 @@ import org.springframework.test.context.jdbc.Sql;
 
 
 @SpringBootTest
-
+@Transactional
 public class PacienteTest {
     @Autowired
     private PacienteServicio pacienteServicio;
 
     @Test
-  //  @Sql("classpath:dataset.sql")
+   @Sql("classpath:dataset.sql")
     public void crearPaciente() throws Exception{
         String fechaNacimientoString = "2002-09-09";
         SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");

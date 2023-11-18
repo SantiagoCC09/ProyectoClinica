@@ -30,7 +30,6 @@ public record PacienteDTO(
                           String telefono,
 
                           @NotNull
-                          @Min(0) @Max(3)
                           Ciudad ciudadResidencia,
 
                           @NotNull
