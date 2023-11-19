@@ -49,7 +49,7 @@ public class MedicoController {
     }
 
     @GetMapping("/listarCitas-todas/{id}")
-    public ResponseEntity<MensajeDTO<List<CitaDTOMedico>>> listarCitas(int codigoMedico) throws Exception {
+    public ResponseEntity<MensajeDTO<List<CitaDTOMedico>>> listarCitas(@PathVariable int codigoMedico) throws Exception {
         return ResponseEntity.ok().body( new MensajeDTO<>(false, medicoServicio.listarCitas(codigoMedico)));
     }
 
