@@ -48,7 +48,7 @@ public class MedicoController {
         return ResponseEntity.ok().body( new MensajeDTO<>(false, medicoServicio.filtrarCitasPendientesNombrePaciente(nombrePaciente,codigoMedico)));
     }
 
-    @GetMapping("/listarCitas-todas")
+    @GetMapping("/listarCitas-todas/{id}")
     public ResponseEntity<MensajeDTO<List<CitaDTOMedico>>> listarCitas(int codigoMedico) throws Exception {
         return ResponseEntity.ok().body( new MensajeDTO<>(false, medicoServicio.listarCitas(codigoMedico)));
     }
