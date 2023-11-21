@@ -35,6 +35,6 @@ public interface PacienteServicio {
     public void filtrarHistorilaPorId ();
 
 
-
+    PacienteDTO obtenerPacienteDTO(int codigoPaciente) throws Exception;
 }
 

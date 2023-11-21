@@ -152,6 +152,28 @@ public class PacienteServicioImpl implements PacienteServicio {
 
     }
 
+    @Override
+    public PacienteDTO obtenerPacienteDTO(int codigoPaciente) throws Exception {
+        PacienteDTO pacienteFinal = null;
+        Paciente paciente = this.obtenerPaciente(codigoPaciente);
+        if (paciente != null){
+
+            PacienteDTO pacienteDTO =  new PacienteDTO(
+            paciente.getCedula(), paciente.getEmail(), paciente.getPassword(),
+                    paciente.getNombre(), paciente.getTelefono(), paciente.getCiudad(),
+                    paciente.getFechaNacimiento(),paciente.getRh(),paciente.getEps(),
+                    paciente.getUrlFoto(),paciente.getAlergias()
+
+
+
+            );
+        pacienteFinal = pacienteDTO;
+
+        }
+
+        return pacienteFinal;
+    }
+
     private Paciente convertir(PacienteDTO pacienteDTO) {
 
         Paciente paciente = new Paciente();

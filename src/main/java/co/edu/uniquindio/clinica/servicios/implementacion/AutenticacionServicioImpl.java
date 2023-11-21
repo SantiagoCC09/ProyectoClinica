@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -29,7 +30,7 @@ public class AutenticacionServicioImpl implements AutenticacionServicio {
     public TokenDTO login(SesionDTO sesionDTO) throws Exception {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-        Optional<Cuenta> cuentaOptional = cuentaRepo.findByEmail(sesionDTO.email());
+        Optional<Cuenta> cuentaOptional = Optional.ofNullable(cuentaRepo.findByEmail(sesionDTO.email()));
 
         if(cuentaOptional.isEmpty()){
             throw new Exception("No existe el correo ingresado");
@@ -38,6 +39,8 @@ public class AutenticacionServicioImpl implements AutenticacionServicio {
         if( !passwordEncoder.matches(sesionDTO.password(), cuenta.getPassword()) ){
             throw new Exception("La contraseña ingresada es incorrecta");
         }
+
+        System.out.println(cuenta.getEmail()+ "  espacio "+cuenta.getPassword());
         return new TokenDTO( crearToken(cuenta) );
     }
 
@@ -50,7 +53,7 @@ public class AutenticacionServicioImpl implements AutenticacionServicio {
         }else if( cuenta instanceof Medico){
             rol = "medico";
             nombre = ((Medico) cuenta).getNombre();
-        }else{
+        }else {
             rol = "admin";
             nombre = "Administrador";
         }
@@ -58,6 +61,8 @@ public class AutenticacionServicioImpl implements AutenticacionServicio {
         map.put("rol", rol);
         map.put("nombre", nombre);
         map.put("id", cuenta.getCodigo());
+
+        System.out.println(nombre + "  "+rol);
 
         return jwtUtils.generarToken(cuenta.getEmail(), map);
     }

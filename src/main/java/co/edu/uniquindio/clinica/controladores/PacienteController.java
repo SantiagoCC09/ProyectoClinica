@@ -54,12 +54,10 @@ public class PacienteController {
         return ResponseEntity.ok().body( new MensajeDTO<>(false, "Cita programada correctamente"));
     }
 
-    @GetMapping("/obtener-paciente")
-    public ResponseEntity<MensajeDTO<String>> obtenerPaciente (@Valid @RequestBody int codigoPaciente) throws Exception {
+    @GetMapping("/obtener-paciente/{codigoPaciente}")
+    public ResponseEntity<MensajeDTO<PacienteDTO>> obtenerPaciente (@PathVariable int codigoPaciente) throws Exception {
 
-        pacienteServicio.obtenerPaciente(codigoPaciente);
-
-        return ResponseEntity.ok().body( new MensajeDTO<>(false, "Paciente obtenido correctamente"));
+        return ResponseEntity.ok().body( new MensajeDTO<>(false, pacienteServicio.obtenerPacienteDTO(codigoPaciente)));
     }
 
     @PutMapping("/actualizar-cita")

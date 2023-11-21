@@ -49,5 +49,5 @@ public interface MedicoServicio {
     int actualizarReceta (RecetaDTO recetaDTO) throws Exception;
 
 
-
+    MedicoDTO obtenerMedicoDTO(int idMedico) throws Exception;
 }
