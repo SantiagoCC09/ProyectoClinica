@@ -383,4 +383,26 @@ public class MedicoServicioImpl implements MedicoServicio {
 
         return recetaGuardada.getIdReceta();
     }
+
+    @Override
+    public MedicoDTO obtenerMedicoDTO(int idMedico) throws Exception {
+
+        MedicoDTO medicoFinal = null;
+        Medico medico = this.obtenerMedico(idMedico);
+
+        if (medico != null){
+
+
+            MedicoDTO dto = new MedicoDTO(
+
+                    medico.getNombre(), medico.getCedula(), medico.getCiudad(),
+                    medico.getUrlFoto(), medico.getEspecialidad(), medico.getTelefono(),
+                    medico.getEmail(), medico.getPassword(), null
+
+
+            );
+    medicoFinal = dto;
+        }
+        return medicoFinal;
+    }
 }

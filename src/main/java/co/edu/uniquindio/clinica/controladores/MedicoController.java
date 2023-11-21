@@ -7,6 +7,7 @@ import co.edu.uniquindio.clinica.servicios.interfaces.ConsultaServicio;
 import co.edu.uniquindio.clinica.servicios.interfaces.MedicoServicio;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,31 +38,45 @@ public class MedicoController {
         return ResponseEntity.ok().body( new MensajeDTO<>(false, "Consulta eliminada correctamente"));
     }
 
-    @GetMapping("/obtenerMedico")
-    public ResponseEntity<MensajeDTO<String>> obtenerMedico(@Valid @RequestBody int idMedico) throws Exception {
-        medicoServicio.obtenerMedico(idMedico);
-        return ResponseEntity.ok().body( new MensajeDTO<>(false, "Medico obtenido correctamente"));
+    @GetMapping("/obtenerMedico/{idMedico}")
+    public ResponseEntity<MensajeDTO<MedicoDTO>> obtenerMedico(@PathVariable int idMedico) throws Exception {
+
+        return ResponseEntity.ok().body(new MensajeDTO<>(false, medicoServicio.obtenerMedicoDTO(idMedico)));
+    }
+    @GetMapping("/listarCitasPendientes-nombrePaciente/{nombrePaciente}/{codigoMedico}")
+    public ResponseEntity<MensajeDTO<List<CitaDTOMedico>>> listarCitasPaciente(
+            @PathVariable String nombrePaciente,
+            @PathVariable int codigoMedico
+    ) throws Exception {
+        return ResponseEntity.ok().body(
+                new MensajeDTO<>(false, medicoServicio.filtrarCitasPendientesNombrePaciente(nombrePaciente, codigoMedico))
+        );
     }
 
-    @GetMapping("/listarCitasPendientes-nombrePaciente")
-    public ResponseEntity<MensajeDTO<List<CitaDTOMedico>>> listarCitasPaciente(String nombrePaciente,int codigoMedico) throws Exception {
-        return ResponseEntity.ok().body( new MensajeDTO<>(false, medicoServicio.filtrarCitasPendientesNombrePaciente(nombrePaciente,codigoMedico)));
-    }
-
-    @GetMapping("/listarCitas-todas/{id}")
+    @GetMapping("/listarCitas-todas/{codigoMedico}")
     public ResponseEntity<MensajeDTO<List<CitaDTOMedico>>> listarCitas(@PathVariable int codigoMedico) throws Exception {
-        return ResponseEntity.ok().body( new MensajeDTO<>(false, medicoServicio.listarCitas(codigoMedico)));
+        return ResponseEntity.ok().body(new MensajeDTO<>(false, medicoServicio.listarCitas(codigoMedico)));
     }
 
     @GetMapping("/listarCitas-cedulaPaciente")
-    public ResponseEntity<MensajeDTO<List<CitaDTOMedico>>> filtrarCitasPendientesCedulaPaciente(int codigoMedico, String cedulaPaciente) throws Exception {
-        return ResponseEntity.ok().body( new MensajeDTO<>(false, medicoServicio.filtrarCitasPendientesCedulaPaciente(cedulaPaciente,codigoMedico)));
-
+    public ResponseEntity<MensajeDTO<List<CitaDTOMedico>>> filtrarCitasPendientesCedulaPaciente(
+            @RequestParam int codigoMedico,
+            @RequestParam String cedulaPaciente
+    ) throws Exception {
+        return ResponseEntity.ok().body(
+                new MensajeDTO<>(false, medicoServicio.filtrarCitasPendientesCedulaPaciente(cedulaPaciente, codigoMedico))
+        );
     }
 
+
     @GetMapping("/listarCitas-fecha")
-    public ResponseEntity<MensajeDTO<List<CitaDTOMedico>>> filtrarCitasPendientesPorFecha(Date date, int codigoMedico) throws Exception {
-        return ResponseEntity.ok().body( new MensajeDTO<>(false, medicoServicio.filtrarCitasPendientesPorFecha(date,codigoMedico)));
+    public ResponseEntity<MensajeDTO<List<CitaDTOMedico>>> filtrarCitasPendientesPorFecha(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date,
+            @RequestParam int codigoMedico
+    ) throws Exception {
+        return ResponseEntity.ok().body(
+                new MensajeDTO<>(false, medicoServicio.filtrarCitasPendientesPorFecha(date, codigoMedico))
+        );
     }
 
 
@@ -71,6 +86,7 @@ public class MedicoController {
         medicoServicio.reservarDiaLibre(dia);
         return ResponseEntity.ok().body( new MensajeDTO<>(false, "Dia libre agendado correctamente"));
     }
+
 
 
 }

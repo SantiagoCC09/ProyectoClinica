@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.swing.*;
+
+import static ch.qos.logback.core.joran.spi.ConsoleTarget.SystemOut;
+
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -20,9 +24,11 @@ public class AutenticacionController {
     private final PacienteServicio pacienteServicio;
 
     @PostMapping("/login")
-    public ResponseEntity<MensajeDTO<TokenDTO>> login(@Valid @RequestBody SesionDTO loginDTO)
-            throws Exception {
+    public ResponseEntity<MensajeDTO<TokenDTO>> login(@Valid @RequestBody SesionDTO loginDTO )  throws Exception {
+
+
         TokenDTO tokenDTO = autenticacionServicio.login(loginDTO);
+
         return ResponseEntity.ok().body(new MensajeDTO<>(false, tokenDTO));
     }
 
