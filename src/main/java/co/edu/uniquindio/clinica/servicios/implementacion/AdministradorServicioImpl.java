@@ -46,7 +46,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         medicoNuevo.setUrlFoto(medicoDTO.URL_foto());
         medicoNuevo.setEspecialidad(medicoDTO.especialidad());
         medicoNuevo.setEstado(EstadoUsuario.ESTADO_ACTIVO);
-        medicoNuevo.setPassword(medicoDTO.password());
+        medicoNuevo.setPassword(passwordEncoder.encode(medicoDTO.password()));
         medicoNuevo.setEmail(medicoDTO.correo());
 
         if (estaRepetidoCorreo(medicoDTO.correo())) {
